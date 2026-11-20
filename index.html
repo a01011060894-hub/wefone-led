@@ -546,17 +546,17 @@
       </div>
 
       <div class="space-y-2">
-        <label class="block text-xs font-bold text-amber-300">1. مسار الصورة في مجلد GitHub أو رابط خارجي:</label>
+        <label class="block text-xs font-bold text-amber-300">1. مسار الصورة في مجلد GitHub (يفضل .webp أو أي امتداد):</label>
         <div class="flex gap-2">
-          <input type="text" id="edit-prod-img" oninput="previewEditedImage()" placeholder="images/IS-WF-P2.5-MASK.jpg"
+          <input type="text" id="edit-prod-img" oninput="previewEditedImage()" placeholder="images/IS-WF-P2.5-MASK.webp"
             class="flex-1 bg-slate-900 border border-slate-700 rounded-xl px-3 py-2 text-xs text-white outline-none" dir="ltr" />
           <button type="button" onclick="clearProductCustomImg()" class="bg-slate-800 hover:bg-red-900/50 text-slate-300 px-2.5 py-2 rounded-xl text-xs font-bold">
             حذف الوسائط
           </button>
         </div>
 
-        <label class="block text-xs font-bold text-emerald-400 pt-1">أو اختر صورة / GIF / فيديو قصير من جهازك:</label>
-        <input type="file" id="edit-prod-file" accept="image/*,video/mp4,video/webm" onchange="handleLocalImageUpload(event)"
+        <label class="block text-xs font-bold text-emerald-400 pt-1">أو اختر صورة (WebP / JPG / PNG / GIF) أو فيديو من جهازك:</label>
+        <input type="file" id="edit-prod-file" accept="image/webp,image/*,video/mp4,video/webm" onchange="handleLocalImageUpload(event)"
           class="w-full text-xs text-slate-300 file:ml-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-slate-950 hover:file:bg-amber-400 cursor-pointer" />
       </div>
 
@@ -658,7 +658,7 @@
   {
     "id": "IS-WF-P1.25-GOB",
     "cat": "indoor",
-    "img": "images/IS-WF-P1.25-GOB.jpg",
+    "img": "images/IS-WF-P1.25-GOB.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -672,7 +672,7 @@
   {
     "id": "IS-WF-P1.5-GOB",
     "cat": "indoor",
-    "img": "images/IS-WF-P1.5-GOB.jpg",
+    "img": "images/IS-WF-P1.5-GOB.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -686,7 +686,7 @@
   {
     "id": "IS-WF-P1.8-GOB",
     "cat": "indoor",
-    "img": "images/IS-WF-P1.8-GOB.jpg",
+    "img": "images/IS-WF-P1.8-GOB.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -700,7 +700,7 @@
   {
     "id": "IS-WF-P1.8-SMD",
     "cat": "indoor",
-    "img": "images/IS-WF-P1.8-SMD.jpg",
+    "img": "images/IS-WF-P1.8-SMD.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -714,7 +714,7 @@
   {
     "id": "IS-WF-P2.5-MASK",
     "cat": "indoor",
-    "img": "images/IS-WF-P2.5-MASK.jpg",
+    "img": "images/IS-WF-P2.5-MASK.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -728,7 +728,7 @@
   {
     "id": "IS-WF-P2.5-640",
     "cat": "indoor",
-    "img": "images/IS-WF-P2.5-640.jpg",
+    "img": "images/IS-WF-P2.5-640.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -742,7 +742,7 @@
   {
     "id": "OS-WF-P2.5",
     "cat": "outdoor",
-    "img": "images/OS-WF-P2.5.jpg",
+    "img": "images/OS-WF-P2.5.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -756,7 +756,7 @@
   {
     "id": "OS-WF-P3",
     "cat": "outdoor",
-    "img": "images/OS-WF-P3.jpg",
+    "img": "images/OS-WF-P3.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -770,7 +770,7 @@
   {
     "id": "OS-WF-P4",
     "cat": "outdoor",
-    "img": "images/OS-WF-P4.jpg",
+    "img": "images/OS-WF-P4.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -784,7 +784,7 @@
   {
     "id": "OS-WF-P5",
     "cat": "outdoor",
-    "img": "images/OS-WF-P5.jpg",
+    "img": "images/OS-WF-P5.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -798,7 +798,7 @@
   {
     "id": "OS-WF-P6.67",
     "cat": "outdoor",
-    "img": "images/OS-WF-P6.67.jpg",
+    "img": "images/OS-WF-P6.67.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -812,7 +812,7 @@
   {
     "id": "OS-WF-P8",
     "cat": "outdoor",
-    "img": "images/OS-WF-P8.jpg",
+    "img": "images/OS-WF-P8.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -826,7 +826,7 @@
   {
     "id": "ORS-WF-P2.6-5050",
     "cat": "rental",
-    "img": "images/ORS-WF-P2.6-5050.jpg",
+    "img": "images/ORS-WF-P2.6-5050.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -840,7 +840,7 @@
   {
     "id": "ORS-WF-P2.9-5050",
     "cat": "rental",
-    "img": "images/ORS-WF-P2.9-5050.jpg",
+    "img": "images/ORS-WF-P2.9-5050.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -854,7 +854,7 @@
   {
     "id": "ORS-WF-P3.9-5050",
     "cat": "rental",
-    "img": "images/ORS-WF-P3.9-5050.jpg",
+    "img": "images/ORS-WF-P3.9-5050.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -868,7 +868,7 @@
   {
     "id": "IRS-WF-P3.9-5050",
     "cat": "rental",
-    "img": "images/IRS-WF-P3.9-5050.jpg",
+    "img": "images/IRS-WF-P3.9-5050.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -882,7 +882,7 @@
   {
     "id": "IFS-WF-P1.8-GOB",
     "cat": "flexible",
-    "img": "images/IFS-WF-P1.8-GOB.jpg",
+    "img": "images/IFS-WF-P1.8-GOB.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -896,7 +896,7 @@
   {
     "id": "IFS-WF-P2.5",
     "cat": "flexible",
-    "img": "images/IFS-WF-P2.5.jpg",
+    "img": "images/IFS-WF-P2.5.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -910,7 +910,7 @@
   {
     "id": "TRS-WF-P3.9",
     "cat": "flexible",
-    "img": "images/TRS-WF-P3.9.jpg",
+    "img": "images/TRS-WF-P3.9.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -924,7 +924,7 @@
   {
     "id": "TRS-WF-P10.4",
     "cat": "flexible",
-    "img": "images/TRS-WF-P10.4.jpg",
+    "img": "images/TRS-WF-P10.4.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -938,7 +938,7 @@
   {
     "id": "LP-1.5IS",
     "cat": "posters",
-    "img": "images/LP-1.5IS.jpg",
+    "img": "images/LP-1.5IS.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -952,7 +952,7 @@
   {
     "id": "LP-1.8IS",
     "cat": "posters",
-    "img": "images/LP-1.8IS.jpg",
+    "img": "images/LP-1.8IS.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -966,7 +966,7 @@
   {
     "id": "LP-2.5IS",
     "cat": "posters",
-    "img": "images/LP-2.5IS.jpg",
+    "img": "images/LP-2.5IS.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -980,7 +980,7 @@
   {
     "id": "LT-116-1.53IS",
     "cat": "posters",
-    "img": "images/LT-116-1.53IS.jpg",
+    "img": "images/LT-116-1.53IS.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -994,7 +994,7 @@
   {
     "id": "LT-116-1.86IS",
     "cat": "posters",
-    "img": "images/LT-116-1.86IS.jpg",
+    "img": "images/LT-116-1.86IS.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1008,7 +1008,7 @@
   {
     "id": "LT-116-2.5IS",
     "cat": "posters",
-    "img": "images/LT-116-2.5IS.jpg",
+    "img": "images/LT-116-2.5IS.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1022,7 +1022,7 @@
   {
     "id": "SB-55",
     "cat": "smartboard",
-    "img": "images/SB-55.jpg",
+    "img": "images/SB-55.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1036,7 +1036,7 @@
   {
     "id": "SB-65",
     "cat": "smartboard",
-    "img": "images/SB-65.jpg",
+    "img": "images/SB-65.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1050,7 +1050,7 @@
   {
     "id": "SB-75",
     "cat": "smartboard",
-    "img": "images/SB-75.jpg",
+    "img": "images/SB-75.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1064,7 +1064,7 @@
   {
     "id": "SB-86",
     "cat": "smartboard",
-    "img": "images/SB-86.jpg",
+    "img": "images/SB-86.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1078,7 +1078,7 @@
   {
     "id": "SB-98",
     "cat": "smartboard",
-    "img": "images/SB-98.jpg",
+    "img": "images/SB-98.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1092,7 +1092,7 @@
   {
     "id": "SB-110",
     "cat": "smartboard",
-    "img": "images/SB-110.jpg",
+    "img": "images/SB-110.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1106,7 +1106,7 @@
   {
     "id": "OPS-WIN11",
     "cat": "smartboard",
-    "img": "images/OPS-WIN11.jpg",
+    "img": "images/OPS-WIN11.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1120,7 +1120,7 @@
   {
     "id": "OPS-WIN11-I7",
     "cat": "smartboard",
-    "img": "images/OPS-WIN11-I7.jpg",
+    "img": "images/OPS-WIN11-I7.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1134,7 +1134,7 @@
   {
     "id": "K-STAND",
     "cat": "smartboard",
-    "img": "images/K-STAND.jpg",
+    "img": "images/K-STAND.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1148,7 +1148,7 @@
   {
     "id": "K-STAND-HD",
     "cat": "smartboard",
-    "img": "images/K-STAND-HD.jpg",
+    "img": "images/K-STAND-HD.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1162,7 +1162,7 @@
   {
     "id": "AI-CAM-48MP",
     "cat": "smartboard",
-    "img": "images/AI-CAM-48MP.jpg",
+    "img": "images/AI-CAM-48MP.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1176,7 +1176,7 @@
   {
     "id": "FLIGHT-CASE-8",
     "cat": "modules",
-    "img": "images/FLIGHT-CASE-8.jpg",
+    "img": "images/FLIGHT-CASE-8.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1190,7 +1190,7 @@
   {
     "id": "HANGING-BAR-05",
     "cat": "modules",
-    "img": "images/HANGING-BAR-05.jpg",
+    "img": "images/HANGING-BAR-05.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1204,7 +1204,7 @@
   {
     "id": "HANGING-BAR-10",
     "cat": "modules",
-    "img": "images/HANGING-BAR-10.jpg",
+    "img": "images/HANGING-BAR-10.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1218,7 +1218,7 @@
   {
     "id": "MOD-IN-P1.53",
     "cat": "modules",
-    "img": "images/MOD-IN-P1.53.jpg",
+    "img": "images/MOD-IN-P1.53.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1232,7 +1232,7 @@
   {
     "id": "MOD-IN-P1.86",
     "cat": "modules",
-    "img": "images/MOD-IN-P1.86.jpg",
+    "img": "images/MOD-IN-P1.86.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1246,7 +1246,7 @@
   {
     "id": "MOD-IN-P2.5",
     "cat": "modules",
-    "img": "images/MOD-IN-P2.5.jpg",
+    "img": "images/MOD-IN-P2.5.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1260,7 +1260,7 @@
   {
     "id": "MOD-OUT-P4",
     "cat": "modules",
-    "img": "images/MOD-OUT-P4.jpg",
+    "img": "images/MOD-OUT-P4.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1274,7 +1274,7 @@
   {
     "id": "MOD-OUT-P5",
     "cat": "modules",
-    "img": "images/MOD-OUT-P5.jpg",
+    "img": "images/MOD-OUT-P5.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1288,7 +1288,7 @@
   {
     "id": "PSU-CZCL-200",
     "cat": "modules",
-    "img": "images/PSU-CZCL-200.jpg",
+    "img": "images/PSU-CZCL-200.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1302,7 +1302,7 @@
   {
     "id": "PSU-CZCL-300",
     "cat": "modules",
-    "img": "images/PSU-CZCL-300.jpg",
+    "img": "images/PSU-CZCL-300.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1316,7 +1316,7 @@
   {
     "id": "PA-PLC-20KW",
     "cat": "modules",
-    "img": "images/PA-PLC-20KW.jpg",
+    "img": "images/PA-PLC-20KW.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1330,7 +1330,7 @@
   {
     "id": "PA-PLC-30KW",
     "cat": "modules",
-    "img": "images/PA-PLC-30KW.jpg",
+    "img": "images/PA-PLC-30KW.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1344,7 +1344,7 @@
   {
     "id": "PA-PLC-40KW",
     "cat": "modules",
-    "img": "images/PA-PLC-40KW.jpg",
+    "img": "images/PA-PLC-40KW.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1358,7 +1358,7 @@
   {
     "id": "SSR-L16",
     "cat": "modules",
-    "img": "images/SSR-L16.jpg",
+    "img": "images/SSR-L16.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1372,7 +1372,7 @@
   {
     "id": "SSR-TEMP",
     "cat": "modules",
-    "img": "images/SSR-TEMP.jpg",
+    "img": "images/SSR-TEMP.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1386,7 +1386,7 @@
   {
     "id": "MRV412-N",
     "cat": "controllers",
-    "img": "images/MRV412-N.jpg",
+    "img": "images/MRV412-N.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1400,7 +1400,7 @@
   {
     "id": "MRV416",
     "cat": "controllers",
-    "img": "images/MRV416.jpg",
+    "img": "images/MRV416.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1414,7 +1414,7 @@
   {
     "id": "A5S-PLUS",
     "cat": "controllers",
-    "img": "images/A5S-PLUS.jpg",
+    "img": "images/A5S-PLUS.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1428,7 +1428,7 @@
   {
     "id": "NOVA-TB40",
     "cat": "controllers",
-    "img": "images/NOVA-TB40.jpg",
+    "img": "images/NOVA-TB40.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1442,7 +1442,7 @@
   {
     "id": "NOVA-TB50",
     "cat": "controllers",
-    "img": "images/NOVA-TB50.jpg",
+    "img": "images/NOVA-TB50.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1456,7 +1456,7 @@
   {
     "id": "NOVA-TB60",
     "cat": "controllers",
-    "img": "images/NOVA-TB60.jpg",
+    "img": "images/NOVA-TB60.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1470,7 +1470,7 @@
   {
     "id": "NOVA-VX400",
     "cat": "controllers",
-    "img": "images/NOVA-VX400.jpg",
+    "img": "images/NOVA-VX400.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1484,7 +1484,7 @@
   {
     "id": "NOVA-VX600",
     "cat": "controllers",
-    "img": "images/NOVA-VX600.jpg",
+    "img": "images/NOVA-VX600.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1498,7 +1498,7 @@
   {
     "id": "NOVA-VX1000",
     "cat": "controllers",
-    "img": "images/NOVA-VX1000.jpg",
+    "img": "images/NOVA-VX1000.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1512,7 +1512,7 @@
   {
     "id": "COLORLIGHT-A200",
     "cat": "controllers",
-    "img": "images/COLORLIGHT-A200.jpg",
+    "img": "images/COLORLIGHT-A200.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1526,7 +1526,7 @@
   {
     "id": "COLORLIGHT-Z5",
     "cat": "controllers",
-    "img": "images/COLORLIGHT-Z5.jpg",
+    "img": "images/COLORLIGHT-Z5.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1540,7 +1540,7 @@
   {
     "id": "COLORLIGHT-Z6",
     "cat": "controllers",
-    "img": "images/COLORLIGHT-Z6.jpg",
+    "img": "images/COLORLIGHT-Z6.webp",
     "zoom": 100,
     "posX": 50,
     "posY": 50,
@@ -1553,7 +1553,7 @@
   }
 ];
 
-    let PRODUCTS = JSON.parse(localStorage.getItem("wefone_custom_products_v64") || "null") || JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+    let PRODUCTS = JSON.parse(localStorage.getItem("wefone_custom_products_v64_webp") || "null") || JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
     let cart = [];
     let savedOrders = JSON.parse(localStorage.getItem("wefone_orders_2026") || "[]");
 
@@ -1565,13 +1565,12 @@
         const data = await res.json();
         if (data && data.status === "ok" && Array.isArray(data.products) && data.products.length > 0) {
           PRODUCTS = data.products;
-          localStorage.setItem("wefone_custom_products_v64", JSON.stringify(PRODUCTS));
+          localStorage.setItem("wefone_custom_products_v64_webp", JSON.stringify(PRODUCTS));
           document.getElementById("cloud-sync-badge").classList.remove("hidden");
           renderProducts();
           populateCalculatorSelect();
           updateCalculator();
         } else if (data && data.status === "empty") {
-          // If Products tab is empty, auto-seed it with the 64 products
           await pushAllProductsToCloud(true);
         }
       } catch (err) {
@@ -1652,26 +1651,48 @@
     }
 
     function getProductVisual(p, overrides) {
-      const mediaUrl = ((overrides && overrides.img !== undefined) ? overrides.img : (p.img || "")).trim();
+      const rawUrl = ((overrides && overrides.img !== undefined) ? overrides.img : (p.img || "")).trim();
       const zoom = (overrides && overrides.zoom !== undefined) ? overrides.zoom : (p.zoom || 100);
       const posX = (overrides && overrides.posX !== undefined) ? overrides.posX : (p.posX !== undefined ? p.posX : 50);
       const posY = (overrides && overrides.posY !== undefined) ? overrides.posY : (p.posY !== undefined ? p.posY : 50);
 
       const fallbackSvg = getFallbackSvgHtml(p);
 
-      if (mediaUrl !== "") {
+      if (rawUrl !== "") {
         const scaleVal = (zoom / 100).toFixed(2);
         const inlineStyle = "object-position: " + posX + "% " + posY + "%; transform: scale(" + scaleVal + "); transform-origin: " + posX + "% " + posY + "%;";
-        const isVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(mediaUrl) || mediaUrl.startsWith("data:video/");
+        const isVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(rawUrl) || rawUrl.startsWith("data:video/");
 
         if (isVideo) {
           return '<div class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center">' +
-            '<video src="' + mediaUrl + '" autoplay loop muted playsinline style="' + inlineStyle + '" class="w-full h-full object-cover transition-transform duration-150" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';"></video>' +
+            '<video src="' + rawUrl + '" autoplay loop muted playsinline style="' + inlineStyle + '" class="w-full h-full object-cover transition-transform duration-150" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';"></video>' +
             '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
           '</div>';
         }
+
+        if (rawUrl.startsWith("data:") || /^https?:\/\//i.test(rawUrl)) {
+          return '<div class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center">' +
+            '<img src="' + rawUrl + '" alt="' + p.name + '" style="' + inlineStyle + '" class="w-full h-full object-cover transition-transform duration-150" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';" />' +
+            '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
+          '</div>';
+        }
+
+        // Support any image extension with WebP priority first
+        const baseWithoutExt = rawUrl.replace(/\.(webp|jpg|jpeg|png|gif|avif)(\?.*)?$/i, "");
+        const extCandidates = [
+          baseWithoutExt + ".webp",
+          baseWithoutExt + ".jpg",
+          baseWithoutExt + ".png",
+          baseWithoutExt + ".jpeg",
+          baseWithoutExt + ".gif",
+          baseWithoutExt + ".avif"
+        ];
+        const uniqueCandidates = Array.from(new Set(extCandidates));
+        const candidatesAttr = encodeURIComponent(JSON.stringify(uniqueCandidates));
+
         return '<div class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center">' +
-          '<img src="' + mediaUrl + '" alt="' + p.name + '" style="' + inlineStyle + '" class="w-full h-full object-cover transition-transform duration-150" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';" />' +
+          '<img src="' + uniqueCandidates[0] + '" data-candidates="' + candidatesAttr + '" data-idx="0" alt="' + p.name + '" style="' + inlineStyle + '" class="w-full h-full object-cover transition-transform duration-150" ' +
+          'onerror="const list=JSON.parse(decodeURIComponent(this.dataset.candidates)); const next=Number(this.dataset.idx)+1; if(next<list.length){ this.dataset.idx=next; this.src=list[next]; } else { this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\'; }" />' +
           '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
         '</div>';
       }
@@ -2094,12 +2115,10 @@
         supplierWaUrl: supplierWaUrl
       };
 
-      // Save locally
       savedOrders.unshift(orderObj);
       localStorage.setItem("wefone_orders_2026", JSON.stringify(savedOrders));
       updateOrdersBadge();
 
-      // Send automatically to Google Sheets Orders tab
       if (GSHEETS_API_URL) {
         fetch(GSHEETS_API_URL, {
           method: "POST",
@@ -2109,7 +2128,6 @@
         }).catch(err => console.warn("Cloud order log error:", err));
       }
 
-      // Open clean WhatsApp message to YOUR Saudi Number
       const customerMsg = "السلام عليكم، أرغب في طلب عرض سعر وتوريد من متجر *WeFone LED*:\n" +
         "رقم الطلب: *" + orderId + "*\n" +
         "الاسم: " + custName + "\n" +
@@ -2246,7 +2264,7 @@
           canvas.height = img.height * scale;
           const ctx = canvas.getContext("2d");
           ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          document.getElementById("edit-prod-img").value = canvas.toDataURL("image/jpeg", 0.82);
+          document.getElementById("edit-prod-img").value = canvas.toDataURL("image/webp", 0.85);
           previewEditedImage();
           showToast("🖼️ تم تحميل الصورة بنجاح");
         };
@@ -2275,7 +2293,7 @@
       if (!isNaN(rVal) && rVal >= 0) p.resellerAED = rVal;
 
       try {
-        localStorage.setItem("wefone_custom_products_v64", JSON.stringify(PRODUCTS));
+        localStorage.setItem("wefone_custom_products_v64_webp", JSON.stringify(PRODUCTS));
       } catch (err) {
         showToast("⚠️ تم الحفظ للجلسة الحالية");
       }
@@ -2290,7 +2308,7 @@
 
     function resetProductsToDefault() {
       if (!confirm("هل أنت متأكد من استعادة جميع الأسعار والصور والتسميات الافتراضية؟")) return;
-      localStorage.removeItem("wefone_custom_products_v64");
+      localStorage.removeItem("wefone_custom_products_v64_webp");
       PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
       renderProducts();
       populateCalculatorSelect();
