@@ -4,6 +4,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>WeFone LED | متجر وحاسبة مشاريع شاشات العرض العملاقة</title>
+  <!-- Open Graph & Social Media Rich Preview Meta Tags -->
+  <meta property="og:type" content="product" />
+  <meta property="og:site_name" content="WeFone LED" />
+  <meta property="og:title" id="og-title" content="WeFone LED | متجر وحاسبة مشاريع شاشات العرض العملاقة" />
+  <meta property="og:description" id="og-desc" content="الكتالوج الكامل لشاشات العرض العملاقة LED والسبورات التفاعلية الذكية ومعالجات NovaStar و Colorlight - أسعار السوق الرسمية 2026" />
+  <meta property="og:image" id="og-image" content="https://a01011060894-hub.github.io/wefone-led/images/IS-WF-P1.5-GOB.webp" />
+  <meta property="og:url" id="og-url" content="https://a01011060894-hub.github.io/wefone-led/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="tw-title" content="WeFone LED | متجر شاشات العرض العملاقة" />
+  <meta name="twitter:description" id="tw-desc" content="الكتالوج الكامل لشاشات العرض العملاقة LED والسبورات التفاعلية الذكية" />
+  <meta name="twitter:image" id="tw-image" content="https://a01011060894-hub.github.io/wefone-led/images/IS-WF-P1.5-GOB.webp" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -203,6 +214,27 @@
       <a href="#terms" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-amber-500/10" data-i18n="nav_terms">🛡️ الشروط والضمان</a>
     </div>
   </header>
+
+  <!-- 7-Slide Promotional Carousel Banner -->
+  <section id="promo-banner-section" class="max-w-7xl mx-auto px-4 pt-5">
+    <div id="promo-slider-wrapper" class="relative overflow-hidden rounded-2xl border border-amber-500/30 shadow-lg select-none"
+      onmouseenter="pausePromoAuto()" onmouseleave="resumePromoAuto()">
+      <div id="promo-slides-track" class="flex transition-transform duration-500 ease-out" style="direction: ltr;"></div>
+
+      <!-- Prev / Next Navigation Arrows -->
+      <button onclick="prevPromoSlide()" aria-label="Previous Slide"
+        class="absolute top-1/2 left-2.5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-slate-950/70 hover:bg-amber-500 text-white hover:text-slate-950 border border-amber-500/40 flex items-center justify-center font-black text-base transition">
+        ‹
+      </button>
+      <button onclick="nextPromoSlide()" aria-label="Next Slide"
+        class="absolute top-1/2 right-2.5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-slate-950/70 hover:bg-amber-500 text-white hover:text-slate-950 border border-amber-500/40 flex items-center justify-center font-black text-base transition">
+        ›
+      </button>
+
+      <!-- 7 Slide Indicator Dots -->
+      <div id="promo-dots" class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 bg-slate-950/60 px-3 py-1.5 rounded-full border border-white/10"></div>
+    </div>
+  </section>
 
   <!-- Hero Section -->
   <section class="py-10 sm:py-14 px-4 border-b border-amber-500/15">
@@ -531,15 +563,77 @@
       <div class="grid sm:grid-cols-2 gap-2.5 pt-1">
         <div id="lb-primary-action"></div>
         <div class="grid grid-cols-2 gap-2">
-          <button id="lb-share-wa" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
-            <span>📲</span>
-            <span data-i18n="share_wa">مشاركة واتساب</span>
+          <button id="lb-share-all" class="gold-gradient text-slate-950 font-black py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+            <span>📤</span>
+            <span data-i18n="share_btn">مشاركة المنتج</span>
           </button>
           <button id="lb-copy-link" class="theme-subtle-box hover:border-amber-500 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
             <span>🔗</span>
             <span data-i18n="copy_link">نسخ الرابط</span>
           </button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Universal Multi-Platform Share Modal (Noon / Amazon Style Rich Product Card) -->
+  <div id="share-modal" onclick="if(event.target===this) closeShareModal()" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="card-bg rounded-2xl w-full max-w-md p-5 space-y-4">
+      <div class="flex items-center justify-between border-b border-amber-500/20 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-amber-500" data-i18n="share_modal_title">📤 مشاركة المنتج مع معاينة مصغرة</h3>
+        <button onclick="closeShareModal()" class="theme-subtle-box hover:text-amber-500 px-2.5 py-1 rounded-lg text-xs font-black">✖</button>
+      </div>
+
+      <!-- Rich Thumbnail Preview Card (Noon / Amazon Style) -->
+      <div class="theme-subtle-box rounded-xl p-3 flex items-center gap-3.5 border border-amber-500/30">
+        <div id="share-thumb-box" class="w-24 h-20 rounded-lg overflow-hidden shrink-0 bg-[#090F20] border border-slate-700"></div>
+        <div class="min-w-0 flex-1 space-y-1">
+          <div class="flex items-center gap-1.5">
+            <span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">WeFone LED</span>
+            <span id="share-card-id" class="text-[10px] font-bold theme-muted"></span>
+          </div>
+          <h4 id="share-card-title" class="text-xs sm:text-sm font-black truncate"></h4>
+          <p id="share-card-specs" class="text-[11px] theme-muted line-clamp-1"></p>
+          <div id="share-card-price" class="text-sm font-black text-amber-500"></div>
+        </div>
+      </div>
+
+      <!-- Native System Share Button (Shares Actual Image File + Link on Mobile) -->
+      <button id="share-native-btn" class="w-full gold-gradient hover:opacity-95 text-slate-950 font-black py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition">
+        <span>📱</span>
+        <span data-i18n="share_native_lbl">مشاركة عبر تطبيقات الجهاز (مع صورة المنتج)</span>
+      </button>
+
+      <!-- Multi-Platform Direct Share Grid -->
+      <div class="grid grid-cols-3 sm:grid-cols-5 gap-2 text-center text-[11px] font-bold">
+        <a id="share-link-wa" target="_blank" class="theme-subtle-box hover:border-emerald-500 hover:text-emerald-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
+          <span class="text-lg">💬</span>
+          <span>WhatsApp</span>
+        </a>
+        <a id="share-link-tg" target="_blank" class="theme-subtle-box hover:border-sky-500 hover:text-sky-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
+          <span class="text-lg">✈️</span>
+          <span>Telegram</span>
+        </a>
+        <a id="share-link-fb" target="_blank" class="theme-subtle-box hover:border-blue-500 hover:text-blue-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
+          <span class="text-lg">📘</span>
+          <span>Facebook</span>
+        </a>
+        <a id="share-link-x" target="_blank" class="theme-subtle-box hover:border-slate-400 hover:text-amber-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
+          <span class="text-lg">𝕏</span>
+          <span>X / Twitter</span>
+        </a>
+        <a id="share-link-mail" class="theme-subtle-box hover:border-amber-500 hover:text-amber-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
+          <span class="text-lg">✉️</span>
+          <span>Email</span>
+        </a>
+      </div>
+
+      <!-- Direct URL Copy Bar -->
+      <div class="flex items-center gap-2 pt-1">
+        <input type="text" id="share-url-input" readonly dir="ltr" class="flex-1 theme-input rounded-xl px-3 py-2 text-xs outline-none select-all" />
+        <button id="share-modal-copy-btn" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition" data-i18n="copy_btn">
+          نسخ
+        </button>
       </div>
     </div>
   </div>
@@ -756,6 +850,102 @@
     let isEditMode = false;
     let currentLang = localStorage.getItem("wefone_lang") || "ar";
     let currentTheme = localStorage.getItem("wefone_theme") || "dark";
+    let currentPromoSlide = 0;
+    let promoAutoTimer = null;
+
+    const PROMO_SLIDES = [
+      {
+        badge_ar: "🔥 العرض 1 / 7 • الأكثر طلباً للمشاريع",
+        badge_en: "🔥 Offer 1 / 7 • Best Seller",
+        title_ar: "شاشات داخلية فائقة الدقة P1.53 & P1.86 GOB",
+        title_en: "Ultra-HD Indoor LED Screens P1.53 & P1.86 GOB",
+        desc_ar: "حماية GOB ضد الصدمات والرطوبة مع معدل تحديث 3840Hz وصيانة أمامية كاملة للقاعات والشركات.",
+        desc_en: "Anti-collision GOB protection, 3840Hz refresh rate, and full front service for halls & showrooms.",
+        cta_ar: "🧮 احسب مقاسك الآن",
+        cta_en: "🧮 Calculate Size Now",
+        bg: "from-[#1E293B] via-[#0F172A] to-[#78350F]",
+        accent: "text-amber-400",
+        action: () => goToCalculatorWithModel("IS-WF-P1.5-GOB")
+      },
+      {
+        badge_ar: "☀️ العرض 2 / 7 • واجهات المولات والأبراج",
+        badge_en: "☀️ Offer 2 / 7 • Mall & Tower Facades",
+        title_ar: "شاشات خارجية عملاقة P4 & P5 سطوع 7000 nits",
+        title_en: "Giant Outdoor LED P4 & P5 • 7000 nits Brightness",
+        desc_ar: "رؤية واضحة تحت أشعة الشمس المباشرة مع عزل كامل IP65 ومقاومة الحرارة والغبار.",
+        desc_en: "Crystal-clear visibility under direct sunlight with IP65 weatherproof protection.",
+        cta_ar: "☀️ تسعير الواجهات الخارجية",
+        cta_en: "☀️ Price Outdoor Facade",
+        bg: "from-[#0F172A] via-[#1E1B4B] to-[#9A3412]",
+        accent: "text-orange-400",
+        action: () => goToCalculatorWithModel("OS-WF-P5")
+      },
+      {
+        badge_ar: "🎪 العرض 3 / 7 • باقة شركات التأجير والفعاليات",
+        badge_en: "🎪 Offer 3 / 7 • Rental & Events Bundle",
+        title_ar: "شاشات التأجير 50×50 سم P2.9 & P3.9 (7860Hz)",
+        title_en: "Rental LED 50×50cm P2.9 & P3.9 (7860Hz Refresh)",
+        desc_ar: "معدل تحديث 7860Hz خالٍ من الوميض في الكاميرات مع خيار إضافة صناديق Flight Case ومساطر التعليق.",
+        desc_en: "Camera-ready 7860Hz refresh rate with automatic Flight Case & Hanging Bar calculation.",
+        cta_ar: "🎪 احسب باقة التأجير",
+        cta_en: "🎪 Configure Rental Rig",
+        bg: "from-[#0B132B] via-[#0C4A6E] to-[#1E293B]",
+        accent: "text-sky-400",
+        action: () => goToCalculatorWithModel("ORS-WF-P3.9-5050")
+      },
+      {
+        badge_ar: "📺 العرض 4 / 7 • جاهز للتشغيل الفوري",
+        badge_en: "📺 Offer 4 / 7 • Plug & Play Displays",
+        title_ar: "تلفزيون LED عملاق 116 بوصة + بوسترات قابلة للطي",
+        title_en: "Giant 116\" All-in-One LED TV & Foldable Posters",
+        desc_ar: "شاشات متكاملة بستاند متحرك ومدخل HDMI وتحكم سحابي عبر الواي فاي للمعارض والفنادق.",
+        desc_en: "All-in-one mobile displays with HDMI & cloud WiFi control for hotels & exhibitions.",
+        cta_ar: "📺 تصفح البوسترات والتلفزيونات",
+        cta_en: "📺 Browse Posters & 116\" TVs",
+        bg: "from-[#18181B] via-[#312E81] to-[#92400E]",
+        accent: "text-amber-300",
+        action: () => { selectCategory("posters"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
+      },
+      {
+        badge_ar: "🎓 العرض 5 / 7 • المدارس وغرف الاجتماعات",
+        badge_en: "🎓 Offer 5 / 7 • Schools & Boardrooms",
+        title_ar: "سبورات تفاعلية ذكية 4K (من 55 إلى 110 بوصة)",
+        title_en: "4K Interactive Smart Boards (55\" up to 110\")",
+        desc_ar: "نظام Android مدمج ولمس متعدد 20 نقطة مع إمكانية إضافة كمبيوتر OPS Windows 11 وكاميرا AI.",
+        desc_en: "Built-in Android, 20-point touch, plus optional OPS Windows 11 PC & 48MP AI camera.",
+        cta_ar: "🎓 استكشف السبورات الذكية",
+        cta_en: "🎓 Explore Smart Boards",
+        bg: "from-[#064E3B] via-[#0F172A] to-[#1E293B]",
+        accent: "text-emerald-400",
+        action: () => { selectCategory("smartboard"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
+      },
+      {
+        badge_ar: "✨ العرض 6 / 7 • تصاميم معمارية مبتكرة",
+        badge_en: "✨ Offer 6 / 7 • Creative Architecture",
+        title_ar: "شاشات مرنة للأعمدة وشاشات زجاجية شفافة (85%)",
+        title_en: "Flexible Pillar LED & 85% Transparent Glass LED",
+        desc_ar: "حوّل الواجهات الزجاجية والأعمدة الدائرية إلى لوحات إعلانية مبهرة دون حجب الإضاءة الطبيعية.",
+        desc_en: "Turn glass storefronts and curved columns into vibrant displays without blocking daylight.",
+        cta_ar: "✨ شاهد المرنة والشفافة",
+        cta_en: "✨ View Flexible & Glass",
+        bg: "from-[#1E1B4B] via-[#4C1D95] to-[#0F172A]",
+        accent: "text-purple-300",
+        action: () => { selectCategory("flexible"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
+      },
+      {
+        badge_ar: "🎛️ العرض 7 / 7 • أنظمة التحكم وقطع الغيار",
+        badge_en: "🎛️ Offer 7 / 7 • Control Systems & Spares",
+        title_ar: "معالجات NovaStar & Colorlight + موديولات وباور سبلاي",
+        title_en: "NovaStar & Colorlight Controllers + Modules & PSU",
+        desc_ar: "تشكيلة كاملة من معالجات TB40 / TB60 / VX1000 وكروت MRV412 ولوحات الكهرباء والحساسات.",
+        desc_en: "Full stock of TB40 / TB60 / VX1000 processors, MRV412 cards, power boxes & sensors.",
+        cta_ar: "🎛️ تصفح المعالجات والملحقات",
+        cta_en: "🎛️ Browse Controllers",
+        bg: "from-[#0F172A] via-[#1E293B] to-[#B45309]",
+        accent: "text-amber-400",
+        action: () => { selectCategory("controllers"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
+      }
+    ];
 
     const I18N = {
       ar: {
@@ -786,9 +976,11 @@
         market_price: "سعر السوق:",
         btn_calc_size: "🧮 احسب مقاسك في الحاسبة",
         btn_add_cart: "🛒 أضف إلى السلة",
-        share_wa: "مشاركة واتساب",
+        share_btn: "مشاركة المنتج",
         copy_link: "نسخ الرابط",
-        zoom_hint: "🔍 تكبير",
+        share_modal_title: "📤 مشاركة المنتج مع معاينة مصغرة",
+        share_native_lbl: "مشاركة عبر تطبيقات الجهاز (مع صورة المنتج)",
+        copy_btn: "نسخ",
         calc_badge: "حاسبة التسعير الهندسي الفوري",
         calc_title: "حاسبة مشاريع شاشات الـ LED",
         calc_desc: "احسب مساحة الشاشة، عدد القطع، صناديق التخزين للإيجار، تكلفة التركيب، المعالج، وقطع الغيار بدقة",
@@ -872,15 +1064,17 @@
         card_warr: "Full Warranty",
         store_sub: "Official 2026 Market Price List (64 Products)",
         store_title: "WeFone LED Product Store",
-        store_hint: "Tap any product image to enlarge it or share directly via WhatsApp & direct link",
+        store_hint: "Click any product image to zoom in or share directly via WhatsApp & copy product link",
         search_ph: "🔍 Search model (e.g., P2.5, TB40, Colorlight)...",
         per_unit: "Per",
         market_price: "Market Price:",
         btn_calc_size: "🧮 Configure Size in Calculator",
         btn_add_cart: "🛒 Add to Cart",
-        share_wa: "WhatsApp Share",
+        share_btn: "Share Product",
         copy_link: "Copy Link",
-        zoom_hint: "🔍 Enlarge",
+        share_modal_title: "📤 Share Product with Rich Preview",
+        share_native_lbl: "Share via Device Apps (with Product Image)",
+        copy_btn: "Copy",
         calc_badge: "Instant Engineering & Cost Estimator",
         calc_title: "LED Screen Project Calculator",
         calc_desc: "Calculate exact screen area, cabinet/module count, flight cases, installation, controller & spare parts",
@@ -957,1099 +1151,265 @@
     ];
 
     const DEFAULT_PRODUCTS = [
-  {
-    "id": "IS-WF-P1.25-GOB",
-    "cat": "indoor",
-    "img": "images/IS-WF-P1.25-GOB.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة داخلية P1.25 GOB",
-    "name_en": "Indoor LED Screen P1.25 GOB",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 6850,
-    "resellerAED": 5820,
-    "specs": "سطوع 700 nits • تحديث 3840Hz • حماية GOB • صيانة أمامية",
-    "specs_en": "700 nits • 3840Hz Refresh • GOB Protection • Front Service"
-  },
-  {
-    "id": "IS-WF-P1.5-GOB",
-    "cat": "indoor",
-    "img": "images/IS-WF-P1.5-GOB.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة داخلية P1.53 GOB",
-    "name_en": "Indoor LED Screen P1.53 GOB",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 4901,
-    "resellerAED": 4166,
-    "specs": "سطوع 700 nits • تحديث 3840Hz • حماية GOB • صيانة أمامية",
-    "specs_en": "700 nits • 3840Hz Refresh • GOB Protection • Front Service"
-  },
-  {
-    "id": "IS-WF-P1.8-GOB",
-    "cat": "indoor",
-    "img": "images/IS-WF-P1.8-GOB.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة داخلية P1.86 GOB",
-    "name_en": "Indoor LED Screen P1.86 GOB",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 3972,
-    "resellerAED": 3376,
-    "specs": "سطوع 700 nits • تحديث 3840Hz • حماية GOB • كابينة 640×480",
-    "specs_en": "700 nits • 3840Hz Refresh • GOB • 640×480 Cabinet"
-  },
-  {
-    "id": "IS-WF-P1.8-SMD",
-    "cat": "indoor",
-    "img": "images/IS-WF-P1.8-SMD.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة داخلية P1.86 SMD",
-    "name_en": "Indoor LED Screen P1.86 SMD",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 3450,
-    "resellerAED": 2930,
-    "specs": "سطوع 700 nits • تحديث 3840Hz • صيانة أمامية • كابينة 640×480",
-    "specs_en": "700 nits • 3840Hz Refresh • Front Service • 640×480 Cabinet"
-  },
-  {
-    "id": "IS-WF-P2.5-MASK",
-    "cat": "indoor",
-    "img": "images/IS-WF-P2.5-MASK.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة داخلية P2.5 (320×160)",
-    "name_en": "Indoor LED Screen P2.5 (320×160)",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 2620,
-    "resellerAED": 2227,
-    "specs": "سطوع 700 nits • تحديث 3840Hz • صيانة أمامية • دقة عالية",
-    "specs_en": "700 nits • 3840Hz Refresh • Front Service • High Contrast"
-  },
-  {
-    "id": "IS-WF-P2.5-640",
-    "cat": "indoor",
-    "img": "images/IS-WF-P2.5-640.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة داخلية P2.5 كابينة 640×480",
-    "name_en": "Indoor LED Screen P2.5 (640×480 Cabinet)",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 2890,
-    "resellerAED": 2456,
-    "specs": "كابينة ألمنيوم 640×480 • تحديث 3840Hz • صيانة أمامية",
-    "specs_en": "Die-Cast Aluminum 640×480 • 3840Hz • Front Service"
-  },
-  {
-    "id": "OS-WF-P2.5",
-    "cat": "outdoor",
-    "img": "images/OS-WF-P2.5.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة خارجية P2.5",
-    "name_en": "Outdoor LED Screen P2.5",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 4314,
-    "resellerAED": 3667,
-    "specs": "سطوع 7000 nits • مقاومة IP65 • كابينة 960×960 مم",
-    "specs_en": "7000 nits Brightness • IP65 Weatherproof • 960×960mm"
-  },
-  {
-    "id": "OS-WF-P3",
-    "cat": "outdoor",
-    "img": "images/OS-WF-P3.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة خارجية P3",
-    "name_en": "Outdoor LED Screen P3",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 3590,
-    "resellerAED": 3050,
-    "specs": "سطوع 7000 nits • مقاومة IP65 • تحديث 3840Hz",
-    "specs_en": "7000 nits Brightness • IP65 Weatherproof • 3840Hz"
-  },
-  {
-    "id": "OS-WF-P4",
-    "cat": "outdoor",
-    "img": "images/OS-WF-P4.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة خارجية P4",
-    "name_en": "Outdoor LED Screen P4",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 2757,
-    "resellerAED": 2344,
-    "specs": "سطوع 7000 nits • مقاومة IP65 • تحديث 3840Hz",
-    "specs_en": "7000 nits Brightness • IP65 Weatherproof • 3840Hz"
-  },
-  {
-    "id": "OS-WF-P5",
-    "cat": "outdoor",
-    "img": "images/OS-WF-P5.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة خارجية P5",
-    "name_en": "Outdoor LED Screen P5",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 2540,
-    "resellerAED": 2159,
-    "specs": "سطوع 7000 nits • مقاومة IP65 • مثالية للواجهات",
-    "specs_en": "7000 nits Brightness • IP65 • Ideal for Mall & Building Facades"
-  },
-  {
-    "id": "OS-WF-P6.67",
-    "cat": "outdoor",
-    "img": "images/OS-WF-P6.67.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة خارجية P6.67",
-    "name_en": "Outdoor LED Screen P6.67",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 2280,
-    "resellerAED": 1938,
-    "specs": "سطوع 7500 nits • مقاومة IP65 • للوحات الطرقية",
-    "specs_en": "7500 nits • IP65 Waterproof • Highway Billboards"
-  },
-  {
-    "id": "OS-WF-P8",
-    "cat": "outdoor",
-    "img": "images/OS-WF-P8.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة خارجية P8",
-    "name_en": "Outdoor LED Screen P8",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 2050,
-    "resellerAED": 1742,
-    "specs": "سطوع 7500 nits • مقاومة IP65 • للمسافات البعيدة",
-    "specs_en": "7500 nits • IP65 Waterproof • Long-Range Viewing"
-  },
-  {
-    "id": "ORS-WF-P2.6-5050",
-    "cat": "rental",
-    "img": "images/ORS-WF-P2.6-5050.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة تأجير داخلي/خارجي P2.6",
-    "name_en": "Rental LED Screen P2.6 (50×50cm)",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 4680,
-    "resellerAED": 3978,
-    "specs": "قطعة 50×50 سم • تحديث 7860Hz • فك وتركيب سريع",
-    "specs_en": "50×50cm Cabinet • 7860Hz Refresh • Fast Lock System"
-  },
-  {
-    "id": "ORS-WF-P2.9-5050",
-    "cat": "rental",
-    "img": "images/ORS-WF-P2.9-5050.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة تأجير خارجي/داخلي P2.9",
-    "name_en": "Rental LED Screen P2.9 (50×50cm)",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 4155,
-    "resellerAED": 3532,
-    "specs": "قطعة 50×50 سم • تحديث 7860Hz • فك وتركيب سريع",
-    "specs_en": "50×50cm Cabinet • 7860Hz Refresh • Fast Lock System"
-  },
-  {
-    "id": "ORS-WF-P3.9-5050",
-    "cat": "rental",
-    "img": "images/ORS-WF-P3.9-5050.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة تأجير خارجي/داخلي P3.9",
-    "name_en": "Outdoor/Indoor Rental LED P3.9",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 3030,
-    "resellerAED": 2576,
-    "specs": "قطعة 50×50 سم • تحديث 7860Hz • مخصصة للمسارح",
-    "specs_en": "50×50cm Cabinet • 7860Hz • Stages & Events"
-  },
-  {
-    "id": "IRS-WF-P3.9-5050",
-    "cat": "rental",
-    "img": "images/IRS-WF-P3.9-5050.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة تأجير داخلي P3.9 Indoor",
-    "name_en": "Indoor Rental LED Screen P3.9",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 2650,
-    "resellerAED": 2252,
-    "specs": "قطعة 50×50 سم • تحديث 7860Hz • للقاعات والمعارض",
-    "specs_en": "50×50cm Cabinet • 7860Hz • Halls & Exhibitions"
-  },
-  {
-    "id": "IFS-WF-P1.8-GOB",
-    "cat": "flexible",
-    "img": "images/IFS-WF-P1.8-GOB.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة مرنة منحنية P1.86 GOB",
-    "name_en": "Flexible Curved LED P1.86 GOB",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 5295,
-    "resellerAED": 4500,
-    "specs": "مرنة للأعمدة والزوايا • سطوع 900 nits • حماية GOB",
-    "specs_en": "Flexible for Pillars & Curves • 900 nits • GOB"
-  },
-  {
-    "id": "IFS-WF-P2.5",
-    "cat": "flexible",
-    "img": "images/IFS-WF-P2.5.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة مرنة منحنية P2.5",
-    "name_en": "Flexible Curved LED Screen P2.5",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 3894,
-    "resellerAED": 3310,
-    "specs": "مرنة للأعمدة والمنحنيات • سطوع 900 nits • تحديث 3840Hz",
-    "specs_en": "Flexible for Columns & Arcs • 900 nits • 3840Hz"
-  },
-  {
-    "id": "TRS-WF-P3.9",
-    "cat": "flexible",
-    "img": "images/TRS-WF-P3.9.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة زجاجية شفافة P3.9-7.8",
-    "name_en": "Transparent Glass LED P3.9-7.8",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 5450,
-    "resellerAED": 4632,
-    "specs": "شفافية 75% للواجهات الزجاجية • سطوع 4500 nits",
-    "specs_en": "75% Transparency for Glass Facades • 4500 nits"
-  },
-  {
-    "id": "TRS-WF-P10.4",
-    "cat": "flexible",
-    "img": "images/TRS-WF-P10.4.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "شاشة زجاجية شفافة P10.4",
-    "name_en": "Transparent Glass LED P10.4",
-    "unit": "متر مربع",
-    "unit_en": "sqm",
-    "soldBySqm": true,
-    "marketAED": 3950,
-    "resellerAED": 3358,
-    "specs": "شفافية 85% • خفيفة الوزن للواجهات التجارية",
-    "specs_en": "85% Transparency • Ultra-Light Glass Display"
-  },
-  {
-    "id": "LP-1.5IS",
-    "cat": "posters",
-    "img": "images/LP-1.5IS.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "بوستر LED قابل للطي P1.53 GOB",
-    "name_en": "Foldable LED Poster P1.53 GOB",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 6962,
-    "resellerAED": 5917,
-    "specs": "مقاس 640×1920 مم • بعجلات • تحكم WiFi و Cloud",
-    "specs_en": "640×1920mm • Wheeled Stand • WiFi & Cloud Control"
-  },
-  {
-    "id": "LP-1.8IS",
-    "cat": "posters",
-    "img": "images/LP-1.8IS.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "بوستر LED قابل للطي P1.86 GOB",
-    "name_en": "Foldable LED Poster P1.86 GOB",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 5880,
-    "resellerAED": 4998,
-    "specs": "مقاس 640×1920 مم • قابل للطي • صيانة أمامية",
-    "specs_en": "640×1920mm • Foldable Design • Front Maintenance"
-  },
-  {
-    "id": "LP-2.5IS",
-    "cat": "posters",
-    "img": "images/LP-2.5IS.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "بوستر LED قابل للطي P2.5",
-    "name_en": "Foldable LED Poster P2.5",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 4750,
-    "resellerAED": 4038,
-    "specs": "مقاس 640×1920 مم • بعجلات • ربط عدة شاشات معاً",
-    "specs_en": "640×1920mm • Multi-Screen Cascading • WiFi"
-  },
-  {
-    "id": "LT-116-1.53IS",
-    "cat": "posters",
-    "img": "images/LT-116-1.53IS.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "تلفزيون LED عملاق 116 بوصة P1.53",
-    "name_en": "All-in-One 116\" LED TV P1.53 GOB",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 21268,
-    "resellerAED": 18609,
-    "specs": "مقاس 2.56×1.44 متر • دقة فائقة GOB • ستاند متحرك",
-    "specs_en": "2.56×1.44m • Ultra HD GOB • Mobile Floor Stand"
-  },
-  {
-    "id": "LT-116-1.86IS",
-    "cat": "posters",
-    "img": "images/LT-116-1.86IS.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "تلفزيون LED عملاق 116 بوصة P1.86",
-    "name_en": "All-in-One 116\" LED TV P1.86",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 18780,
-    "resellerAED": 16432,
-    "specs": "مقاس 2.56×1.44 متر • ستاند متحرك • مدخل HDMI",
-    "specs_en": "2.56×1.44m • Mobile Stand • HDMI Input"
-  },
-  {
-    "id": "LT-116-2.5IS",
-    "cat": "posters",
-    "img": "images/LT-116-2.5IS.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "تلفزيون LED عملاق 116 بوصة P2.5",
-    "name_en": "All-in-One 116\" LED TV P2.5",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 15900,
-    "resellerAED": 13515,
-    "specs": "مقاس 2.56×1.44 متر • ستاند متحرك • للقاعات",
-    "specs_en": "2.56×1.44m • Mobile Stand • Conference Halls"
-  },
-  {
-    "id": "SB-55",
-    "cat": "smartboard",
-    "img": "images/SB-55.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "سبورة تفاعلية ذكية 55 بوصة 4K",
-    "name_en": "Interactive Smart Board 55\" 4K",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 3250,
-    "resellerAED": 2760,
-    "specs": "نظام Android 8G+128G • لمس متعدد 20 نقطة",
-    "specs_en": "Android 8GB+128GB • 20-Point Multi-Touch 4K"
-  },
-  {
-    "id": "SB-65",
-    "cat": "smartboard",
-    "img": "images/SB-65.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "سبورة تفاعلية ذكية 65 بوصة 4K",
-    "name_en": "Interactive Smart Board 65\" 4K",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 3960,
-    "resellerAED": 3300,
-    "specs": "نظام Android 8G+128G • لمس متعدد 20 نقطة",
-    "specs_en": "Android 8GB+128GB • 20-Point Multi-Touch 4K"
-  },
-  {
-    "id": "SB-75",
-    "cat": "smartboard",
-    "img": "images/SB-75.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "سبورة تفاعلية ذكية 75 بوصة 4K",
-    "name_en": "Interactive Smart Board 75\" 4K",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 5090,
-    "resellerAED": 4242,
-    "specs": "نظام Android 13 8G+128G • للمدارس والاجتماعات",
-    "specs_en": "Android 13 8GB+128GB • Classrooms & Meetings"
-  },
-  {
-    "id": "SB-86",
-    "cat": "smartboard",
-    "img": "images/SB-86.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "سبورة تفاعلية ذكية 86 بوصة 4K",
-    "name_en": "Interactive Smart Board 86\" 4K",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 6240,
-    "resellerAED": 5200,
-    "specs": "نظام Android 13 8G+128G • شاشة 4K مضادة للانعكاس",
-    "specs_en": "Android 13 8GB+128GB • Anti-Glare 4K UHD"
-  },
-  {
-    "id": "SB-98",
-    "cat": "smartboard",
-    "img": "images/SB-98.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "سبورة تفاعلية ذكية 98 بوصة 4K",
-    "name_en": "Interactive Smart Board 98\" 4K",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 11500,
-    "resellerAED": 9775,
-    "specs": "نظام Android 13 8G+128G • للقاعات الكبرى",
-    "specs_en": "Android 13 8GB+128GB • Large Auditoriums"
-  },
-  {
-    "id": "SB-110",
-    "cat": "smartboard",
-    "img": "images/SB-110.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "سبورة تفاعلية ذكية 110 بوصة 4K",
-    "name_en": "Interactive Smart Board 110\" 4K",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 16800,
-    "resellerAED": 14280,
-    "specs": "شاشة عملاقة للمدرجات وغرف القيادة • 4K UHD",
-    "specs_en": "Giant Control Room & Theater Display • 4K UHD"
-  },
-  {
-    "id": "OPS-WIN11",
-    "cat": "smartboard",
-    "img": "images/OPS-WIN11.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "كمبيوتر مدمج OPS Windows 11 i5",
-    "name_en": "OPS Mini PC Windows 11 Core i5",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 1680,
-    "resellerAED": 1400,
-    "specs": "معالج Core i5 • رام 8GB • تخزين 256GB SSD",
-    "specs_en": "Intel Core i5 • 8GB RAM • 256GB SSD"
-  },
-  {
-    "id": "OPS-WIN11-I7",
-    "cat": "smartboard",
-    "img": "images/OPS-WIN11-I7.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "كمبيوتر مدمج OPS Windows 11 i7",
-    "name_en": "OPS Mini PC Windows 11 Core i7",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 2250,
-    "resellerAED": 1890,
-    "specs": "معالج Core i7 • رام 16GB • تخزين 512GB SSD",
-    "specs_en": "Intel Core i7 • 16GB RAM • 512GB SSD"
-  },
-  {
-    "id": "K-STAND",
-    "cat": "smartboard",
-    "img": "images/K-STAND.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "ستاند متحرك للسبورة الذكية (55-86)",
-    "name_en": "Mobile Stand for Smart Board (55-86\")",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 636,
-    "resellerAED": 530,
-    "specs": "حديد مطلي أسود مع عجلات وقفل أمان",
-    "specs_en": "Heavy-Duty Steel with Locking Caster Wheels"
-  },
-  {
-    "id": "K-STAND-HD",
-    "cat": "smartboard",
-    "img": "images/K-STAND-HD.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "ستاند ثقيل للسبورات الكبيرة (98-110)",
-    "name_en": "Heavy-Duty Stand for 98-110\" Boards",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 950,
-    "resellerAED": 790,
-    "specs": "هيكل فولاذي مزدوج التحمل مع عجلات صناعية",
-    "specs_en": "Dual-Column Industrial Steel Mobile Stand"
-  },
-  {
-    "id": "AI-CAM-48MP",
-    "cat": "smartboard",
-    "img": "images/AI-CAM-48MP.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "كاميرا اجتماعات ذكية AI 48MP",
-    "name_en": "AI 48MP Conference Camera",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 420,
-    "resellerAED": 350,
-    "specs": "تتبع صوتي تلقائي للمتحدث • دقة 4K • ميكروفون مدمج",
-    "specs_en": "Auto Speaker Tracking • 4K UHD • Built-in Mic"
-  },
-  {
-    "id": "FLIGHT-CASE-8",
-    "cat": "modules",
-    "img": "images/FLIGHT-CASE-8.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "صندوق تخزين ونقل Flight Case",
-    "name_en": "Rental Flight Case (6-8 Cabinets)",
-    "unit": "صندوق",
-    "unit_en": "case",
-    "soldBySqm": false,
-    "marketAED": 550,
-    "resellerAED": 500,
-    "specs": "مخصص لشاشات التأجير (يستوعب حتى 6-8 كبائن 50×50)",
-    "specs_en": "Fits up to 6-8 Rental Cabinets (50×50cm)"
-  },
-  {
-    "id": "HANGING-BAR-05",
-    "cat": "modules",
-    "img": "images/HANGING-BAR-05.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "مسطرة تعليق علوية Hanging Bar 0.5m",
-    "name_en": "Rigging Hanging Bar 0.5m",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 116,
-    "resellerAED": 106,
-    "specs": "مسطرة تعليق ألمنيوم مقوى لكبائن التأجير 50×50 سم",
-    "specs_en": "Reinforced Aluminum Rigging Bar for 50×50cm"
-  },
-  {
-    "id": "HANGING-BAR-10",
-    "cat": "modules",
-    "img": "images/HANGING-BAR-10.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "مسطرة تعليق مزدوجة Hanging Bar 1.0m",
-    "name_en": "Dual Rigging Hanging Bar 1.0m",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 210,
-    "resellerAED": 190,
-    "specs": "مسطرة تعليق بطول 1 متر لكبائن التأجير",
-    "specs_en": "1.0m Dual-Cabinet Aluminum Hanging Bar"
-  },
-  {
-    "id": "MOD-IN-P1.53",
-    "cat": "modules",
-    "img": "images/MOD-IN-P1.53.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "موديول داخلي P1.53 GOB (320×160)",
-    "name_en": "Indoor LED Module P1.53 GOB (320×160)",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 165,
-    "resellerAED": 148,
-    "specs": "حماية GOB • تحديث 3840Hz • دقة فائقة",
-    "specs_en": "GOB Protection • 3840Hz • 320×160mm"
-  },
-  {
-    "id": "MOD-IN-P1.86",
-    "cat": "modules",
-    "img": "images/MOD-IN-P1.86.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "موديول داخلي P1.86 GOB (320×160)",
-    "name_en": "Indoor LED Module P1.86 GOB (320×160)",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 112,
-    "resellerAED": 101,
-    "specs": "حماية GOB • تحديث 3840Hz",
-    "specs_en": "GOB Protection • 3840Hz Refresh"
-  },
-  {
-    "id": "MOD-IN-P2.5",
-    "cat": "modules",
-    "img": "images/MOD-IN-P2.5.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "موديول داخلي P2.5 (320×160 مم)",
-    "name_en": "Indoor LED Module P2.5 (320×160mm)",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 63,
-    "resellerAED": 58,
-    "specs": "تحديث 3840Hz • سطوع 700 nits",
-    "specs_en": "3840Hz Refresh • 700 nits Brightness"
-  },
-  {
-    "id": "MOD-OUT-P4",
-    "cat": "modules",
-    "img": "images/MOD-OUT-P4.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "موديول خارجي P4 (320×160 مم)",
-    "name_en": "Outdoor LED Module P4 (320×160mm)",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 69,
-    "resellerAED": 63,
-    "specs": "سطوع 5500 nits • مقاوم للعوامل الجوية",
-    "specs_en": "5500 nits • Weatherproof IP65 Front"
-  },
-  {
-    "id": "MOD-OUT-P5",
-    "cat": "modules",
-    "img": "images/MOD-OUT-P5.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "موديول خارجي P5 (320×160 مم)",
-    "name_en": "Outdoor LED Module P5 (320×160mm)",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 59,
-    "resellerAED": 53,
-    "specs": "سطوع 6000 nits • مقاوم للماء والغبار IP65",
-    "specs_en": "6000 nits • Waterproof & Dustproof IP65"
-  },
-  {
-    "id": "PSU-CZCL-200",
-    "cat": "modules",
-    "img": "images/PSU-CZCL-200.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "باور سبلاي CZCL 200W 5V (نحيف)",
-    "name_en": "CZCL 200W 5V Slim Power Supply",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 42,
-    "resellerAED": 38,
-    "specs": "مخصص للشاشات الداخلية النحيفة 40A",
-    "specs_en": "Ultra-Slim 5V 40A for Indoor LED Screens"
-  },
-  {
-    "id": "PSU-CZCL-300",
-    "cat": "modules",
-    "img": "images/PSU-CZCL-300.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "باور سبلاي CZCL 300W 5V",
-    "name_en": "CZCL 300W 5V Power Supply (60A)",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 50,
-    "resellerAED": 45,
-    "specs": "يغذي حتى 6 موديولات خارجية بكفاءة عالية 60A",
-    "specs_en": "Powers up to 6 Outdoor Modules • 5V 60A"
-  },
-  {
-    "id": "PA-PLC-20KW",
-    "cat": "modules",
-    "img": "images/PA-PLC-20KW.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "لوحة توزيع كهرباء PA-PLC 20KW",
-    "name_en": "Power Distribution Box PA-PLC 20KW",
-    "unit": "لوحة",
-    "unit_en": "box",
-    "soldBySqm": false,
-    "marketAED": 1100,
-    "resellerAED": 1000,
-    "specs": "6 خطوط حماية • مخصصة لتشغيل شاشات LED",
-    "specs_en": "6-Channel Breaker Protection for LED Displays"
-  },
-  {
-    "id": "PA-PLC-30KW",
-    "cat": "modules",
-    "img": "images/PA-PLC-30KW.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "لوحة توزيع كهرباء PA-PLC 30KW",
-    "name_en": "Power Distribution Box PA-PLC 30KW",
-    "unit": "لوحة",
-    "unit_en": "box",
-    "soldBySqm": false,
-    "marketAED": 1450,
-    "resellerAED": 1320,
-    "specs": "9 خطوط حماية • للشاشات الخارجية والعملاقة",
-    "specs_en": "9-Channel Breaker Protection • Heavy Duty"
-  },
-  {
-    "id": "PA-PLC-40KW",
-    "cat": "modules",
-    "img": "images/PA-PLC-40KW.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "لوحة توزيع كهرباء PA-PLC 40KW",
-    "name_en": "Power Distribution Box PA-PLC 40KW",
-    "unit": "لوحة",
-    "unit_en": "box",
-    "soldBySqm": false,
-    "marketAED": 1850,
-    "resellerAED": 1680,
-    "specs": "12 خط حماية • للمشاريع الخارجية الضخمة",
-    "specs_en": "12-Channel Protection for Mega Outdoor Screens"
-  },
-  {
-    "id": "SSR-L16",
-    "cat": "modules",
-    "img": "images/SSR-L16.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "حساس السطوع التلقائي SSR-L16",
-    "name_en": "Auto Brightness Sensor SSR-L16",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 265,
-    "resellerAED": 221,
-    "specs": "ضبط سطوع الشاشة الخارجية ليلاً/نهاراً تلقائياً",
-    "specs_en": "Automatic Day/Night Outdoor Brightness Control"
-  },
-  {
-    "id": "SSR-TEMP",
-    "cat": "modules",
-    "img": "images/SSR-TEMP.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "حساس قياس الحرارة والرطوبة SSR-TEMP",
-    "name_en": "Temp & Humidity Sensor SSR-TEMP",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 240,
-    "resellerAED": 200,
-    "specs": "مراقبة درجة حرارة الكابينة والحماية من السخونة",
-    "specs_en": "Cabinet Thermal & Humidity Monitoring"
-  },
-  {
-    "id": "MRV412-N",
-    "cat": "controllers",
-    "img": "images/MRV412-N.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "كارت استقبال NovaStar MRV412-N",
-    "name_en": "NovaStar Receiving Card MRV412-N",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 68,
-    "resellerAED": 58,
-    "specs": "سعة 512×512 بكسل • 12 منفذ HUB75",
-    "specs_en": "512×512px Capacity • 12 HUB75 Ports"
-  },
-  {
-    "id": "MRV416",
-    "cat": "controllers",
-    "img": "images/MRV416.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "كارت استقبال NovaStar MRV416",
-    "name_en": "NovaStar Receiving Card MRV416",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 85,
-    "resellerAED": 72,
-    "specs": "سعة 512×384 بكسل • 16 منفذ HUB75E",
-    "specs_en": "512×384px Capacity • 16 HUB75E Ports"
-  },
-  {
-    "id": "A5S-PLUS",
-    "cat": "controllers",
-    "img": "images/A5S-PLUS.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "كارت استقبال احترافي NovaStar A5s Plus",
-    "name_en": "NovaStar Pro Receiving Card A5s Plus",
-    "unit": "قطعة",
-    "unit_en": "pcs",
-    "soldBySqm": false,
-    "marketAED": 135,
-    "resellerAED": 115,
-    "specs": "معايرة ألوان متقدمة • لشاشات التأجير والدقة العالية",
-    "specs_en": "Pixel-Level Calibration • Rental & Fine Pitch"
-  },
-  {
-    "id": "NOVA-TB40",
-    "cat": "controllers",
-    "img": "images/NOVA-TB40.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج تشغيل سحابي NovaStar TB40",
-    "name_en": "NovaStar Cloud Multimedia Player TB40",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 901,
-    "resellerAED": 766,
-    "specs": "سعة 1.3 مليون بكسل • WiFi و LAN و USB",
-    "specs_en": "1.3M Pixels Capacity • WiFi, LAN & USB"
-  },
-  {
-    "id": "NOVA-TB50",
-    "cat": "controllers",
-    "img": "images/NOVA-TB50.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج تشغيل سحابي NovaStar TB50",
-    "name_en": "NovaStar Cloud Player TB50 (HDMI)",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 1380,
-    "resellerAED": 1173,
-    "specs": "سعة 1.3 مليون بكسل • منفذ HDMI • تحكم سحابي",
-    "specs_en": "1.3M Pixels • HDMI Loop/In • Cloud Control"
-  },
-  {
-    "id": "NOVA-TB60",
-    "cat": "controllers",
-    "img": "images/NOVA-TB60.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج تشغيل سحابي NovaStar TB60",
-    "name_en": "NovaStar Cloud Multimedia Player TB60",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 2071,
-    "resellerAED": 1760,
-    "specs": "سعة 2.3 مليون بكسل • تحكم سحابي متكامل",
-    "specs_en": "2.3M Pixels Capacity • Dual-WiFi & Cloud"
-  },
-  {
-    "id": "NOVA-VX400",
-    "cat": "controllers",
-    "img": "images/NOVA-VX400.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج فيديو احترافي NovaStar VX400",
-    "name_en": "NovaStar All-in-One Controller VX400",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 3250,
-    "resellerAED": 2762,
-    "specs": "سعة 2.6 مليون بكسل • 4 مخارج شبكة",
-    "specs_en": "2.6M Pixels • 4 Ethernet Ports • Scaler"
-  },
-  {
-    "id": "NOVA-VX600",
-    "cat": "controllers",
-    "img": "images/NOVA-VX600.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج فيديو احترافي NovaStar VX600 PRO",
-    "name_en": "NovaStar Video Processor VX600 PRO",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 5179,
-    "resellerAED": 4402,
-    "specs": "سعة 3.9 مليون بكسل • 6 مخارج شبكة",
-    "specs_en": "3.9M Pixels • 6 Ethernet Ports • Low Latency"
-  },
-  {
-    "id": "NOVA-VX1000",
-    "cat": "controllers",
-    "img": "images/NOVA-VX1000.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج فيديو عملاق NovaStar VX1000 PRO",
-    "name_en": "NovaStar Video Processor VX1000 PRO",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 7409,
-    "resellerAED": 6298,
-    "specs": "سعة 6.5 مليون بكسل • 10 مخارج شبكة",
-    "specs_en": "6.5M Pixels • 10 Ethernet Ports • 4K Input"
-  },
-  {
-    "id": "COLORLIGHT-A200",
-    "cat": "controllers",
-    "img": "images/COLORLIGHT-A200.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج تشغيل سحابي Colorlight A200",
-    "name_en": "Colorlight Cloud Player A200",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 980,
-    "resellerAED": 830,
-    "specs": "سعة 1.3 مليون بكسل • تحكم WiFi و Cloud و 4G",
-    "specs_en": "1.3M Pixels • WiFi, Cloud & 4G Optional"
-  },
-  {
-    "id": "COLORLIGHT-Z5",
-    "cat": "controllers",
-    "img": "images/COLORLIGHT-Z5.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج فيديو احترافي Colorlight Z5",
-    "name_en": "Colorlight Video Controller Z5",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 4650,
-    "resellerAED": 3950,
-    "specs": "سعة 4.2 مليون بكسل • معالجة 4K و HDR",
-    "specs_en": "4.2M Pixels • 4K & HDR Video Processing"
-  },
-  {
-    "id": "COLORLIGHT-Z6",
-    "cat": "controllers",
-    "img": "images/COLORLIGHT-Z6.webp",
-    "zoom": 100,
-    "posX": 50,
-    "posY": 50,
-    "name": "معالج فيديو عملاق Colorlight Z6 PRO",
-    "name_en": "Colorlight Pro Controller Z6 PRO",
-    "unit": "جهاز",
-    "unit_en": "unit",
-    "soldBySqm": false,
-    "marketAED": 6850,
-    "resellerAED": 5820,
-    "specs": "سعة 8.3 مليون بكسل • معالجة 4K60Hz احترافية",
-    "specs_en": "8.3M Pixels • True 4K@60Hz Pro Processing"
-  }
-];
+      {"id": "IS-WF-P1.25-GOB", "cat": "indoor", "img": "images/IS-WF-P1.25-GOB.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة داخلية P1.25 GOB", "name_en": "Indoor LED Screen P1.25 GOB", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 6850, "resellerAED": 5820, "specs": "سطوع 700 nits • تحديث 3840Hz • حماية GOB • صيانة أمامية", "specs_en": "700 nits • 3840Hz Refresh • GOB Protection • Front Service"},
+      {"id": "IS-WF-P1.5-GOB", "cat": "indoor", "img": "images/IS-WF-P1.5-GOB.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة داخلية P1.53 GOB", "name_en": "Indoor LED Screen P1.53 GOB", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 4901, "resellerAED": 4166, "specs": "سطوع 700 nits • تحديث 3840Hz • حماية GOB • صيانة أمامية", "specs_en": "700 nits • 3840Hz Refresh • GOB Protection • Front Service"},
+      {"id": "IS-WF-P1.8-GOB", "cat": "indoor", "img": "images/IS-WF-P1.8-GOB.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة داخلية P1.86 GOB", "name_en": "Indoor LED Screen P1.86 GOB", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 3972, "resellerAED": 3376, "specs": "سطوع 700 nits • تحديث 3840Hz • حماية GOB • كابينة 640×480", "specs_en": "700 nits • 3840Hz Refresh • GOB • 640×480 Cabinet"},
+      {"id": "IS-WF-P1.8-SMD", "cat": "indoor", "img": "images/IS-WF-P1.8-SMD.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة داخلية P1.86 SMD", "name_en": "Indoor LED Screen P1.86 SMD", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 3450, "resellerAED": 2930, "specs": "سطوع 700 nits • تحديث 3840Hz • صيانة أمامية • كابينة 640×480", "specs_en": "700 nits • 3840Hz Refresh • Front Service • 640×480 Cabinet"},
+      {"id": "IS-WF-P2.5-MASK", "cat": "indoor", "img": "images/IS-WF-P2.5-MASK.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة داخلية P2.5 (320×160)", "name_en": "Indoor LED Screen P2.5 (320×160)", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 2620, "resellerAED": 2227, "specs": "سطوع 700 nits • تحديث 3840Hz • صيانة أمامية • دقة عالية", "specs_en": "700 nits • 3840Hz Refresh • Front Service • High Contrast"},
+      {"id": "IS-WF-P2.5-640", "cat": "indoor", "img": "images/IS-WF-P2.5-640.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة داخلية P2.5 كابينة 640×480", "name_en": "Indoor LED Screen P2.5 (640×480 Cabinet)", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 2890, "resellerAED": 2456, "specs": "كابينة ألمنيوم 640×480 • تحديث 3840Hz • صيانة أمامية", "specs_en": "Die-Cast Aluminum 640×480 • 3840Hz • Front Service"},
+      {"id": "OS-WF-P2.5", "cat": "outdoor", "img": "images/OS-WF-P2.5.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة خارجية P2.5", "name_en": "Outdoor LED Screen P2.5", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 4314, "resellerAED": 3667, "specs": "سطوع 7000 nits • مقاومة IP65 • كابينة 960×960 مم", "specs_en": "7000 nits Brightness • IP65 Weatherproof • 960×960mm"},
+      {"id": "OS-WF-P3", "cat": "outdoor", "img": "images/OS-WF-P3.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة خارجية P3", "name_en": "Outdoor LED Screen P3", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 3590, "resellerAED": 3050, "specs": "سطوع 7000 nits • مقاومة IP65 • تحديث 3840Hz", "specs_en": "7000 nits Brightness • IP65 Weatherproof • 3840Hz"},
+      {"id": "OS-WF-P4", "cat": "outdoor", "img": "images/OS-WF-P4.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة خارجية P4", "name_en": "Outdoor LED Screen P4", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 2757, "resellerAED": 2344, "specs": "سطوع 7000 nits • مقاومة IP65 • تحديث 3840Hz", "specs_en": "7000 nits Brightness • IP65 Weatherproof • 3840Hz"},
+      {"id": "OS-WF-P5", "cat": "outdoor", "img": "images/OS-WF-P5.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة خارجية P5", "name_en": "Outdoor LED Screen P5", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 2540, "resellerAED": 2159, "specs": "سطوع 7000 nits • مقاومة IP65 • مثالية للواجهات", "specs_en": "7000 nits Brightness • IP65 • Ideal for Mall & Building Facades"},
+      {"id": "OS-WF-P6.67", "cat": "outdoor", "img": "images/OS-WF-P6.67.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة خارجية P6.67", "name_en": "Outdoor LED Screen P6.67", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 2280, "resellerAED": 1938, "specs": "سطوع 7500 nits • مقاومة IP65 • للوحات الطرقية", "specs_en": "7500 nits • IP65 Waterproof • Highway Billboards"},
+      {"id": "OS-WF-P8", "cat": "outdoor", "img": "images/OS-WF-P8.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة خارجية P8", "name_en": "Outdoor LED Screen P8", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 2050, "resellerAED": 1742, "specs": "سطوع 7500 nits • مقاومة IP65 • للمسافات البعيدة", "specs_en": "7500 nits • IP65 Waterproof • Long-Range Viewing"},
+      {"id": "ORS-WF-P2.6-5050", "cat": "rental", "img": "images/ORS-WF-P2.6-5050.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة تأجير داخلي/خارجي P2.6", "name_en": "Rental LED Screen P2.6 (50×50cm)", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 4680, "resellerAED": 3978, "specs": "قطعة 50×50 سم • تحديث 7860Hz • فك وتركيب سريع", "specs_en": "50×50cm Cabinet • 7860Hz Refresh • Fast Lock System"},
+      {"id": "ORS-WF-P2.9-5050", "cat": "rental", "img": "images/ORS-WF-P2.9-5050.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة تأجير خارجي/داخلي P2.9", "name_en": "Rental LED Screen P2.9 (50×50cm)", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 4155, "resellerAED": 3532, "specs": "قطعة 50×50 سم • تحديث 7860Hz • فك وتركيب سريع", "specs_en": "50×50cm Cabinet • 7860Hz Refresh • Fast Lock System"},
+      {"id": "ORS-WF-P3.9-5050", "cat": "rental", "img": "images/ORS-WF-P3.9-5050.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة تأجير خارجي/داخلي P3.9", "name_en": "Outdoor/Indoor Rental LED P3.9", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 3030, "resellerAED": 2576, "specs": "قطعة 50×50 سم • تحديث 7860Hz • مخصصة للمسارح", "specs_en": "50×50cm Cabinet • 7860Hz • Stages & Events"},
+      {"id": "IRS-WF-P3.9-5050", "cat": "rental", "img": "images/IRS-WF-P3.9-5050.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة تأجير داخلي P3.9 Indoor", "name_en": "Indoor Rental LED Screen P3.9", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 2650, "resellerAED": 2252, "specs": "قطعة 50×50 سم • تحديث 7860Hz • للقاعات والمعارض", "specs_en": "50×50cm Cabinet • 7860Hz • Halls & Exhibitions"},
+      {"id": "IFS-WF-P1.8-GOB", "cat": "flexible", "img": "images/IFS-WF-P1.8-GOB.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة مرنة منحنية P1.86 GOB", "name_en": "Flexible Curved LED P1.86 GOB", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 5295, "resellerAED": 4500, "specs": "مرنة للأعمدة والزوايا • سطوع 900 nits • حماية GOB", "specs_en": "Flexible for Pillars & Curves • 900 nits • GOB"},
+      {"id": "IFS-WF-P2.5", "cat": "flexible", "img": "images/IFS-WF-P2.5.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة مرنة منحنية P2.5", "name_en": "Flexible Curved LED Screen P2.5", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 3894, "resellerAED": 3310, "specs": "مرنة للأعمدة والمنحنيات • سطوع 900 nits • تحديث 3840Hz", "specs_en": "Flexible for Columns & Arcs • 900 nits • 3840Hz"},
+      {"id": "TRS-WF-P3.9", "cat": "flexible", "img": "images/TRS-WF-P3.9.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة زجاجية شفافة P3.9-7.8", "name_en": "Transparent Glass LED P3.9-7.8", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 5450, "resellerAED": 4632, "specs": "شفافية 75% للواجهات الزجاجية • سطوع 4500 nits", "specs_en": "75% Transparency for Glass Facades • 4500 nits"},
+      {"id": "TRS-WF-P10.4", "cat": "flexible", "img": "images/TRS-WF-P10.4.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "شاشة زجاجية شفافة P10.4", "name_en": "Transparent Glass LED P10.4", "unit": "متر مربع", "unit_en": "sqm", "soldBySqm": true, "marketAED": 3950, "resellerAED": 3358, "specs": "شفافية 85% • خفيفة الوزن للواجهات التجارية", "specs_en": "85% Transparency • Ultra-Light Glass Display"},
+      {"id": "LP-1.5IS", "cat": "posters", "img": "images/LP-1.5IS.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "بوستر LED قابل للطي P1.53 GOB", "name_en": "Foldable LED Poster P1.53 GOB", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 6962, "resellerAED": 5917, "specs": "مقاس 640×1920 مم • بعجلات • تحكم WiFi و Cloud", "specs_en": "640×1920mm • Wheeled Stand • WiFi & Cloud Control"},
+      {"id": "LP-1.8IS", "cat": "posters", "img": "images/LP-1.8IS.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "بوستر LED قابل للطي P1.86 GOB", "name_en": "Foldable LED Poster P1.86 GOB", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 5880, "resellerAED": 4998, "specs": "مقاس 640×1920 مم • قابل للطي • صيانة أمامية", "specs_en": "640×1920mm • Foldable Design • Front Maintenance"},
+      {"id": "LP-2.5IS", "cat": "posters", "img": "images/LP-2.5IS.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "بوستر LED قابل للطي P2.5", "name_en": "Foldable LED Poster P2.5", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 4750, "resellerAED": 4038, "specs": "مقاس 640×1920 مم • بعجلات • ربط عدة شاشات معاً", "specs_en": "640×1920mm • Multi-Screen Cascading • WiFi"},
+      {"id": "LT-116-1.53IS", "cat": "posters", "img": "images/LT-116-1.53IS.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "تلفزيون LED عملاق 116 بوصة P1.53", "name_en": "All-in-One 116\" LED TV P1.53 GOB", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 21268, "resellerAED": 18609, "specs": "مقاس 2.56×1.44 متر • دقة فائقة GOB • ستاند متحرك", "specs_en": "2.56×1.44m • Ultra HD GOB • Mobile Floor Stand"},
+      {"id": "LT-116-1.86IS", "cat": "posters", "img": "images/LT-116-1.86IS.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "تلفزيون LED عملاق 116 بوصة P1.86", "name_en": "All-in-One 116\" LED TV P1.86", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 18780, "resellerAED": 16432, "specs": "مقاس 2.56×1.44 متر • ستاند متحرك • مدخل HDMI", "specs_en": "2.56×1.44m • Mobile Stand • HDMI Input"},
+      {"id": "LT-116-2.5IS", "cat": "posters", "img": "images/LT-116-2.5IS.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "تلفزيون LED عملاق 116 بوصة P2.5", "name_en": "All-in-One 116\" LED TV P2.5", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 15900, "resellerAED": 13515, "specs": "مقاس 2.56×1.44 متر • ستاند متحرك • للقاعات", "specs_en": "2.56×1.44m • Mobile Stand • Conference Halls"},
+      {"id": "SB-55", "cat": "smartboard", "img": "images/SB-55.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "سبورة تفاعلية ذكية 55 بوصة 4K", "name_en": "Interactive Smart Board 55\" 4K", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 3250, "resellerAED": 2760, "specs": "نظام Android 8G+128G • لمس متعدد 20 نقطة", "specs_en": "Android 8GB+128GB • 20-Point Multi-Touch 4K"},
+      {"id": "SB-65", "cat": "smartboard", "img": "images/SB-65.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "سبورة تفاعلية ذكية 65 بوصة 4K", "name_en": "Interactive Smart Board 65\" 4K", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 3960, "resellerAED": 3300, "specs": "نظام Android 8G+128G • لمس متعدد 20 نقطة", "specs_en": "Android 8GB+128GB • 20-Point Multi-Touch 4K"},
+      {"id": "SB-75", "cat": "smartboard", "img": "images/SB-75.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "سبورة تفاعلية ذكية 75 بوصة 4K", "name_en": "Interactive Smart Board 75\" 4K", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 5090, "resellerAED": 4242, "specs": "نظام Android 13 8G+128G • للمدارس والاجتماعات", "specs_en": "Android 13 8GB+128GB • Classrooms & Meetings"},
+      {"id": "SB-86", "cat": "smartboard", "img": "images/SB-86.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "سبورة تفاعلية ذكية 86 بوصة 4K", "name_en": "Interactive Smart Board 86\" 4K", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 6240, "resellerAED": 5200, "specs": "نظام Android 13 8G+128G • شاشة 4K مضادة للانعكاس", "specs_en": "Android 13 8GB+128GB • Anti-Glare 4K UHD"},
+      {"id": "SB-98", "cat": "smartboard", "img": "images/SB-98.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "سبورة تفاعلية ذكية 98 بوصة 4K", "name_en": "Interactive Smart Board 98\" 4K", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 11500, "resellerAED": 9775, "specs": "نظام Android 13 8G+128G • للقاعات الكبرى", "specs_en": "Android 13 8GB+128GB • Large Auditoriums"},
+      {"id": "SB-110", "cat": "smartboard", "img": "images/SB-110.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "سبورة تفاعلية ذكية 110 بوصة 4K", "name_en": "Interactive Smart Board 110\" 4K", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 16800, "resellerAED": 14280, "specs": "شاشة عملاقة للمدرجات وغرف القيادة • 4K UHD", "specs_en": "Giant Control Room & Theater Display • 4K UHD"},
+      {"id": "OPS-WIN11", "cat": "smartboard", "img": "images/OPS-WIN11.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "كمبيوتر مدمج OPS Windows 11 i5", "name_en": "OPS Mini PC Windows 11 Core i5", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 1680, "resellerAED": 1400, "specs": "معالج Core i5 • رام 8GB • تخزين 256GB SSD", "specs_en": "Intel Core i5 • 8GB RAM • 256GB SSD"},
+      {"id": "OPS-WIN11-I7", "cat": "smartboard", "img": "images/OPS-WIN11-I7.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "كمبيوتر مدمج OPS Windows 11 i7", "name_en": "OPS Mini PC Windows 11 Core i7", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 2250, "resellerAED": 1890, "specs": "معالج Core i7 • رام 16GB • تخزين 512GB SSD", "specs_en": "Intel Core i7 • 16GB RAM • 512GB SSD"},
+      {"id": "K-STAND", "cat": "smartboard", "img": "images/K-STAND.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "ستاند متحرك للسبورة الذكية (55-86)", "name_en": "Mobile Stand for Smart Board (55-86\")", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 636, "resellerAED": 530, "specs": "حديد مطلي أسود مع عجلات وقفل أمان", "specs_en": "Heavy-Duty Steel with Locking Caster Wheels"},
+      {"id": "K-STAND-HD", "cat": "smartboard", "img": "images/K-STAND-HD.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "ستاند ثقيل للسبورات الكبيرة (98-110)", "name_en": "Heavy-Duty Stand for 98-110\" Boards", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 950, "resellerAED": 790, "specs": "هيكل فولاذي مزدوج التحمل مع عجلات صناعية", "specs_en": "Dual-Column Industrial Steel Mobile Stand"},
+      {"id": "AI-CAM-48MP", "cat": "smartboard", "img": "images/AI-CAM-48MP.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "كاميرا اجتماعات ذكية AI 48MP", "name_en": "AI 48MP Conference Camera", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 420, "resellerAED": 350, "specs": "تتبع صوتي تلقائي للمتحدث • دقة 4K • ميكروفون مدمج", "specs_en": "Auto Speaker Tracking • 4K UHD • Built-in Mic"},
+      {"id": "FLIGHT-CASE-8", "cat": "modules", "img": "images/FLIGHT-CASE-8.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "صندوق تخزين ونقل Flight Case", "name_en": "Rental Flight Case (6-8 Cabinets)", "unit": "صندوق", "unit_en": "case", "soldBySqm": false, "marketAED": 550, "resellerAED": 500, "specs": "مخصص لشاشات التأجير (يستوعب حتى 6-8 كبائن 50×50)", "specs_en": "Fits up to 6-8 Rental Cabinets (50×50cm)"},
+      {"id": "HANGING-BAR-05", "cat": "modules", "img": "images/HANGING-BAR-05.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "مسطرة تعليق علوية Hanging Bar 0.5m", "name_en": "Rigging Hanging Bar 0.5m", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 116, "resellerAED": 106, "specs": "مسطرة تعليق ألمنيوم مقوى لكبائن التأجير 50×50 سم", "specs_en": "Reinforced Aluminum Rigging Bar for 50×50cm"},
+      {"id": "HANGING-BAR-10", "cat": "modules", "img": "images/HANGING-BAR-10.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "مسطرة تعليق مزدوجة Hanging Bar 1.0m", "name_en": "Dual Rigging Hanging Bar 1.0m", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 210, "resellerAED": 190, "specs": "مسطرة تعليق بطول 1 متر لكبائن التأجير", "specs_en": "1.0m Dual-Cabinet Aluminum Hanging Bar"},
+      {"id": "MOD-IN-P1.53", "cat": "modules", "img": "images/MOD-IN-P1.53.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "موديول داخلي P1.53 GOB (320×160)", "name_en": "Indoor LED Module P1.53 GOB (320×160)", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 165, "resellerAED": 148, "specs": "حماية GOB • تحديث 3840Hz • دقة فائقة", "specs_en": "GOB Protection • 3840Hz • 320×160mm"},
+      {"id": "MOD-IN-P1.86", "cat": "modules", "img": "images/MOD-IN-P1.86.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "موديول داخلي P1.86 GOB (320×160)", "name_en": "Indoor LED Module P1.86 GOB (320×160)", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 112, "resellerAED": 101, "specs": "حماية GOB • تحديث 3840Hz", "specs_en": "GOB Protection • 3840Hz Refresh"},
+      {"id": "MOD-IN-P2.5", "cat": "modules", "img": "images/MOD-IN-P2.5.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "موديول داخلي P2.5 (320×160 مم)", "name_en": "Indoor LED Module P2.5 (320×160mm)", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 63, "resellerAED": 58, "specs": "تحديث 3840Hz • سطوع 700 nits", "specs_en": "3840Hz Refresh • 700 nits Brightness"},
+      {"id": "MOD-OUT-P4", "cat": "modules", "img": "images/MOD-OUT-P4.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "موديول خارجي P4 (320×160 مم)", "name_en": "Outdoor LED Module P4 (320×160mm)", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 69, "resellerAED": 63, "specs": "سطوع 5500 nits • مقاوم للعوامل الجوية", "specs_en": "5500 nits • Weatherproof IP65 Front"},
+      {"id": "MOD-OUT-P5", "cat": "modules", "img": "images/MOD-OUT-P5.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "موديول خارجي P5 (320×160 مم)", "name_en": "Outdoor LED Module P5 (320×160mm)", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 59, "resellerAED": 53, "specs": "سطوع 6000 nits • مقاوم للماء والغبار IP65", "specs_en": "6000 nits • Waterproof & Dustproof IP65"},
+      {"id": "PSU-CZCL-200", "cat": "modules", "img": "images/PSU-CZCL-200.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "باور سبلاي CZCL 200W 5V (نحيف)", "name_en": "CZCL 200W 5V Slim Power Supply", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 42, "resellerAED": 38, "specs": "مخصص للشاشات الداخلية النحيفة 40A", "specs_en": "Ultra-Slim 5V 40A for Indoor LED Screens"},
+      {"id": "PSU-CZCL-300", "cat": "modules", "img": "images/PSU-CZCL-300.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "باور سبلاي CZCL 300W 5V", "name_en": "CZCL 300W 5V Power Supply (60A)", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 50, "resellerAED": 45, "specs": "يغذي حتى 6 موديولات خارجية بكفاءة عالية 60A", "specs_en": "Powers up to 6 Outdoor Modules • 5V 60A"},
+      {"id": "PA-PLC-20KW", "cat": "modules", "img": "images/PA-PLC-20KW.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "لوحة توزيع كهرباء PA-PLC 20KW", "name_en": "Power Distribution Box PA-PLC 20KW", "unit": "لوحة", "unit_en": "box", "soldBySqm": false, "marketAED": 1100, "resellerAED": 1000, "specs": "6 خطوط حماية • مخصصة لتشغيل شاشات LED", "specs_en": "6-Channel Breaker Protection for LED Displays"},
+      {"id": "PA-PLC-30KW", "cat": "modules", "img": "images/PA-PLC-30KW.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "لوحة توزيع كهرباء PA-PLC 30KW", "name_en": "Power Distribution Box PA-PLC 30KW", "unit": "لوحة", "unit_en": "box", "soldBySqm": false, "marketAED": 1450, "resellerAED": 1320, "specs": "9 خطوط حماية • للشاشات الخارجية والعملاقة", "specs_en": "9-Channel Breaker Protection • Heavy Duty"},
+      {"id": "PA-PLC-40KW", "cat": "modules", "img": "images/PA-PLC-40KW.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "لوحة توزيع كهرباء PA-PLC 40KW", "name_en": "Power Distribution Box PA-PLC 40KW", "unit": "لوحة", "unit_en": "box", "soldBySqm": false, "marketAED": 1850, "resellerAED": 1680, "specs": "12 خط حماية • للمشاريع الخارجية الضخمة", "specs_en": "12-Channel Protection for Mega Outdoor Screens"},
+      {"id": "SSR-L16", "cat": "modules", "img": "images/SSR-L16.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "حساس السطوع التلقائي SSR-L16", "name_en": "Auto Brightness Sensor SSR-L16", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 265, "resellerAED": 221, "specs": "ضبط سطوع الشاشة الخارجية ليلاً/نهاراً تلقائياً", "specs_en": "Automatic Day/Night Outdoor Brightness Control"},
+      {"id": "SSR-TEMP", "cat": "modules", "img": "images/SSR-TEMP.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "حساس قياس الحرارة والرطوبة SSR-TEMP", "name_en": "Temp & Humidity Sensor SSR-TEMP", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 240, "resellerAED": 200, "specs": "مراقبة درجة حرارة الكابينة والحماية من السخونة", "specs_en": "Cabinet Thermal & Humidity Monitoring"},
+      {"id": "MRV412-N", "cat": "controllers", "img": "images/MRV412-N.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "كارت استقبال NovaStar MRV412-N", "name_en": "NovaStar Receiving Card MRV412-N", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 68, "resellerAED": 58, "specs": "سعة 512×512 بكسل • 12 منفذ HUB75", "specs_en": "512×512px Capacity • 12 HUB75 Ports"},
+      {"id": "MRV416", "cat": "controllers", "img": "images/MRV416.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "كارت استقبال NovaStar MRV416", "name_en": "NovaStar Receiving Card MRV416", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 85, "resellerAED": 72, "specs": "سعة 512×384 بكسل • 16 منفذ HUB75E", "specs_en": "512×384px Capacity • 16 HUB75E Ports"},
+      {"id": "A5S-PLUS", "cat": "controllers", "img": "images/A5S-PLUS.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "كارت استقبال احترافي NovaStar A5s Plus", "name_en": "NovaStar Pro Receiving Card A5s Plus", "unit": "قطعة", "unit_en": "pcs", "soldBySqm": false, "marketAED": 135, "resellerAED": 115, "specs": "معايرة ألوان متقدمة • لشاشات التأجير والدقة العالية", "specs_en": "Pixel-Level Calibration • Rental & Fine Pitch"},
+      {"id": "NOVA-TB40", "cat": "controllers", "img": "images/NOVA-TB40.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج تشغيل سحابي NovaStar TB40", "name_en": "NovaStar Cloud Multimedia Player TB40", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 901, "resellerAED": 766, "specs": "سعة 1.3 مليون بكسل • WiFi و LAN و USB", "specs_en": "1.3M Pixels Capacity • WiFi, LAN & USB"},
+      {"id": "NOVA-TB50", "cat": "controllers", "img": "images/NOVA-TB50.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج تشغيل سحابي NovaStar TB50", "name_en": "NovaStar Cloud Player TB50 (HDMI)", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 1380, "resellerAED": 1173, "specs": "سعة 1.3 مليون بكسل • منفذ HDMI • تحكم سحابي", "specs_en": "1.3M Pixels • HDMI Loop/In • Cloud Control"},
+      {"id": "NOVA-TB60", "cat": "controllers", "img": "images/NOVA-TB60.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج تشغيل سحابي NovaStar TB60", "name_en": "NovaStar Cloud Multimedia Player TB60", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 2071, "resellerAED": 1760, "specs": "سعة 2.3 مليون بكسل • تحكم سحابي متكامل", "specs_en": "2.3M Pixels Capacity • Dual-WiFi & Cloud"},
+      {"id": "NOVA-VX400", "cat": "controllers", "img": "images/NOVA-VX400.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج فيديو احترافي NovaStar VX400", "name_en": "NovaStar All-in-One Controller VX400", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 3250, "resellerAED": 2762, "specs": "سعة 2.6 مليون بكسل • 4 مخارج شبكة", "specs_en": "2.6M Pixels • 4 Ethernet Ports • Scaler"},
+      {"id": "NOVA-VX600", "cat": "controllers", "img": "images/NOVA-VX600.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج فيديو احترافي NovaStar VX600 PRO", "name_en": "NovaStar Video Processor VX600 PRO", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 5179, "resellerAED": 4402, "specs": "سعة 3.9 مليون بكسل • 6 مخارج شبكة", "specs_en": "3.9M Pixels • 6 Ethernet Ports • Low Latency"},
+      {"id": "NOVA-VX1000", "cat": "controllers", "img": "images/NOVA-VX1000.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج فيديو عملاق NovaStar VX1000 PRO", "name_en": "NovaStar Video Processor VX1000 PRO", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 7409, "resellerAED": 6298, "specs": "سعة 6.5 مليون بكسل • 10 مخارج شبكة", "specs_en": "6.5M Pixels • 10 Ethernet Ports • 4K Input"},
+      {"id": "COLORLIGHT-A200", "cat": "controllers", "img": "images/COLORLIGHT-A200.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج تشغيل سحابي Colorlight A200", "name_en": "Colorlight Cloud Player A200", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 980, "resellerAED": 830, "specs": "سعة 1.3 مليون بكسل • تحكم WiFi و Cloud و 4G", "specs_en": "1.3M Pixels • WiFi, Cloud & 4G Optional"},
+      {"id": "COLORLIGHT-Z5", "cat": "controllers", "img": "images/COLORLIGHT-Z5.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج فيديو احترافي Colorlight Z5", "name_en": "Colorlight Video Controller Z5", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 4650, "resellerAED": 3950, "specs": "سعة 4.2 مليون بكسل • معالجة 4K و HDR", "specs_en": "4.2M Pixels • 4K & HDR Video Processing"},
+      {"id": "COLORLIGHT-Z6", "cat": "controllers", "img": "images/COLORLIGHT-Z6.webp", "zoom": 100, "posX": 50, "posY": 50, "name": "معالج فيديو عملاق Colorlight Z6 PRO", "name_en": "Colorlight Pro Controller Z6 PRO", "unit": "جهاز", "unit_en": "unit", "soldBySqm": false, "marketAED": 6850, "resellerAED": 5820, "specs": "سعة 8.3 مليون بكسل • معالجة 4K60Hz احترافية", "specs_en": "8.3M Pixels • True 4K@60Hz Pro Processing"}
+    ];
 
     let PRODUCTS = JSON.parse(localStorage.getItem("wefone_custom_products_v64_webp") || "null") || JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+    if (!Array.isArray(PRODUCTS) || PRODUCTS.length < DEFAULT_PRODUCTS.length) {
+      const savedMap = new Map(Array.isArray(PRODUCTS) ? PRODUCTS.map(p => [p.id, p]) : []);
+      PRODUCTS = DEFAULT_PRODUCTS.map(def => Object.assign({}, def, savedMap.get(def.id) || {}));
+    }
     let cart = [];
     let savedOrders = JSON.parse(localStorage.getItem("wefone_orders_2026") || "[]");
+
+    function showToast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg;
+      t.classList.remove("hidden");
+      clearTimeout(window.toastTimer);
+      window.toastTimer = setTimeout(() => t.classList.add("hidden"), 3000);
+    }
+
+    function toggleMobileMenu() {
+      document.getElementById("mobile-menu").classList.toggle("hidden");
+    }
+
+    function getFallbackSvgHtml(p) {
+      let color = "#F59E0B";
+      if (p.cat === "outdoor") color = "#EF4444";
+      if (p.cat === "rental") color = "#38BDF8";
+      if (p.cat === "smartboard") color = "#10B981";
+      if (p.cat === "controllers") color = "#A855F7";
+
+      return '<svg viewBox="0 0 300 250" class="w-full h-full">' +
+        '<rect x="14" y="14" width="272" height="222" rx="10" fill="#111C38" stroke="' + color + '" stroke-width="1.5"/>' +
+        '<line x1="105" y1="14" x2="105" y2="236" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
+        '<line x1="195" y1="14" x2="195" y2="236" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
+        '<line x1="14" y1="125" x2="286" y2="125" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
+        '<text x="150" y="114" text-anchor="middle" fill="' + color + '" font-family="Cairo, sans-serif" font-size="16" font-weight="bold">' + p.id + '</text>' +
+        '<text x="150" y="144" text-anchor="middle" fill="#CBD5E1" font-family="Cairo, sans-serif" font-size="12">WeFone Official Spec (6:5)</text>' +
+      '</svg>';
+    }
+
+    function getProductVisual(p, overrides, clickable) {
+      const rawUrl = ((overrides && overrides.img !== undefined) ? overrides.img : (p.img || "")).trim();
+      const zoom = (overrides && overrides.zoom !== undefined) ? overrides.zoom : (p.zoom || 100);
+      const posX = (overrides && overrides.posX !== undefined) ? overrides.posX : (p.posX !== undefined ? p.posX : 50);
+      const posY = (overrides && overrides.posY !== undefined) ? overrides.posY : (p.posY !== undefined ? p.posY : 50);
+
+      const fallbackSvg = getFallbackSvgHtml(p);
+      const clickAttr = clickable ? ' onclick="openProductLightbox(\'' + p.id + '\')"' : '';
+      const cursorCls = clickable ? ' cursor-pointer group' : '';
+      const zoomBadge = clickable
+        ? '<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-2 left-2 bg-slate-950/75 text-amber-400 border border-amber-500/40 text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none">🔍</span>'
+        : '';
+
+      if (rawUrl !== "") {
+        const scaleVal = (zoom / 100).toFixed(2);
+        const inlineStyle = "object-position: " + posX + "% " + posY + "%; transform: scale(" + scaleVal + "); transform-origin: " + posX + "% " + posY + "%;";
+        const isVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(rawUrl) || rawUrl.startsWith("data:video/");
+
+        if (isVideo) {
+          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
+            '<video src="' + rawUrl + '" autoplay loop muted playsinline style="' + inlineStyle + '" class="w-full h-full object-cover" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';"></video>' +
+            '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
+            zoomBadge +
+          '</div>';
+        }
+
+        if (rawUrl.startsWith("data:") || /^https?:\/\//i.test(rawUrl)) {
+          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
+            '<img src="' + rawUrl + '" loading="lazy" decoding="async" alt="' + p.id + '" style="' + inlineStyle + '" class="w-full h-full object-cover" ' +
+            'onerror="this.onerror=null; this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';" />' +
+            '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
+            zoomBadge +
+          '</div>';
+        }
+
+        const baseNoExt = rawUrl.replace(/\.(webp|jpg|jpeg|png|gif|avif)(\?.*)?$/i, "");
+        const list = Array.from(new Set([baseNoExt + ".webp", baseNoExt + ".jpg", baseNoExt + ".png"]));
+        const listAttr = encodeURIComponent(JSON.stringify(list));
+
+        return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
+          '<img src="' + list[0] + '" data-list="' + listAttr + '" data-i="0" loading="lazy" decoding="async" alt="' + p.id + '" style="' + inlineStyle + '" class="w-full h-full object-cover" ' +
+          'onerror="const arr=JSON.parse(decodeURIComponent(this.dataset.list)); const n=Number(this.dataset.i)+1; if(n<arr.length){ this.dataset.i=n; this.src=arr[n]; } else { this.onerror=null; this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\'; }" />' +
+          '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
+          zoomBadge +
+        '</div>';
+      }
+
+      return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden' + cursorCls + '">' + fallbackSvg + zoomBadge + '</div>';
+    }
+
+    function getProdTitle(p) {
+      return currentLang === "en" && p.name_en ? p.name_en : p.name;
+    }
+
+    function getProdSpecs(p) {
+      return currentLang === "en" && p.specs_en ? p.specs_en : p.specs;
+    }
+
+    function getProdUnit(p) {
+      return currentLang === "en" && p.unit_en ? p.unit_en : p.unit;
+    }
+
+    function renderPromoBanner() {
+      const track = document.getElementById("promo-slides-track");
+      const dots = document.getElementById("promo-dots");
+      if (!track || !dots) return;
+
+      const isAr = currentLang === "ar";
+      track.innerHTML = PROMO_SLIDES.map((s, idx) => {
+        const badge = isAr ? s.badge_ar : s.badge_en;
+        const title = isAr ? s.title_ar : s.title_en;
+        const desc = isAr ? s.desc_ar : s.desc_en;
+        const cta = isAr ? s.cta_ar : s.cta_en;
+        const dirAttr = isAr ? "rtl" : "ltr";
+
+        return '<div dir="' + dirAttr + '" class="w-full shrink-0 bg-gradient-to-l ' + s.bg + ' text-white px-10 sm:px-14 py-6 sm:py-8 flex flex-col md:flex-row items-center justify-between gap-4">' +
+          '<div class="space-y-2 text-center md:text-start max-w-2xl">' +
+            '<span class="inline-block bg-slate-950/50 border border-white/15 ' + s.accent + ' text-[11px] sm:text-xs font-black px-3 py-1 rounded-full">' + badge + '</span>' +
+            '<h2 class="text-lg sm:text-2xl lg:text-3xl font-black leading-snug">' + title + '</h2>' +
+            '<p class="text-xs sm:text-sm text-slate-200 leading-relaxed">' + desc + '</p>' +
+          '</div>' +
+          '<div class="shrink-0">' +
+            '<button onclick="triggerPromoAction(' + idx + ')" class="gold-gradient hover:opacity-95 text-slate-950 font-black px-5 py-3 rounded-xl text-xs sm:text-sm shadow-lg transition whitespace-nowrap">' + cta + '</button>' +
+          '</div>' +
+        '</div>';
+      }).join("");
+
+      dots.innerHTML = PROMO_SLIDES.map((_, idx) =>
+        '<button onclick="goToPromoSlide(' + idx + ')" aria-label="Slide ' + (idx + 1) + '" class="h-2 rounded-full transition-all ' +
+        (idx === currentPromoSlide ? 'w-6 bg-amber-400' : 'w-2 bg-white/40 hover:bg-white/70') + '"></button>'
+      ).join("");
+
+      updatePromoPosition();
+    }
+
+    function updatePromoPosition() {
+      const track = document.getElementById("promo-slides-track");
+      const dots = document.getElementById("promo-dots");
+      if (!track) return;
+      track.style.transform = "translateX(-" + (currentPromoSlide * 100) + "%)";
+      if (dots) {
+        Array.from(dots.children).forEach((dot, idx) => {
+          dot.className = "h-2 rounded-full transition-all " + (idx === currentPromoSlide ? "w-6 bg-amber-400" : "w-2 bg-white/40 hover:bg-white/70");
+        });
+      }
+    }
+
+    function goToPromoSlide(idx) {
+      currentPromoSlide = (idx + PROMO_SLIDES.length) % PROMO_SLIDES.length;
+      updatePromoPosition();
+      startPromoAuto();
+    }
+
+    function nextPromoSlide() {
+      goToPromoSlide(currentPromoSlide + 1);
+    }
+
+    function prevPromoSlide() {
+      goToPromoSlide(currentPromoSlide - 1);
+    }
+
+    function triggerPromoAction(idx) {
+      if (PROMO_SLIDES[idx] && typeof PROMO_SLIDES[idx].action === "function") {
+        PROMO_SLIDES[idx].action();
+      }
+    }
+
+    function startPromoAuto() {
+      clearInterval(promoAutoTimer);
+      promoAutoTimer = setInterval(() => {
+        currentPromoSlide = (currentPromoSlide + 1) % PROMO_SLIDES.length;
+        updatePromoPosition();
+      }, 4500);
+    }
+
+    function pausePromoAuto() {
+      clearInterval(promoAutoTimer);
+    }
+
+    function resumePromoAuto() {
+      startPromoAuto();
+    }
+
+    (function initPromoTouchSwipe() {
+      const wrapper = document.getElementById("promo-slider-wrapper");
+      if (!wrapper) return;
+      let startX = 0;
+      wrapper.addEventListener("touchstart", (e) => { startX = e.touches[0].clientX; }, { passive: true });
+      wrapper.addEventListener("touchend", (e) => {
+        const diff = e.changedTouches[0].clientX - startX;
+        if (Math.abs(diff) > 40) {
+          if (diff < 0) nextPromoSlide();
+          else prevPromoSlide();
+        }
+      }, { passive: true });
+    })();
 
     // Theme (Day / Night) Management
     function applyTheme(theme) {
@@ -2108,6 +1468,7 @@
       termsUl.innerHTML = t.terms_items.map(item => "<li>" + item + "</li>").join("");
 
       applyTheme(currentTheme);
+      renderPromoBanner();
       renderCategories();
       renderProducts();
       populateCalculatorSelect();
@@ -2119,7 +1480,7 @@
       applyLanguage(currentLang === "ar" ? "en" : "ar");
     }
 
-    // Background Google Sheets Sync (Only updates if sheet has full catalog or merges prices safely)
+    // Background Google Sheets Sync
     async function syncProductsFromGoogleSheets() {
       if (!GSHEETS_API_URL) return;
       try {
@@ -2196,102 +1557,7 @@
       renderCart();
     }
 
-    function showToast(msg) {
-      const t = document.getElementById("toast");
-      t.textContent = msg;
-      t.classList.remove("hidden");
-      clearTimeout(window.toastTimer);
-      window.toastTimer = setTimeout(() => t.classList.add("hidden"), 3000);
-    }
-
-    function toggleMobileMenu() {
-      document.getElementById("mobile-menu").classList.toggle("hidden");
-    }
-
-    function getFallbackSvgHtml(p) {
-      let color = "#F59E0B";
-      if (p.cat === "outdoor") color = "#EF4444";
-      if (p.cat === "rental") color = "#38BDF8";
-      if (p.cat === "smartboard") color = "#10B981";
-      if (p.cat === "controllers") color = "#A855F7";
-
-      return '<svg viewBox="0 0 300 250" class="w-full h-full">' +
-        '<rect x="14" y="14" width="272" height="222" rx="10" fill="#111C38" stroke="' + color + '" stroke-width="1.5"/>' +
-        '<line x1="105" y1="14" x2="105" y2="236" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
-        '<line x1="195" y1="14" x2="195" y2="236" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
-        '<line x1="14" y1="125" x2="286" y2="125" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
-        '<text x="150" y="114" text-anchor="middle" fill="' + color + '" font-family="Cairo, sans-serif" font-size="16" font-weight="bold">' + p.id + '</text>' +
-        '<text x="150" y="144" text-anchor="middle" fill="#CBD5E1" font-family="Cairo, sans-serif" font-size="12">WeFone Official Spec (6:5)</text>' +
-      '</svg>';
-    }
-
-    // Smart 6:5 Main Product Visual with WebP-first fallback (.webp -> .jpg -> .png) & Lightbox click
-    function getProductVisual(p, overrides, enableLightbox) {
-      const rawUrl = ((overrides && overrides.img !== undefined) ? overrides.img : (p.img || "")).trim();
-      const zoom = (overrides && overrides.zoom !== undefined) ? overrides.zoom : (p.zoom || 100);
-      const posX = (overrides && overrides.posX !== undefined) ? overrides.posX : (p.posX !== undefined ? p.posX : 50);
-      const posY = (overrides && overrides.posY !== undefined) ? overrides.posY : (p.posY !== undefined ? p.posY : 50);
-
-      const fallbackSvg = getFallbackSvgHtml(p);
-      const clickAttr = enableLightbox ? ' onclick="openProductLightbox(\'' + p.id + '\')" title="' + I18N[currentLang].zoom_hint + '"' : '';
-      const cursorCls = enableLightbox ? ' cursor-zoom-in group' : '';
-      const zoomBadge = enableLightbox
-        ? '<span class="absolute bottom-2 left-2 bg-slate-950/75 text-amber-400 text-[10px] font-bold px-2 py-0.5 rounded-md opacity-90 group-hover:opacity-100 transition">' + I18N[currentLang].zoom_hint + '</span>'
-        : '';
-
-      if (rawUrl !== "") {
-        const scaleVal = (zoom / 100).toFixed(2);
-        const inlineStyle = "object-position: " + posX + "% " + posY + "%; transform: scale(" + scaleVal + "); transform-origin: " + posX + "% " + posY + "%;";
-        const isVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(rawUrl) || rawUrl.startsWith("data:video/");
-
-        if (isVideo) {
-          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
-            '<video src="' + rawUrl + '" autoplay loop muted playsinline style="' + inlineStyle + '" class="w-full h-full object-cover" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';"></video>' +
-            '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
-            zoomBadge +
-          '</div>';
-        }
-
-        if (rawUrl.startsWith("data:") || /^https?:\/\//i.test(rawUrl)) {
-          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
-            '<img src="' + rawUrl + '" loading="lazy" decoding="async" alt="' + p.id + '" style="' + inlineStyle + '" class="w-full h-full object-cover" onerror="this.onerror=null; this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';" />' +
-            '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
-            zoomBadge +
-          '</div>';
-        }
-
-        const baseNoExt = rawUrl.replace(/\.(webp|jpg|jpeg|png|gif|avif)(\?.*)?$/i, "");
-        const list = Array.from(new Set([
-          baseNoExt + ".webp",
-          baseNoExt + ".jpg",
-          baseNoExt + ".png"
-        ]));
-        const listAttr = encodeURIComponent(JSON.stringify(list));
-
-        return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
-          '<img src="' + list[0] + '" data-list="' + listAttr + '" data-i="0" loading="lazy" decoding="async" alt="' + p.id + '" style="' + inlineStyle + '" class="w-full h-full object-cover" ' +
-          'onerror="const arr=JSON.parse(decodeURIComponent(this.dataset.list)); const n=Number(this.dataset.i)+1; if(n<arr.length){ this.dataset.i=n; this.src=arr[n]; } else { this.onerror=null; this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\'; }" />' +
-          '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
-          zoomBadge +
-        '</div>';
-      }
-
-      return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden' + cursorCls + '">' + fallbackSvg + zoomBadge + '</div>';
-    }
-
-    function getProdTitle(p) {
-      return currentLang === "en" && p.name_en ? p.name_en : p.name;
-    }
-
-    function getProdSpecs(p) {
-      return currentLang === "en" && p.specs_en ? p.specs_en : p.specs;
-    }
-
-    function getProdUnit(p) {
-      return currentLang === "en" && p.unit_en ? p.unit_en : p.unit;
-    }
-
-    // Product Direct Share (WhatsApp + Direct Product Link Copy)
+    // Product Direct Share (Universal Multi-Platform + Rich Thumbnail Card + Image File Share)
     function getProductShareUrl(prodId) {
       const url = new URL(window.location.href);
       url.searchParams.set("product", prodId);
@@ -2299,27 +1565,121 @@
       return url.toString();
     }
 
-    function shareProductWhatsApp(prodId) {
-      const p = PRODUCTS.find(x => x.id === prodId);
+    function getAbsoluteImageUrl(imgPath) {
+      if (!imgPath) return "";
+      if (imgPath.startsWith("data:") || /^https?:\/\//i.test(imgPath)) return imgPath;
+      try {
+        return new URL(imgPath, window.location.href).toString();
+      } catch (e) {
+        return imgPath;
+      }
+    }
+
+    function updateDynamicMetaTags(p) {
       if (!p) return;
+      const title = getProdTitle(p) + " | WeFone LED";
+      const desc = getProdSpecs(p) + " — " + formatPrice(p.marketAED);
+      const imgUrl = getAbsoluteImageUrl(p.img);
+      const pageUrl = getProductShareUrl(p.id);
+
+      document.title = title;
+      const setMeta = (id, val) => { const el = document.getElementById(id); if (el) el.setAttribute("content", val); };
+      setMeta("og-title", title);
+      setMeta("og-desc", desc);
+      setMeta("og-image", imgUrl);
+      setMeta("og-url", pageUrl);
+      setMeta("tw-title", title);
+      setMeta("tw-desc", desc);
+      setMeta("tw-image", imgUrl);
+    }
+
+    function buildProductShareText(p) {
       const shareUrl = getProductShareUrl(p.id);
       const title = getProdTitle(p);
       const specs = getProdSpecs(p);
       const priceText = formatPrice(p.marketAED) + " / " + getProdUnit(p);
 
-      const msg = currentLang === "ar"
+      return currentLang === "ar"
         ? ("*WeFone LED* ✨\n" +
            "المنتج: *" + title + "* (" + p.id + ")\n" +
            "المواصفات: " + specs + "\n" +
            "السعر الرسمي: *" + priceText + "*\n" +
-           "رابط المنتج في المتجر:\n" + shareUrl)
+           "رابط المنتج:\n" + shareUrl)
         : ("*WeFone LED* ✨\n" +
            "Product: *" + title + "* (" + p.id + ")\n" +
            "Specs: " + specs + "\n" +
            "Official Price: *" + priceText + "*\n" +
-           "Direct Product Link:\n" + shareUrl);
+           "Product Link:\n" + shareUrl);
+    }
 
-      window.open("https://wa.me/?text=" + encodeURIComponent(msg), "_blank");
+    async function triggerNativeProductShare(prodId) {
+      const p = PRODUCTS.find(x => x.id === prodId);
+      if (!p) return;
+      const shareUrl = getProductShareUrl(p.id);
+      const title = getProdTitle(p) + " | WeFone LED";
+      const text = buildProductShareText(p);
+
+      if (navigator.share) {
+        try {
+          const shareData = { title: title, text: text, url: shareUrl };
+          const absImg = getAbsoluteImageUrl(p.img);
+          if (absImg && navigator.canShare) {
+            try {
+              const resp = await fetch(absImg);
+              if (resp.ok) {
+                const blob = await resp.blob();
+                const ext = blob.type.includes("png") ? "png" : (blob.type.includes("jpeg") ? "jpg" : "webp");
+                const file = new File([blob], p.id + "." + ext, { type: blob.type || "image/webp" });
+                if (navigator.canShare({ files: [file] })) {
+                  shareData.files = [file];
+                }
+              }
+            } catch (imgErr) {
+              // Fallback to sharing title + text + URL
+            }
+          }
+          await navigator.share(shareData);
+          return;
+        } catch (err) {
+          if (err && err.name === "AbortError") return;
+        }
+      }
+      copyProductLink(prodId);
+    }
+
+    function openShareModal(prodId) {
+      const p = PRODUCTS.find(x => x.id === prodId);
+      if (!p) return;
+
+      updateDynamicMetaTags(p);
+      const shareUrl = getProductShareUrl(p.id);
+      const shareText = buildProductShareText(p);
+      const title = getProdTitle(p);
+
+      document.getElementById("share-thumb-box").innerHTML = getProductVisual(p, null, false);
+      document.getElementById("share-card-id").textContent = p.id;
+      document.getElementById("share-card-title").textContent = title;
+      document.getElementById("share-card-specs").textContent = getProdSpecs(p);
+      document.getElementById("share-card-price").textContent = formatPrice(p.marketAED) + " / " + getProdUnit(p);
+      document.getElementById("share-url-input").value = shareUrl;
+
+      document.getElementById("share-native-btn").onclick = () => triggerNativeProductShare(p.id);
+      document.getElementById("share-link-wa").href = "https://wa.me/?text=" + encodeURIComponent(shareText);
+      document.getElementById("share-link-tg").href = "https://t.me/share/url?url=" + encodeURIComponent(shareUrl) + "&text=" + encodeURIComponent(shareText);
+      document.getElementById("share-link-fb").href = "https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(shareUrl);
+      document.getElementById("share-link-x").href = "https://twitter.com/intent/tweet?text=" + encodeURIComponent(shareText);
+      document.getElementById("share-link-mail").href = "mailto:?subject=" + encodeURIComponent(title + " - WeFone LED") + "&body=" + encodeURIComponent(shareText);
+      document.getElementById("share-modal-copy-btn").onclick = () => copyProductLink(p.id);
+
+      document.getElementById("share-modal").classList.remove("hidden");
+    }
+
+    function closeShareModal() {
+      document.getElementById("share-modal").classList.add("hidden");
+    }
+
+    function shareProductWhatsApp(prodId) {
+      openShareModal(prodId);
     }
 
     function copyProductLink(prodId) {
@@ -2340,6 +1700,7 @@
       if (!p) return;
       const t = I18N[currentLang];
 
+      updateDynamicMetaTags(p);
       document.getElementById("lb-id").textContent = p.id;
       document.getElementById("lb-unit").textContent = t.per_unit + " " + getProdUnit(p);
       document.getElementById("lb-visual-container").innerHTML = getProductVisual(p, null, false);
@@ -2352,7 +1713,7 @@
         ? '<button onclick="closeProductLightbox(); goToCalculatorWithModel(\'' + p.id + '\')" class="w-full gold-gradient text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs transition">' + t.btn_calc_size + '</button>'
         : '<button onclick="addToCart(\'' + p.id + '\'); closeProductLightbox();" class="w-full gold-gradient text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs transition">' + t.btn_add_cart + '</button>';
 
-      document.getElementById("lb-share-wa").onclick = () => shareProductWhatsApp(p.id);
+      document.getElementById("lb-share-all").onclick = () => openShareModal(p.id);
       document.getElementById("lb-copy-link").onclick = () => copyProductLink(p.id);
 
       document.getElementById("lightbox-modal").classList.remove("hidden");
@@ -2403,8 +1764,8 @@
 
         const shareBarHtml =
           '<div class="grid grid-cols-2 gap-1.5 mt-2">' +
-            '<button onclick="shareProductWhatsApp(\'' + p.id + '\')" class="bg-emerald-600/15 hover:bg-emerald-600 text-emerald-500 hover:text-white border border-emerald-500/30 py-1.5 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition">' +
-              '<span>📲</span><span>' + t.share_wa + '</span>' +
+            '<button onclick="openShareModal(\'' + p.id + '\')" class="bg-amber-500/15 hover:bg-amber-500 text-amber-500 hover:text-slate-950 border border-amber-500/30 py-1.5 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition">' +
+              '<span>📤</span><span>' + t.share_btn + '</span>' +
             '</button>' +
             '<button onclick="copyProductLink(\'' + p.id + '\')" class="theme-subtle-box hover:border-amber-500 py-1.5 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition">' +
               '<span>🔗</span><span>' + t.copy_link + '</span>' +
@@ -3076,6 +2437,7 @@
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         closeProductLightbox();
+        closeShareModal();
       }
       if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
         e.preventDefault();
@@ -3091,6 +2453,7 @@
 
     // Fast Initial Render (Theme + Language + Store + Calculator)
     applyLanguage(currentLang);
+    startPromoAuto();
     updateOrdersBadge();
 
     // Open Shared Product Lightbox automatically if ?product=ID is in URL
