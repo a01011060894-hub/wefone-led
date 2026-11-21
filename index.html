@@ -96,6 +96,9 @@
       background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
     }
 
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg-main); }
     ::-webkit-scrollbar-thumb { background: #D97706; border-radius: 4px; }
@@ -233,6 +236,31 @@
 
       <!-- 7 Slide Indicator Dots -->
       <div id="promo-dots" class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 bg-slate-950/60 px-3 py-1.5 rounded-full border border-white/10"></div>
+    </div>
+  </section>
+
+  <!-- Horizontal Product Train Carousel (Noon / Alibaba Style Slide Strip with Instant WhatsApp Order) -->
+  <section id="product-train-section" class="max-w-7xl mx-auto px-4 pt-6">
+    <div class="flex items-center justify-between gap-2 mb-3">
+      <div>
+        <span class="text-amber-500 text-[11px] font-black tracking-wide" data-i18n="train_badge">⚡ عروض سريعة • اسحب لليمين واليسار</span>
+        <h2 class="text-lg sm:text-xl font-black" data-i18n="train_title">قطار العروض والأكثر طلباً (طلب واتساب مباشر)</h2>
+      </div>
+      <div class="flex items-center gap-1.5">
+        <button onclick="scrollProductTrain(-1)" aria-label="Scroll Previous"
+          class="theme-subtle-box hover:border-amber-500 w-9 h-9 rounded-xl font-black flex items-center justify-center transition">
+          <span id="train-arrow-prev">→</span>
+        </button>
+        <button onclick="scrollProductTrain(1)" aria-label="Scroll Next"
+          class="theme-subtle-box hover:border-amber-500 w-9 h-9 rounded-xl font-black flex items-center justify-center transition">
+          <span id="train-arrow-next">←</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="product-train-track"
+      onmouseenter="pauseTrainAuto()" onmouseleave="resumeTrainAuto()"
+      class="flex items-stretch gap-3.5 overflow-x-auto no-scrollbar scroll-smooth snap-x snap-mandatory pb-2">
     </div>
   </section>
 
@@ -852,6 +880,26 @@
     let currentTheme = localStorage.getItem("wefone_theme") || "dark";
     let currentPromoSlide = 0;
     let promoAutoTimer = null;
+    let trainAutoTimer = null;
+
+    const FEATURED_TRAIN_IDS = [
+      "IS-WF-P1.5-GOB",
+      "IS-WF-P1.8-GOB",
+      "IS-WF-P2.5-MASK",
+      "OS-WF-P4",
+      "OS-WF-P5",
+      "ORS-WF-P2.9-5050",
+      "ORS-WF-P3.9-5050",
+      "LP-1.5IS",
+      "LP-1.8IS",
+      "LT-116-1.86IS",
+      "SB-75",
+      "SB-86",
+      "IFS-WF-P2.5",
+      "TRS-WF-P3.9",
+      "NOVA-TB40",
+      "NOVA-VX600"
+    ];
 
     const PROMO_SLIDES = [
       {
@@ -958,6 +1006,9 @@
         cart_btn: "السلة",
         theme_day: "نهاري",
         theme_night: "ليلي",
+        train_badge: "⚡ عروض سريعة • اسحب لليمين واليسار",
+        train_title: "قطار العروض والأكثر طلباً (طلب واتساب مباشر)",
+        train_wa_btn: "💬 اطلب واتساب فوراً",
         hero_badge: "توريد وتركيب شاشات LED العملاقة في السعودية ودول الخليج",
         hero_title: 'نحن نعرض إبداعك بأحدث تقنيات <span class="text-amber-500">شاشات الـ LED</span>',
         hero_desc: "الكتالوج الكامل (64 منتجاً وملحقاً): الشاشات الداخلية والخارجية، شاشات التأجير (50×50 سم)، الشاشات المرنة والشفافة، البوسترات القابلة للطي، التلفزيونات العملاقة 116 بوصة، السبورات التفاعلية الذكية، ومعالجات NovaStar و Colorlight.",
@@ -1052,6 +1103,9 @@
         cart_btn: "Cart",
         theme_day: "Light",
         theme_night: "Dark",
+        train_badge: "⚡ Fast Deals • Swipe Left & Right",
+        train_title: "Hot Deals Carousel (1-Tap WhatsApp Order)",
+        train_wa_btn: "💬 Order on WhatsApp",
         hero_badge: "Giant LED Display Supply & Installation in KSA & GCC",
         hero_title: 'We Display Your Creativity with Next-Gen <span class="text-amber-500">LED Screens</span>',
         hero_desc: "Complete 2026 Catalog (64 Items): Indoor & Outdoor LED Screens, 50×50cm Rental Displays, Flexible & Transparent LED, Foldable LED Posters, 116\" All-in-One LED TVs, 4K Interactive Smart Boards, and NovaStar / Colorlight Processors.",
@@ -1411,6 +1465,117 @@
       }, { passive: true });
     })();
 
+    // Horizontal Product Train Carousel (Noon / Alibaba Style)
+    function orderSingleProductWhatsApp(prodId) {
+      const p = PRODUCTS.find(x => x.id === prodId);
+      if (!p) return;
+      const title = getProdTitle(p);
+      const specs = getProdSpecs(p);
+      const unit = getProdUnit(p);
+      const priceText = formatPrice(p.marketAED) + " / " + unit;
+      const prodLink = getProductShareUrl(p.id);
+
+      const msg = currentLang === "ar"
+        ? ("السلام عليكم، أرغب في طلب هذا المنتج من متجر *WeFone LED*:\n\n" +
+           "• المنتج: *" + title + "* (" + p.id + ")\n" +
+           "• المواصفات: " + specs + "\n" +
+           "• السعر الرسمي: *" + priceText + "*\n" +
+           "• رابط المنتج: " + prodLink)
+        : ("Hello, I would like to order this product from *WeFone LED*:\n\n" +
+           "• Product: *" + title + "* (" + p.id + ")\n" +
+           "• Specs: " + specs + "\n" +
+           "• Official Price: *" + priceText + "*\n" +
+           "• Link: " + prodLink);
+
+      window.open("https://wa.me/" + MY_WHATSAPP + "?text=" + encodeURIComponent(msg), "_blank");
+    }
+
+    function renderProductTrain() {
+      const track = document.getElementById("product-train-track");
+      if (!track) return;
+      const t = I18N[currentLang];
+
+      const prevArrow = document.getElementById("train-arrow-prev");
+      const nextArrow = document.getElementById("train-arrow-next");
+      if (prevArrow && nextArrow) {
+        prevArrow.textContent = currentLang === "ar" ? "→" : "←";
+        nextArrow.textContent = currentLang === "ar" ? "←" : "→";
+      }
+
+      const items = FEATURED_TRAIN_IDS
+        .map(id => PRODUCTS.find(p => p.id === id))
+        .filter(Boolean);
+
+      track.innerHTML = items.map(p => {
+        const secondaryBtn = p.soldBySqm
+          ? '<button onclick="goToCalculatorWithModel(\'' + p.id + '\')" class="w-full theme-subtle-box hover:border-amber-500 text-[11px] font-bold py-1.5 px-2 rounded-lg transition">' + t.btn_calc_size + '</button>'
+          : '<button onclick="addToCart(\'' + p.id + '\')" class="w-full theme-subtle-box hover:border-amber-500 text-[11px] font-bold py-1.5 px-2 rounded-lg transition">' + t.btn_add_cart + '</button>';
+
+        return '<div class="snap-start shrink-0 w-56 sm:w-64 card-bg rounded-2xl p-3 flex flex-col justify-between transition">' +
+          '<div>' +
+            getProductVisual(p, null, true) +
+            '<div class="mt-2 flex items-center justify-between gap-1">' +
+              '<span class="text-[10px] font-bold px-2 py-0.5 rounded theme-subtle-box text-amber-500">' + p.id + '</span>' +
+              '<span class="text-[10px] theme-muted">' + t.per_unit + ' ' + getProdUnit(p) + '</span>' +
+            '</div>' +
+            '<h3 class="text-xs sm:text-sm font-black mt-1.5 line-clamp-1">' + getProdTitle(p) + '</h3>' +
+            '<p class="text-[11px] theme-muted mt-0.5 line-clamp-1">' + getProdSpecs(p) + '</p>' +
+          '</div>' +
+          '<div class="mt-2.5 pt-2 border-t border-amber-500/15 space-y-1.5">' +
+            '<div class="flex items-baseline justify-between">' +
+              '<span class="text-[10px] theme-muted">' + t.market_price + '</span>' +
+              '<span class="text-sm sm:text-base font-black text-amber-500">' + formatPrice(p.marketAED) + '</span>' +
+            '</div>' +
+            '<button onclick="orderSingleProductWhatsApp(\'' + p.id + '\')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2 px-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition">' +
+              '<span>' + t.train_wa_btn + '</span>' +
+            '</button>' +
+            secondaryBtn +
+          '</div>' +
+        '</div>';
+      }).join("");
+    }
+
+    function scrollProductTrain(direction) {
+      const track = document.getElementById("product-train-track");
+      if (!track) return;
+      const step = 270;
+      const sign = currentLang === "ar" ? -direction : direction;
+      track.scrollBy({ left: sign * step, behavior: "smooth" });
+      startTrainAuto();
+    }
+
+    function startTrainAuto() {
+      clearInterval(trainAutoTimer);
+      trainAutoTimer = setInterval(() => {
+        const track = document.getElementById("product-train-track");
+        if (!track) return;
+        const maxScroll = track.scrollWidth - track.clientWidth;
+        if (maxScroll <= 0) return;
+
+        if (currentLang === "ar") {
+          if (Math.abs(track.scrollLeft) >= maxScroll - 10) {
+            track.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            track.scrollBy({ left: -260, behavior: "smooth" });
+          }
+        } else {
+          if (track.scrollLeft >= maxScroll - 10) {
+            track.scrollTo({ left: 0, behavior: "smooth" });
+          } else {
+            track.scrollBy({ left: 260, behavior: "smooth" });
+          }
+        }
+      }, 3800);
+    }
+
+    function pauseTrainAuto() {
+      clearInterval(trainAutoTimer);
+    }
+
+    function resumeTrainAuto() {
+      startTrainAuto();
+    }
+
     // Theme (Day / Night) Management
     function applyTheme(theme) {
       currentTheme = theme;
@@ -1469,6 +1634,7 @@
 
       applyTheme(currentTheme);
       renderPromoBanner();
+      renderProductTrain();
       renderCategories();
       renderProducts();
       populateCalculatorSelect();
@@ -1499,6 +1665,7 @@
           });
           localStorage.setItem("wefone_custom_products_v64_webp", JSON.stringify(PRODUCTS));
           document.getElementById("cloud-sync-badge").classList.remove("hidden");
+          renderProductTrain();
           renderProducts();
           populateCalculatorSelect();
           updateCalculator();
@@ -1551,6 +1718,7 @@
           btn.className = "px-2 py-1 rounded-lg theme-muted hover:text-amber-500 transition";
         }
       });
+      renderProductTrain();
       renderProducts();
       populateCalculatorSelect();
       updateCalculator();
@@ -2356,6 +2524,7 @@
         showToast("⚠️ تم الحفظ للجلسة الحالية");
       }
 
+      renderProductTrain();
       renderProducts();
       populateCalculatorSelect();
       updateCalculator();
@@ -2368,6 +2537,7 @@
       if (!confirm("هل أنت متأكد من استعادة جميع الأسعار والصور الافتراضية؟")) return;
       localStorage.removeItem("wefone_custom_products_v64_webp");
       PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
+      renderProductTrain();
       renderProducts();
       populateCalculatorSelect();
       updateCalculator();
@@ -2454,6 +2624,7 @@
     // Fast Initial Render (Theme + Language + Store + Calculator)
     applyLanguage(currentLang);
     startPromoAuto();
+    startTrainAuto();
     updateOrdersBadge();
 
     // Open Shared Product Lightbox automatically if ?product=ID is in URL
