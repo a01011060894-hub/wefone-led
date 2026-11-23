@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="dark">
+<html lang="ar" dir="rtl" class="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0B1F4A" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="WeFone LED" />
   <title>WeFone LED | متجر وحاسبة مشاريع شاشات العرض العملاقة</title>
   <!-- Open Graph & Social Media Rich Preview Meta Tags -->
   <meta property="og:type" content="product" />
@@ -15,39 +19,47 @@
   <meta name="twitter:title" id="tw-title" content="WeFone LED | متجر شاشات العرض العملاقة" />
   <meta name="twitter:description" id="tw-desc" content="الكتالوج الكامل لشاشات العرض العملاقة LED والسبورات التفاعلية الذكية" />
   <meta name="twitter:image" id="tw-image" content="https://a01011060894-hub.github.io/wefone-led/images/IS-WF-P1.5-GOB.webp" />
+  <link id="pwa-manifest-link" rel="manifest" />
+  <link id="pwa-apple-icon" rel="apple-touch-icon" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-main: #0B132B;
-      --bg-alt: #080E21;
-      --bg-header: rgba(11, 19, 43, 0.96);
-      --bg-card: #131E3A;
-      --bg-input: #0F172A;
-      --bg-subtle: #1E293B;
-      --text-main: #F8FAFC;
-      --text-muted: #94A3B8;
-      --border-card: rgba(245, 158, 11, 0.22);
-      --border-subtle: #1E293B;
-      --accent-gold: #F59E0B;
-      --accent-text: #FBBF24;
-    }
-
-    html.light {
-      --bg-main: #F1F5F9;
-      --bg-alt: #E2E8F0;
+      --bg-main: #F4F7FC;
+      --bg-alt: #EAF0F9;
       --bg-header: rgba(255, 255, 255, 0.96);
       --bg-card: #FFFFFF;
       --bg-input: #F8FAFC;
-      --bg-subtle: #E2E8F0;
-      --text-main: #0F172A;
-      --text-muted: #475569;
-      --border-card: rgba(217, 119, 6, 0.28);
-      --border-subtle: #CBD5E1;
+      --bg-subtle: #EDF2F9;
+      --text-main: #0B1F4A;
+      --text-muted: #4A5E7A;
+      --border-card: rgba(14, 165, 233, 0.22);
+      --border-subtle: #D5E0EE;
+      --accent-navy: #0B1F4A;
+      --accent-blue: #1D4ED8;
+      --accent-cyan: #06B6D4;
       --accent-gold: #D97706;
-      --accent-text: #B45309;
+      --accent-text: #0F4C81;
+    }
+
+    html.dark {
+      --bg-main: #071226;
+      --bg-alt: #050D1C;
+      --bg-header: rgba(7, 18, 38, 0.96);
+      --bg-card: #0D1E3A;
+      --bg-input: #08152B;
+      --bg-subtle: #14284B;
+      --text-main: #F8FAFC;
+      --text-muted: #94A3B8;
+      --border-card: rgba(6, 182, 212, 0.25);
+      --border-subtle: #1E355E;
+      --accent-navy: #0B1F4A;
+      --accent-blue: #3B82F6;
+      --accent-cyan: #22D3EE;
+      --accent-gold: #F59E0B;
+      --accent-text: #22D3EE;
     }
 
     * { box-sizing: border-box; }
@@ -72,10 +84,10 @@
     .card-bg {
       background-color: var(--bg-card);
       border: 1px solid var(--border-card);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 6px 18px rgba(11, 31, 74, 0.06);
     }
     .card-bg:hover {
-      border-color: var(--accent-gold);
+      border-color: var(--accent-cyan);
     }
     .theme-input {
       background-color: var(--bg-input);
@@ -92,6 +104,9 @@
     .theme-accent-text {
       color: var(--accent-text);
     }
+    .brand-pro-gradient {
+      background: linear-gradient(135deg, #0B1F4A 0%, #1D4ED8 55%, #06B6D4 100%);
+    }
     .gold-gradient {
       background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
     }
@@ -101,21 +116,32 @@
 
     ::-webkit-scrollbar { width: 6px; height: 6px; }
     ::-webkit-scrollbar-track { background: var(--bg-main); }
-    ::-webkit-scrollbar-thumb { background: #D97706; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb { background: #0284C7; border-radius: 4px; }
   </style>
 </head>
-<body class="antialiased selection:bg-amber-500 selection:text-slate-950">
+<body class="antialiased selection:bg-cyan-500 selection:text-slate-950">
+
+  <!-- PWA Splash Overlay (Brief Branded Launch Screen when installed) -->
+  <div id="pwa-splash" class="fixed inset-0 z-[70] hidden bg-gradient-to-br from-[#071226] via-[#0B1F4A] to-[#0E7490] text-white flex flex-col items-center justify-center p-6 text-center transition-opacity duration-300">
+    <div id="pwa-splash-logo" class="w-20 h-20 rounded-2xl mb-4 shadow-2xl border border-cyan-400/40 overflow-hidden"></div>
+    <div class="text-2xl font-black tracking-tight">wefone <span class="text-cyan-300">LED</span></div>
+    <div class="text-xs text-amber-300 font-bold mt-1">نحن نعرض إبداعك • We Display Your Creativity</div>
+  </div>
 
   <!-- Top Announcement Bar -->
-  <div class="bg-gradient-to-l from-amber-600 via-orange-600 to-amber-600 text-white text-xs sm:text-sm py-2 px-3">
+  <div class="brand-pro-gradient text-white text-xs sm:text-sm py-2 px-3">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2">
       <div class="flex items-center gap-2 font-bold">
-        <span>🚚</span>
+        <span class="text-cyan-300">✦</span>
         <span data-i18n="top_banner">توريد وشحن لجميع مناطق المملكة ودول الخليج | أسعار السوق الرسمية 2026</span>
       </div>
-      <div class="flex items-center gap-2.5">
-        <span id="cloud-sync-badge" class="hidden bg-emerald-950/80 border border-emerald-400/40 text-emerald-300 px-2.5 py-0.5 rounded-full text-[11px] font-bold">☁️ Google Sheets</span>
-        <a href="https://wa.me/966568397048" target="_blank" class="bg-slate-950/30 hover:bg-slate-950/50 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1 transition">
+      <div class="flex items-center gap-2">
+        <button id="pwa-install-btn" onclick="triggerPwaInstall()" class="hidden bg-amber-400 hover:bg-amber-300 text-slate-950 px-3 py-0.5 rounded-full text-[11px] font-black flex items-center gap-1 transition cursor-pointer">
+          <span>📲</span>
+          <span data-i18n="pwa_install">تثبيت التطبيق</span>
+        </button>
+        <span id="cloud-sync-badge" class="hidden bg-slate-950/40 border border-cyan-300/40 text-cyan-200 px-2.5 py-0.5 rounded-full text-[11px] font-bold">☁️ Google Sheets</span>
+        <a href="https://wa.me/966568397048" target="_blank" class="bg-slate-950/35 hover:bg-slate-950/55 px-2.5 py-0.5 rounded-full font-bold flex items-center gap-1 transition">
           <span>📱</span>
           <span dir="ltr">0568397048</span>
         </a>
@@ -124,24 +150,30 @@
   </div>
 
   <!-- Secret Admin Banner (Hidden by default - 5 taps on logo or PIN 2026) -->
-  <div id="edit-mode-banner" class="hidden bg-emerald-950 border-b border-emerald-500/40 text-emerald-100 py-2.5 px-4 sticky top-0 z-50">
+  <div id="edit-mode-banner" class="hidden bg-[#071226] border-b border-cyan-400/50 text-white py-2.5 px-4 sticky top-0 z-50">
     <div class="max-w-7xl mx-auto flex flex-wrap items-center justify-between gap-2 text-xs sm:text-sm">
       <div class="flex items-center gap-2 font-bold text-amber-400">
         <span>🔐</span>
-        <span>وضع الإدارة السري (البيع بسعر السوق وحفظ تكلفة الموزع للمورد)</span>
+        <span>لوحة إدارة WeFone LED المتكاملة (المنتجات • الطلبات • المبيعات • النسخ الاحتياطي)</span>
       </div>
-      <div class="flex flex-wrap items-center gap-2">
-        <button onclick="pushAllProductsToCloud()" class="bg-sky-600 hover:bg-sky-500 text-white px-3 py-1 rounded-lg font-bold transition">
-          ⬆️ مزامنة المنتجات للشيت
+      <div class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <button onclick="openAddProductModal()" class="bg-cyan-500 hover:bg-cyan-400 text-slate-950 px-3 py-1 rounded-lg font-black transition">
+          ➕ إضافة منتج
+        </button>
+        <button onclick="pushAllProductsToCloud()" class="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded-lg font-bold transition">
+          ⬆️ مزامنة الشيت
         </button>
         <button onclick="openOrdersModal()" class="bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1 rounded-lg font-bold transition">
-          📊 جدول الطلبات (<span id="orders-count-badge">0</span>)
+          📊 الطلبات والمبيعات (<span id="orders-count-badge">0</span>)
         </button>
         <button onclick="exportProductsBackup()" class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-3 py-1 rounded-lg font-bold transition">
-          💾 نسخ التعديلات
+          💾 نسخ احتياطي
+        </button>
+        <button onclick="importProductsBackupPrompt()" class="bg-slate-700 hover:bg-slate-600 text-white px-2.5 py-1 rounded-lg font-bold transition">
+          📥 استعادة نسخة
         </button>
         <button onclick="resetProductsToDefault()" class="bg-slate-800 hover:bg-slate-700 text-slate-200 px-2.5 py-1 rounded-lg font-bold transition">
-          ↺ استعادة
+          ↺ افتراضي
         </button>
         <button onclick="toggleEditMode()" class="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-lg font-bold transition">
           ✖ إغلاق
@@ -153,54 +185,49 @@
   <!-- Main Navbar -->
   <header class="sticky top-0 z-40 theme-header backdrop-blur-sm">
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-2">
-      <!-- Logo (5 taps to unlock secret admin) -->
+      <!-- New Pixel / LED Matrix Brand Logo (5 taps to unlock secret admin) -->
       <div onclick="handleSecretLogoTap()" class="flex items-center gap-2.5 cursor-pointer select-none" title="WeFone LED">
-        <div class="w-10 h-10 rounded-xl gold-gradient flex items-center justify-center text-slate-950 font-black text-lg">
-          WF
-        </div>
+        <div id="brand-logo-svg-wrap" class="w-11 h-11 rounded-xl overflow-hidden shadow-md shrink-0"></div>
         <div>
           <div class="text-lg sm:text-xl font-black tracking-tight leading-none">
-            wefone <span class="text-amber-500">LED</span>
+            wefone <span class="text-cyan-500">LED</span>
           </div>
           <div class="text-[10px] theme-muted mt-0.5" data-i18n="tagline">نحن نعرض إبداعك</div>
         </div>
       </div>
 
       <!-- Desktop Nav Links -->
-      <nav class="hidden lg:flex items-center gap-6 text-sm font-bold">
-        <a href="#store" class="hover:text-amber-500 transition" data-i18n="nav_store">المتجر والأسعار (64)</a>
-        <a href="#calculator" class="hover:text-amber-500 transition" data-i18n="nav_calc">حاسبة المشاريع</a>
-        <a href="#shipping" class="hover:text-amber-500 transition" data-i18n="nav_ship">الشحن والتركيب</a>
-        <a href="#terms" class="hover:text-amber-500 transition" data-i18n="nav_terms">الشروط والضمان</a>
+      <nav class="hidden lg:flex items-center gap-5 text-sm font-bold">
+        <a href="#store" class="hover:text-cyan-500 transition" data-i18n="nav_store">المتجر والأسعار (64)</a>
+        <a href="#compare" class="hover:text-cyan-500 transition" data-i18n="nav_compare">مقارنة الشاشات</a>
+        <a href="#calculator" class="hover:text-cyan-500 transition" data-i18n="nav_calc">حاسبة المشاريع</a>
+        <a href="#shipping" class="hover:text-cyan-500 transition" data-i18n="nav_ship">الشحن والتركيب</a>
+        <a href="#terms" class="hover:text-cyan-500 transition" data-i18n="nav_terms">الشروط والضمان</a>
       </nav>
 
       <!-- Right Controls: Theme + Language + Currency + Cart -->
       <div class="flex items-center gap-1.5 sm:gap-2">
-        <!-- Day / Night Theme Toggle -->
-        <button onclick="toggleTheme()" id="theme-toggle-btn" title="تبديل الوضع النهاري / الليلي"
-          class="theme-subtle-box hover:border-amber-500 px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 transition">
-          <span id="theme-icon">☀️</span>
-          <span id="theme-label" class="hidden md:inline">نهاري</span>
+        <button onclick="toggleTheme()" id="theme-toggle-btn" title="تبديل الوضع الفاتح / الليلي"
+          class="theme-subtle-box hover:border-cyan-500 px-2.5 py-1.5 rounded-xl text-xs font-bold flex items-center gap-1 transition">
+          <span id="theme-icon">🌙</span>
+          <span id="theme-label" class="hidden md:inline">ليلي</span>
         </button>
 
-        <!-- Arabic / English Language Toggle -->
         <button onclick="toggleLanguage()" id="lang-toggle-btn" title="Switch Language"
-          class="theme-subtle-box hover:border-amber-500 px-2.5 py-1.5 rounded-xl text-xs font-black transition">
+          class="theme-subtle-box hover:border-cyan-500 px-2.5 py-1.5 rounded-xl text-xs font-black transition">
           EN
         </button>
 
-        <!-- Currency Switcher -->
         <div class="flex items-center theme-subtle-box rounded-xl p-0.5 text-xs font-bold">
-          <button onclick="setCurrency('SAR')" id="curr-SAR" class="px-2 py-1 rounded-lg bg-amber-500 text-slate-950 transition">SAR</button>
-          <button onclick="setCurrency('AED')" id="curr-AED" class="px-2 py-1 rounded-lg theme-muted hover:text-amber-500 transition">AED</button>
-          <button onclick="setCurrency('USD')" id="curr-USD" class="px-2 py-1 rounded-lg theme-muted hover:text-amber-500 transition">USD</button>
+          <button onclick="setCurrency('SAR')" id="curr-SAR" class="px-2 py-1 rounded-lg brand-pro-gradient text-white transition">SAR</button>
+          <button onclick="setCurrency('AED')" id="curr-AED" class="px-2 py-1 rounded-lg theme-muted hover:text-cyan-500 transition">AED</button>
+          <button onclick="setCurrency('USD')" id="curr-USD" class="px-2 py-1 rounded-lg theme-muted hover:text-cyan-500 transition">USD</button>
         </div>
 
-        <!-- Cart Button -->
-        <button onclick="toggleCart()" class="relative theme-subtle-box hover:border-amber-500 px-2.5 sm:px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-xs sm:text-sm font-bold transition">
+        <button onclick="toggleCart()" class="relative theme-subtle-box hover:border-cyan-500 px-2.5 sm:px-3 py-1.5 rounded-xl flex items-center gap-1.5 text-xs sm:text-sm font-bold transition">
           <span>🛒</span>
           <span class="hidden sm:inline" data-i18n="cart_btn">السلة</span>
-          <span id="cart-badge" class="bg-amber-500 text-slate-950 text-xs font-black px-1.5 py-0.5 rounded-full">0</span>
+          <span id="cart-badge" class="gold-gradient text-slate-950 text-xs font-black px-1.5 py-0.5 rounded-full">0</span>
         </button>
 
         <button onclick="toggleMobileMenu()" class="lg:hidden theme-subtle-box p-2 rounded-xl">
@@ -211,30 +238,29 @@
 
     <!-- Mobile Drawer Nav -->
     <div id="mobile-menu" class="hidden lg:hidden theme-header px-4 py-3 space-y-2 text-sm font-bold">
-      <a href="#store" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-amber-500/10 text-amber-500" data-i18n="nav_store">📦 المتجر والأسعار (64 منتجاً)</a>
-      <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-amber-500/10" data-i18n="nav_calc">🧮 حاسبة المشاريع والمقاسات</a>
-      <a href="#shipping" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-amber-500/10" data-i18n="nav_ship">🚚 خدمة الشحن والتركيب</a>
-      <a href="#terms" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-amber-500/10" data-i18n="nav_terms">🛡️ الشروط والضمان</a>
+      <a href="#store" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-cyan-500/10 text-cyan-600" data-i18n="nav_store">📦 المتجر والأسعار (64 منتجاً)</a>
+      <a href="#compare" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-cyan-500/10" data-i18n="nav_compare">⚖️ مقارنة الشاشات</a>
+      <a href="#calculator" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-cyan-500/10" data-i18n="nav_calc">🧮 حاسبة المشاريع والمقاسات</a>
+      <a href="#shipping" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-cyan-500/10" data-i18n="nav_ship">🚚 خدمة الشحن والتركيب</a>
+      <a href="#terms" onclick="toggleMobileMenu()" class="block py-2 px-3 rounded-lg hover:bg-cyan-500/10" data-i18n="nav_terms">🛡️ الشروط والضمان</a>
     </div>
   </header>
 
   <!-- 7-Slide Promotional Carousel Banner -->
   <section id="promo-banner-section" class="max-w-7xl mx-auto px-4 pt-5">
-    <div id="promo-slider-wrapper" class="relative overflow-hidden rounded-2xl border border-amber-500/30 shadow-lg select-none"
+    <div id="promo-slider-wrapper" class="relative overflow-hidden rounded-2xl border border-cyan-500/30 shadow-lg select-none"
       onmouseenter="pausePromoAuto()" onmouseleave="resumePromoAuto()">
       <div id="promo-slides-track" class="flex transition-transform duration-500 ease-out" style="direction: ltr;"></div>
 
-      <!-- Prev / Next Navigation Arrows -->
       <button onclick="prevPromoSlide()" aria-label="Previous Slide"
-        class="absolute top-1/2 left-2.5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-slate-950/70 hover:bg-amber-500 text-white hover:text-slate-950 border border-amber-500/40 flex items-center justify-center font-black text-base transition">
+        class="absolute top-1/2 left-2.5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-slate-950/70 hover:bg-cyan-400 text-white hover:text-slate-950 border border-cyan-400/40 flex items-center justify-center font-black text-base transition">
         ‹
       </button>
       <button onclick="nextPromoSlide()" aria-label="Next Slide"
-        class="absolute top-1/2 right-2.5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-slate-950/70 hover:bg-amber-500 text-white hover:text-slate-950 border border-amber-500/40 flex items-center justify-center font-black text-base transition">
+        class="absolute top-1/2 right-2.5 -translate-y-1/2 z-10 w-9 h-9 rounded-full bg-slate-950/70 hover:bg-cyan-400 text-white hover:text-slate-950 border border-cyan-400/40 flex items-center justify-center font-black text-base transition">
         ›
       </button>
 
-      <!-- 7 Slide Indicator Dots -->
       <div id="promo-dots" class="absolute bottom-3 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 bg-slate-950/60 px-3 py-1.5 rounded-full border border-white/10"></div>
     </div>
   </section>
@@ -243,16 +269,16 @@
   <section id="product-train-section" class="max-w-7xl mx-auto px-4 pt-6">
     <div class="flex items-center justify-between gap-2 mb-3">
       <div>
-        <span class="text-amber-500 text-[11px] font-black tracking-wide" data-i18n="train_badge">⚡ عروض سريعة • اسحب لليمين واليسار</span>
+        <span class="text-cyan-600 dark:text-cyan-400 text-[11px] font-black tracking-wide" data-i18n="train_badge">⚡ عروض سريعة • اسحب لليمين واليسار</span>
         <h2 class="text-lg sm:text-xl font-black" data-i18n="train_title">قطار العروض والأكثر طلباً (طلب واتساب مباشر)</h2>
       </div>
       <div class="flex items-center gap-1.5">
         <button onclick="scrollProductTrain(-1)" aria-label="Scroll Previous"
-          class="theme-subtle-box hover:border-amber-500 w-9 h-9 rounded-xl font-black flex items-center justify-center transition">
+          class="theme-subtle-box hover:border-cyan-500 w-9 h-9 rounded-xl font-black flex items-center justify-center transition">
           <span id="train-arrow-prev">→</span>
         </button>
         <button onclick="scrollProductTrain(1)" aria-label="Scroll Next"
-          class="theme-subtle-box hover:border-amber-500 w-9 h-9 rounded-xl font-black flex items-center justify-center transition">
+          class="theme-subtle-box hover:border-cyan-500 w-9 h-9 rounded-xl font-black flex items-center justify-center transition">
           <span id="train-arrow-next">←</span>
         </button>
       </div>
@@ -265,24 +291,24 @@
   </section>
 
   <!-- Hero Section -->
-  <section class="py-10 sm:py-14 px-4 border-b border-amber-500/15">
+  <section class="py-10 sm:py-14 px-4 border-b border-cyan-500/15">
     <div class="max-w-7xl mx-auto grid lg:grid-cols-12 gap-8 items-center">
       <div class="lg:col-span-7 space-y-5 text-center lg:text-start">
-        <div class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/30 theme-accent-text px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold">
-          <span>✨</span>
+        <div class="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 theme-accent-text px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold">
+          <span>✦</span>
           <span data-i18n="hero_badge">توريد وتركيب شاشات LED العملاقة في السعودية ودول الخليج</span>
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black leading-tight" data-i18n="hero_title">
-          نحن نعرض إبداعك بأحدث تقنيات <span class="text-amber-500">شاشات الـ LED</span>
+          نحن نعرض إبداعك بأحدث تقنيات <span class="text-cyan-500">شاشات الـ LED</span>
         </h1>
         <p class="theme-muted text-sm sm:text-base leading-relaxed max-w-2xl mx-auto lg:mx-0" data-i18n="hero_desc">
           الكتالوج الكامل (64 منتجاً وملحقاً): الشاشات الداخلية والخارجية، شاشات التأجير (50×50 سم)، الشاشات المرنة والشفافة، البوسترات القابلة للطي، التلفزيونات العملاقة 116 بوصة، السبورات التفاعلية الذكية، ومعالجات NovaStar و Colorlight.
         </p>
         <div class="flex flex-wrap items-center justify-center lg:justify-start gap-3 pt-2">
-          <a href="#calculator" class="gold-gradient hover:opacity-95 text-slate-950 font-black px-6 py-3.5 rounded-xl text-sm sm:text-base transition" data-i18n="hero_cta_calc">
+          <a href="#calculator" class="brand-pro-gradient hover:opacity-95 text-white font-black px-6 py-3.5 rounded-xl text-sm sm:text-base shadow-md transition" data-i18n="hero_cta_calc">
             🧮 احسب تكلفة شاشتك الآن
           </a>
-          <a href="#store" class="theme-subtle-box hover:border-amber-500 font-bold px-6 py-3.5 rounded-xl text-sm sm:text-base transition" data-i18n="hero_cta_store">
+          <a href="#store" class="theme-subtle-box hover:border-cyan-500 font-bold px-6 py-3.5 rounded-xl text-sm sm:text-base transition" data-i18n="hero_cta_store">
             📦 تصفح المتجر الكامل (64)
           </a>
           <a href="https://wa.me/966568397048" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-5 py-3.5 rounded-xl text-sm sm:text-base flex items-center gap-2 transition">
@@ -293,51 +319,51 @@
 
         <div class="grid grid-cols-3 gap-3 pt-4 max-w-lg mx-auto lg:mx-0">
           <div class="card-bg rounded-xl p-3 text-center">
-            <div class="text-amber-500 font-black text-lg sm:text-xl">7000 nits</div>
+            <div class="text-blue-600 dark:text-cyan-400 font-black text-lg sm:text-xl">7000 nits</div>
             <div class="text-[11px] theme-muted" data-i18n="stat_bright">سطوع خارجي فائق</div>
           </div>
           <div class="card-bg rounded-xl p-3 text-center">
-            <div class="text-amber-500 font-black text-lg sm:text-xl">7860 Hz</div>
+            <div class="text-cyan-600 dark:text-cyan-300 font-black text-lg sm:text-xl">7860 Hz</div>
             <div class="text-[11px] theme-muted" data-i18n="stat_hz">معدل تحديث الإيجار</div>
           </div>
           <div class="card-bg rounded-xl p-3 text-center">
-            <div class="text-amber-500 font-black text-lg sm:text-xl">IP65</div>
+            <div class="text-amber-600 dark:text-amber-400 font-black text-lg sm:text-xl">IP65</div>
             <div class="text-[11px] theme-muted" data-i18n="stat_ip">حماية ضد الطقس</div>
           </div>
         </div>
       </div>
 
-      <!-- Lightweight Technical Engineering Visual Card -->
+      <!-- Technical Engineering Visual Card -->
       <div class="lg:col-span-5">
         <div class="card-bg rounded-2xl p-5">
-          <div class="bg-[#0B132B] rounded-xl p-4 border border-amber-500/20">
+          <div class="bg-[#071226] rounded-xl p-4 border border-cyan-500/25">
             <svg viewBox="0 0 400 220" class="w-full h-auto rounded-lg">
               <defs>
                 <linearGradient id="screenGrad" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#1E3A8A"/>
-                  <stop offset="50%" stop-color="#0F172A"/>
-                  <stop offset="100%" stop-color="#B45309"/>
+                  <stop offset="0%" stop-color="#0B1F4A"/>
+                  <stop offset="55%" stop-color="#1D4ED8"/>
+                  <stop offset="100%" stop-color="#06B6D4"/>
                 </linearGradient>
               </defs>
-              <rect x="10" y="10" width="380" height="200" rx="12" fill="#0F172A" stroke="#F59E0B" stroke-width="2"/>
+              <rect x="10" y="10" width="380" height="200" rx="12" fill="#08152B" stroke="#22D3EE" stroke-width="2"/>
               <rect x="24" y="24" width="352" height="145" rx="6" fill="url(#screenGrad)" stroke="#38BDF8" stroke-width="1.5"/>
               <line x1="112" y1="24" x2="112" y2="169" stroke="#F8FAFC" stroke-opacity="0.2" stroke-dasharray="4 4"/>
               <line x1="200" y1="24" x2="200" y2="169" stroke="#F8FAFC" stroke-opacity="0.2" stroke-dasharray="4 4"/>
               <line x1="288" y1="24" x2="288" y2="169" stroke="#F8FAFC" stroke-opacity="0.2" stroke-dasharray="4 4"/>
               <line x1="24" y1="96" x2="376" y2="96" stroke="#F8FAFC" stroke-opacity="0.2" stroke-dasharray="4 4"/>
-              <text x="200" y="88" text-anchor="middle" fill="#FBBF24" font-family="Cairo, sans-serif" font-size="18" font-weight="bold">WEFONE LED DISPLAY</text>
-              <text x="200" y="114" text-anchor="middle" fill="#E2E8F0" font-family="Cairo, sans-serif" font-size="12">P1.25 • P1.53 • P1.86 • P2.5 • P3.9 • P4 • P5 • P8</text>
-              <rect x="40" y="178" width="95" height="22" rx="5" fill="#1E293B"/>
-              <text x="87" y="193" text-anchor="middle" fill="#38BDF8" font-size="10" font-weight="bold">3840Hz - 7860Hz</text>
-              <rect x="152" y="178" width="95" height="22" rx="5" fill="#1E293B"/>
+              <text x="200" y="88" text-anchor="middle" fill="#FFFFFF" font-family="Cairo, sans-serif" font-size="18" font-weight="bold">WEFONE LED DISPLAY</text>
+              <text x="200" y="114" text-anchor="middle" fill="#A5F3FC" font-family="Cairo, sans-serif" font-size="12">P1.25 • P1.53 • P1.86 • P2.5 • P3.9 • P4 • P5 • P8</text>
+              <rect x="40" y="178" width="95" height="22" rx="5" fill="#14284B"/>
+              <text x="87" y="193" text-anchor="middle" fill="#22D3EE" font-size="10" font-weight="bold">3840Hz - 7860Hz</text>
+              <rect x="152" y="178" width="95" height="22" rx="5" fill="#14284B"/>
               <text x="199" y="193" text-anchor="middle" fill="#FBBF24" font-size="10" font-weight="bold">GOB &amp; SMD</text>
-              <rect x="264" y="178" width="95" height="22" rx="5" fill="#1E293B"/>
+              <rect x="264" y="178" width="95" height="22" rx="5" fill="#14284B"/>
               <text x="311" y="193" text-anchor="middle" fill="#34D399" font-size="10" font-weight="bold">100,000 HRS</text>
             </svg>
           </div>
           <div class="mt-4 flex items-center justify-between text-xs theme-muted">
             <span data-i18n="card_cert">✅ معتمد للمشاريع التجارية والفعاليات</span>
-            <span class="text-amber-500 font-bold" data-i18n="card_warr">ضمان شامل</span>
+            <span class="text-cyan-600 dark:text-cyan-400 font-bold" data-i18n="card_warr">ضمان شامل</span>
           </div>
         </div>
       </div>
@@ -348,14 +374,14 @@
   <section id="store" class="py-12 px-4 max-w-7xl mx-auto">
     <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
       <div>
-        <span class="text-amber-500 text-xs font-bold tracking-wider" data-i18n="store_sub">قائمة الأسعار الرسمية 2026 (64 منتجاً وملحقاً)</span>
+        <span class="text-cyan-600 dark:text-cyan-400 text-xs font-bold tracking-wider" data-i18n="store_sub">قائمة الأسعار الرسمية 2026 (64 منتجاً وملحقاً)</span>
         <h2 class="text-2xl sm:text-3xl font-black mt-1" data-i18n="store_title">متجر منتجات WeFone LED</h2>
         <p class="theme-muted text-xs sm:text-sm mt-1" data-i18n="store_hint">انقر على أي صورة لعرضها بالحجم الكبير أو مشاركتها مباشرة عبر واتساب ونسخ الرابط</p>
       </div>
 
       <div class="w-full md:w-80">
         <input type="text" id="search-input" oninput="renderProducts()" placeholder="🔍 ابحث عن موديل (مثل: P2.5, TB40, Colorlight)..."
-          class="w-full theme-input focus:border-amber-500 rounded-xl px-4 py-2.5 text-sm outline-none" />
+          class="w-full theme-input focus:border-cyan-500 rounded-xl px-4 py-2.5 text-sm outline-none" />
       </div>
     </div>
 
@@ -363,11 +389,43 @@
     <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
   </section>
 
+  <!-- Screen Comparison Tool Section -->
+  <section id="compare" class="py-12 px-4 theme-alt-bg">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-6">
+        <div>
+          <span class="text-cyan-600 dark:text-cyan-400 text-xs font-bold" data-i18n="cmp_badge">أداة مقارنة فنية وتجارية</span>
+          <h2 class="text-2xl sm:text-3xl font-black mt-1" data-i18n="cmp_title">مقارنة الشاشات والموديلات</h2>
+          <p class="theme-muted text-xs sm:text-sm mt-1" data-i18n="cmp_desc">قارن بين شاشتين أو أكثر من حيث السعر الرسمي، الوحدة، الدقة البكسلية، والخصائص</p>
+        </div>
+      </div>
+
+      <div class="card-bg rounded-2xl p-4 sm:p-6 space-y-5">
+        <div class="grid sm:grid-cols-3 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-cyan-600 dark:text-cyan-400 mb-1" data-i18n="cmp_slot1">الشاشة / المنتج الأول:</label>
+            <select id="cmp-prod-1" onchange="renderComparisonTable()" class="w-full theme-input focus:border-cyan-500 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold outline-none"></select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-blue-600 dark:text-blue-400 mb-1" data-i18n="cmp_slot2">الشاشة / المنتج الثاني:</label>
+            <select id="cmp-prod-2" onchange="renderComparisonTable()" class="w-full theme-input focus:border-cyan-500 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold outline-none"></select>
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-amber-600 dark:text-amber-400 mb-1" data-i18n="cmp_slot3">الشاشة / المنتج الثالث (اختياري):</label>
+            <select id="cmp-prod-3" onchange="renderComparisonTable()" class="w-full theme-input focus:border-cyan-500 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold outline-none"></select>
+          </div>
+        </div>
+
+        <div id="comparison-table-wrap" class="overflow-x-auto"></div>
+      </div>
+    </div>
+  </section>
+
   <!-- Smart Project Calculator Section -->
-  <section id="calculator" class="py-12 px-4 theme-alt-bg">
+  <section id="calculator" class="py-12 px-4">
     <div class="max-w-7xl mx-auto">
       <div class="text-center max-w-2xl mx-auto mb-8">
-        <span class="text-amber-500 text-xs font-bold" data-i18n="calc_badge">حاسبة التسعير الهندسي الفوري</span>
+        <span class="text-cyan-600 dark:text-cyan-400 text-xs font-bold" data-i18n="calc_badge">حاسبة التسعير الهندسي الفوري</span>
         <h2 class="text-2xl sm:text-3xl font-black mt-1" data-i18n="calc_title">حاسبة مشاريع شاشات الـ LED</h2>
         <p class="theme-muted text-xs sm:text-sm mt-1" data-i18n="calc_desc">احسب مساحة الشاشة، عدد القطع، صناديق التخزين للإيجار، تكلفة التركيب، المعالج، وقطع الغيار بدقة</p>
       </div>
@@ -376,38 +434,38 @@
         <!-- Calculator Inputs -->
         <div class="lg:col-span-7 card-bg rounded-2xl p-5 sm:p-6 space-y-5">
           <div>
-            <label class="block text-xs font-bold text-amber-500 mb-1.5" data-i18n="calc_step1">1. اختر موديل الشاشة (بالمتر المربع):</label>
-            <select id="calc-screen-select" onchange="onCalcScreenChange()" class="w-full theme-input focus:border-amber-500 rounded-xl px-3.5 py-3 text-sm font-bold outline-none"></select>
+            <label class="block text-xs font-bold text-cyan-600 dark:text-cyan-400 mb-1.5" data-i18n="calc_step1">1. اختر موديل الشاشة (بالمتر المربع):</label>
+            <select id="calc-screen-select" onchange="onCalcScreenChange()" class="w-full theme-input focus:border-cyan-500 rounded-xl px-3.5 py-3 text-sm font-bold outline-none"></select>
           </div>
 
           <div class="grid grid-cols-2 gap-4">
             <div>
               <label class="block text-xs font-bold theme-muted mb-1.5" data-i18n="calc_width">العرض (بالمتر):</label>
               <input type="number" id="calc-width" value="3" min="0.5" step="0.5" oninput="updateCalculator()"
-                class="w-full theme-input focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-base font-bold outline-none" />
+                class="w-full theme-input focus:border-cyan-500 rounded-xl px-3.5 py-2.5 text-base font-bold outline-none" />
             </div>
             <div>
               <label class="block text-xs font-bold theme-muted mb-1.5" data-i18n="calc_height">الارتفاع (بالمتر):</label>
               <input type="number" id="calc-height" value="2" min="0.5" step="0.5" oninput="updateCalculator()"
-                class="w-full theme-input focus:border-amber-500 rounded-xl px-3.5 py-2.5 text-base font-bold outline-none" />
+                class="w-full theme-input focus:border-cyan-500 rounded-xl px-3.5 py-2.5 text-base font-bold outline-none" />
             </div>
           </div>
 
           <!-- Rental Specific Options -->
-          <div id="rental-options-box" class="hidden bg-amber-500/10 border border-amber-500/30 rounded-xl p-4 space-y-3">
+          <div id="rental-options-box" class="hidden bg-cyan-500/10 border border-cyan-500/30 rounded-xl p-4 space-y-3">
             <div class="flex items-center justify-between">
               <span class="text-xs sm:text-sm font-black theme-accent-text" data-i18n="rental_opts_title">🎪 خيارات شاشات التأجير (مقاس القطعة 50×50 سم):</span>
-              <span id="rental-pieces-badge" class="bg-amber-500 text-slate-950 text-xs font-black px-2.5 py-0.5 rounded-full">0</span>
+              <span id="rental-pieces-badge" class="brand-pro-gradient text-white text-xs font-black px-2.5 py-0.5 rounded-full">0</span>
             </div>
             <label class="flex items-start gap-2.5 cursor-pointer theme-subtle-box p-3 rounded-lg">
-              <input type="checkbox" id="calc-flight-case" checked onchange="updateCalculator()" class="mt-1 accent-amber-500 w-4 h-4" />
+              <input type="checkbox" id="calc-flight-case" checked onchange="updateCalculator()" class="mt-1 accent-cyan-500 w-4 h-4" />
               <div class="text-xs">
                 <div class="font-bold" data-i18n="rental_fc_title">إضافة صناديق التخزين والنقل (Flight Case)</div>
                 <div class="theme-muted mt-0.5" data-i18n="rental_fc_desc">يستوعب الصندوق الواحد حتى 6 قطع (50×50 سم) — يُحسب صندوق لكل 6 قطع أو أقل تلقائياً.</div>
               </div>
             </label>
             <label class="flex items-start gap-2.5 cursor-pointer theme-subtle-box p-3 rounded-lg">
-              <input type="checkbox" id="calc-hanging-bars" onchange="updateCalculator()" class="mt-1 accent-amber-500 w-4 h-4" />
+              <input type="checkbox" id="calc-hanging-bars" onchange="updateCalculator()" class="mt-1 accent-cyan-500 w-4 h-4" />
               <div class="text-xs">
                 <div class="font-bold" data-i18n="rental_hb_title">إضافة مساطر التعليق العلوية (Hanging Bars 0.5m) + كابل شبكة 20م</div>
                 <div class="theme-muted mt-0.5" data-i18n="rental_hb_desc">تُحسب تلقائياً حسب عرض الشاشة لتعليق الكبائن بأمان في الفعاليات.</div>
@@ -417,17 +475,17 @@
 
           <!-- Installation Option -->
           <div id="install-options-box" class="theme-subtle-box rounded-xl p-4 space-y-2.5">
-            <div class="text-xs font-black text-amber-500" data-i18n="calc_step2">2. خيار التوريد والتركيب ومستلزمات التشغيل:</div>
+            <div class="text-xs font-black text-cyan-600 dark:text-cyan-400" data-i18n="calc_step2">2. خيار التوريد والتركيب ومستلزمات التشغيل:</div>
             <div class="grid sm:grid-cols-2 gap-2.5">
               <label class="flex items-center gap-2.5 cursor-pointer card-bg p-3 rounded-xl">
-                <input type="radio" name="installType" value="supply_only" checked onchange="updateCalculator()" class="accent-amber-500 w-4 h-4" />
+                <input type="radio" name="installType" value="supply_only" checked onchange="updateCalculator()" class="accent-cyan-500 w-4 h-4" />
                 <div class="text-xs">
                   <div class="font-bold" data-i18n="inst_supply">توريد فقط (بدون تركيب)</div>
                   <div class="theme-muted" data-i18n="inst_supply_sub">شحن الشاشة ومكوناتها فقط</div>
                 </div>
               </label>
-              <label class="flex items-center gap-2.5 cursor-pointer card-bg p-3 rounded-xl border-amber-500/40">
-                <input type="radio" name="installType" value="with_install" onchange="updateCalculator()" class="accent-amber-500 w-4 h-4" />
+              <label class="flex items-center gap-2.5 cursor-pointer card-bg p-3 rounded-xl border-cyan-500/40">
+                <input type="radio" name="installType" value="with_install" onchange="updateCalculator()" class="accent-cyan-500 w-4 h-4" />
                 <div class="text-xs">
                   <div class="font-bold theme-accent-text" data-i18n="inst_full">شامل التركيب والمستلزمات والكهرباء</div>
                   <div id="install-rate-label" class="theme-muted">+ 400 ر.س / م²</div>
@@ -441,21 +499,21 @@
 
           <!-- Technical Add-ons -->
           <div class="space-y-2.5">
-            <div class="text-xs font-black text-amber-500" data-i18n="calc_step3">3. الملحقات الفنية والوقائية (موصى بها):</div>
+            <div class="text-xs font-black text-cyan-600 dark:text-cyan-400" data-i18n="calc_step3">3. الملحقات الفنية والوقائية (موصى بها):</div>
 
             <label class="flex items-start gap-2.5 cursor-pointer theme-subtle-box p-3 rounded-xl">
-              <input type="checkbox" id="calc-include-processor" checked onchange="updateCalculator()" class="mt-1 accent-amber-500 w-4 h-4" />
+              <input type="checkbox" id="calc-include-processor" checked onchange="updateCalculator()" class="mt-1 accent-cyan-500 w-4 h-4" />
               <div class="text-xs flex-1">
                 <div class="font-bold flex justify-between">
                   <span data-i18n="addon_proc">تضمين معالج التشغيل المناسب (NovaStar Controller)</span>
-                  <span id="calc-proc-name" class="text-amber-500">NOVA TB40</span>
+                  <span id="calc-proc-name" class="text-cyan-600 dark:text-cyan-400">NOVA TB40</span>
                 </div>
                 <div class="theme-muted mt-0.5" data-i18n="addon_proc_sub">يُرشح تلقائياً حسب إجمالي عدد البكسلات في الشاشة.</div>
               </div>
             </label>
 
             <label class="flex items-start gap-2.5 cursor-pointer theme-subtle-box p-3 rounded-xl">
-              <input type="checkbox" id="calc-spare-parts" onchange="updateCalculator()" class="mt-1 accent-amber-500 w-4 h-4" />
+              <input type="checkbox" id="calc-spare-parts" onchange="updateCalculator()" class="mt-1 accent-cyan-500 w-4 h-4" />
               <div class="text-xs flex-1">
                 <div class="font-bold" data-i18n="addon_spares">حزمة قطع غيار احتياطية من نفس التشغيلة (Same Batch Spares)</div>
                 <div class="theme-muted mt-0.5" data-i18n="addon_spares_sub">تشمل (2 موديول من نفس الموديل + 1 باور سبلاي CZCL + كارت استقبال + كابلات) لضمان تطابق الألوان مستقبلاً.</div>
@@ -463,7 +521,7 @@
             </label>
 
             <label class="flex items-start gap-2.5 cursor-pointer theme-subtle-box p-3 rounded-xl">
-              <input type="checkbox" id="calc-power-box" onchange="updateCalculator()" class="mt-1 accent-amber-500 w-4 h-4" />
+              <input type="checkbox" id="calc-power-box" onchange="updateCalculator()" class="mt-1 accent-cyan-500 w-4 h-4" />
               <div class="text-xs flex-1">
                 <div class="font-bold"><span data-i18n="addon_power">لوحة توزيع وحماية الكهرباء الرئيسية</span> (<span id="calc-power-box-label">PA-PLC 20KW</span>)</div>
                 <div class="theme-muted mt-0.5" data-i18n="addon_power_sub">تُرشح تلقائياً (20KW أو 30KW أو 40KW) لحماية الشاشة من تذبذب التيار.</div>
@@ -471,7 +529,7 @@
             </label>
 
             <label id="brightness-sensor-row" class="hidden flex items-start gap-2.5 cursor-pointer theme-subtle-box p-3 rounded-xl">
-              <input type="checkbox" id="calc-brightness-sensor" onchange="updateCalculator()" class="mt-1 accent-amber-500 w-4 h-4" />
+              <input type="checkbox" id="calc-brightness-sensor" onchange="updateCalculator()" class="mt-1 accent-cyan-500 w-4 h-4" />
               <div class="text-xs flex-1">
                 <div class="font-bold" data-i18n="addon_sensor">حساس السطوع التلقائي ليلاً/نهاراً (SSR-L16) للشاشات الخارجية</div>
                 <div class="theme-muted mt-0.5" data-i18n="addon_sensor_sub">يخفض الإضاءة ليلاً تلقائياً لتفادي مخالفات البلدية وتوفير الكهرباء.</div>
@@ -482,7 +540,7 @@
 
         <!-- Calculator Summary Card -->
         <div class="lg:col-span-5 card-bg rounded-2xl p-5 sm:p-6 sticky top-20 space-y-4">
-          <h3 class="text-lg font-black border-b border-amber-500/20 pb-3" data-i18n="sum_title">📊 ملخص التقدير الهندسي والمالي</h3>
+          <h3 class="text-lg font-black border-b border-cyan-500/20 pb-3" data-i18n="sum_title">📊 ملخص التقدير الهندسي والمالي</h3>
 
           <div class="grid grid-cols-2 gap-2.5 text-xs">
             <div class="theme-subtle-box p-3 rounded-xl">
@@ -491,7 +549,7 @@
             </div>
             <div class="theme-subtle-box p-3 rounded-xl">
               <div class="theme-muted" data-i18n="sum_mods">عدد الموديولات (320×160)</div>
-              <div id="res-modules" class="text-base font-black text-amber-500 mt-0.5">118 موديول</div>
+              <div id="res-modules" class="text-base font-black text-cyan-600 dark:text-cyan-400 mt-0.5">118 موديول</div>
             </div>
             <div class="theme-subtle-box p-3 rounded-xl">
               <div class="theme-muted" data-i18n="sum_res">الدقة التقريبية (بكسل)</div>
@@ -499,18 +557,18 @@
             </div>
             <div class="theme-subtle-box p-3 rounded-xl">
               <div class="theme-muted" data-i18n="sum_pwr">أقصى استهلاك كهرباء</div>
-              <div id="res-power" class="text-sm font-bold text-emerald-500 mt-0.5">2.78 KW</div>
+              <div id="res-power" class="text-sm font-bold text-emerald-600 dark:text-emerald-400 mt-0.5">2.78 KW</div>
             </div>
           </div>
 
-          <div id="calc-breakdown" class="space-y-2 text-xs border-t border-amber-500/20 pt-3"></div>
+          <div id="calc-breakdown" class="space-y-2 text-xs border-t border-cyan-500/20 pt-3"></div>
 
-          <div class="theme-subtle-box border-amber-500/40 rounded-xl p-4 flex items-center justify-between">
+          <div class="theme-subtle-box border-cyan-500/40 rounded-xl p-4 flex items-center justify-between">
             <div>
               <div class="text-xs theme-muted" data-i18n="sum_total">الإجمالي التقديري للمشروع</div>
-              <div class="text-[11px] text-amber-500" data-i18n="sum_excl">غير شامل الضريبة والشحن</div>
+              <div class="text-[11px] text-amber-600 dark:text-amber-400" data-i18n="sum_excl">غير شامل الضريبة والشحن</div>
             </div>
-            <div id="res-total-price" class="text-xl sm:text-2xl font-black text-amber-500">0 SAR</div>
+            <div id="res-total-price" class="text-xl sm:text-2xl font-black text-blue-700 dark:text-cyan-400">0 SAR</div>
           </div>
 
           <button onclick="addCalculatedProjectToCart()" class="w-full gold-gradient hover:opacity-95 text-slate-950 font-black py-3.5 rounded-xl text-sm sm:text-base transition" data-i18n="sum_add_btn">
@@ -522,19 +580,19 @@
   </section>
 
   <!-- Shipping & Terms Section -->
-  <section id="shipping" class="py-12 px-4 max-w-7xl mx-auto">
-    <div class="grid md:grid-cols-2 gap-6">
+  <section id="shipping" class="py-12 px-4 theme-alt-bg">
+    <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
       <div class="card-bg rounded-2xl p-6 space-y-3">
-        <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-xl">🚚</div>
+        <div class="w-11 h-11 rounded-xl bg-cyan-500/15 text-cyan-600 dark:text-cyan-400 flex items-center justify-center text-xl">🚚</div>
         <h3 class="text-lg font-black" data-i18n="ship_title">خدمة الشحن والتوصيل</h3>
         <p class="theme-muted text-xs sm:text-sm leading-relaxed" data-i18n="ship_desc">
           نوفر شحناً آمناً ومؤمناً لجميع مدن المملكة العربية السعودية ودول الخليج.
-          <strong class="text-amber-500">تُحدد تكلفة الشحن بدقة حسب حجم ووزن الطلبية وتتم مراجعتها وتأكيدها من فريق المبيعات</strong> فور استلام طلبك.
+          <strong class="text-amber-600 dark:text-amber-400">تُحدد تكلفة الشحن بدقة حسب حجم ووزن الطلبية وتتم مراجعتها وتأكيدها من فريق المبيعات</strong> فور استلام طلبك.
         </p>
       </div>
 
       <div id="terms" class="card-bg rounded-2xl p-6 space-y-3">
-        <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-xl">🛡️</div>
+        <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 flex items-center justify-center text-xl">🛡️</div>
         <h3 class="text-lg font-black" data-i18n="terms_title">الضمان وشروط التوريد</h3>
         <ul class="theme-muted text-xs sm:text-sm space-y-1.5 list-disc list-inside" id="terms-list">
           <li>عمر تشغيلي يصل إلى 100,000 ساعة عمل.</li>
@@ -546,11 +604,11 @@
   </section>
 
   <!-- Footer -->
-  <footer class="theme-alt-bg py-8 px-4 text-center text-xs theme-muted">
+  <footer class="py-8 px-4 text-center text-xs theme-muted border-t border-cyan-500/15">
     <div class="max-w-7xl mx-auto space-y-2">
-      <div class="font-black text-base">wefone <span class="text-amber-500">LED</span></div>
+      <div class="font-black text-base text-[var(--text-main)]">wefone <span class="text-cyan-500">LED</span></div>
       <p data-i18n="footer_sub">للتواصل وطلبات المشاريع وعروض الأسعار في السعودية ودول الخليج</p>
-      <p class="text-amber-500 font-bold text-sm" dir="ltr">WhatsApp: +966 56 839 7048</p>
+      <p class="text-blue-700 dark:text-cyan-400 font-bold text-sm" dir="ltr">WhatsApp: +966 56 839 7048</p>
       <p class="text-[11px] pt-2">© 2026 WeFone LED Display Solutions.</p>
     </div>
   </footer>
@@ -562,32 +620,30 @@
   </a>
 
   <!-- Toast Notification -->
-  <div id="toast" class="fixed bottom-24 left-5 z-50 hidden card-bg border-amber-500 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-xl"></div>
+  <div id="toast" class="fixed bottom-24 left-5 z-50 hidden card-bg border-cyan-500 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-xl"></div>
 
   <!-- Product Image Lightbox & Share Modal -->
   <div id="lightbox-modal" onclick="if(event.target===this) closeProductLightbox()" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6">
     <div class="card-bg rounded-2xl w-full max-w-2xl max-h-[92vh] overflow-y-auto p-4 sm:p-6 space-y-4">
-      <div class="flex items-center justify-between border-b border-amber-500/20 pb-3">
+      <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
         <div class="flex items-center gap-2">
-          <span id="lb-id" class="text-xs font-black px-2.5 py-1 rounded-lg theme-subtle-box text-amber-500"></span>
+          <span id="lb-id" class="text-xs font-black px-2.5 py-1 rounded-lg theme-subtle-box text-cyan-600 dark:text-cyan-400"></span>
           <span id="lb-unit" class="text-xs theme-muted"></span>
         </div>
-        <button onclick="closeProductLightbox()" class="theme-subtle-box hover:text-amber-500 px-3 py-1 rounded-lg text-sm font-black">✖</button>
+        <button onclick="closeProductLightbox()" class="theme-subtle-box hover:text-cyan-500 px-3 py-1 rounded-lg text-sm font-black">✖</button>
       </div>
 
-      <!-- Enlarged 6:5 Main Visual -->
       <div id="lb-visual-container" class="w-full max-w-lg mx-auto"></div>
 
       <div class="space-y-2 text-center sm:text-start">
         <h3 id="lb-title" class="text-lg sm:text-xl font-black"></h3>
         <p id="lb-specs" class="text-xs sm:text-sm theme-muted leading-relaxed"></p>
-        <div class="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-amber-500/15">
+        <div class="pt-2 flex flex-wrap items-center justify-between gap-2 border-t border-cyan-500/15">
           <span class="text-xs theme-muted" data-i18n="market_price">سعر السوق:</span>
-          <span id="lb-price" class="text-xl sm:text-2xl font-black text-amber-500"></span>
+          <span id="lb-price" class="text-xl sm:text-2xl font-black text-blue-700 dark:text-cyan-400"></span>
         </div>
       </div>
 
-      <!-- Primary Action + Share Buttons -->
       <div class="grid sm:grid-cols-2 gap-2.5 pt-1">
         <div id="lb-primary-action"></div>
         <div class="grid grid-cols-2 gap-2">
@@ -595,7 +651,7 @@
             <span>📤</span>
             <span data-i18n="share_btn">مشاركة المنتج</span>
           </button>
-          <button id="lb-copy-link" class="theme-subtle-box hover:border-amber-500 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
+          <button id="lb-copy-link" class="theme-subtle-box hover:border-cyan-500 font-bold py-2.5 px-3 rounded-xl text-xs flex items-center justify-center gap-1.5 transition">
             <span>🔗</span>
             <span data-i18n="copy_link">نسخ الرابط</span>
           </button>
@@ -604,35 +660,32 @@
     </div>
   </div>
 
-  <!-- Universal Multi-Platform Share Modal (Noon / Amazon Style Rich Product Card) -->
+  <!-- Universal Multi-Platform Share Modal -->
   <div id="share-modal" onclick="if(event.target===this) closeShareModal()" class="fixed inset-0 z-50 hidden bg-slate-950/85 backdrop-blur-sm flex items-center justify-center p-4">
     <div class="card-bg rounded-2xl w-full max-w-md p-5 space-y-4">
-      <div class="flex items-center justify-between border-b border-amber-500/20 pb-3">
-        <h3 class="text-base sm:text-lg font-black text-amber-500" data-i18n="share_modal_title">📤 مشاركة المنتج مع معاينة مصغرة</h3>
-        <button onclick="closeShareModal()" class="theme-subtle-box hover:text-amber-500 px-2.5 py-1 rounded-lg text-xs font-black">✖</button>
+      <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-cyan-600 dark:text-cyan-400" data-i18n="share_modal_title">📤 مشاركة المنتج مع معاينة مصغرة</h3>
+        <button onclick="closeShareModal()" class="theme-subtle-box hover:text-cyan-500 px-2.5 py-1 rounded-lg text-xs font-black">✖</button>
       </div>
 
-      <!-- Rich Thumbnail Preview Card (Noon / Amazon Style) -->
-      <div class="theme-subtle-box rounded-xl p-3 flex items-center gap-3.5 border border-amber-500/30">
+      <div class="theme-subtle-box rounded-xl p-3 flex items-center gap-3.5 border border-cyan-500/30">
         <div id="share-thumb-box" class="w-24 h-20 rounded-lg overflow-hidden shrink-0 bg-[#090F20] border border-slate-700"></div>
         <div class="min-w-0 flex-1 space-y-1">
           <div class="flex items-center gap-1.5">
-            <span class="text-[10px] font-black px-1.5 py-0.5 rounded bg-amber-500 text-slate-950">WeFone LED</span>
+            <span class="text-[10px] font-black px-1.5 py-0.5 rounded brand-pro-gradient text-white">WeFone LED</span>
             <span id="share-card-id" class="text-[10px] font-bold theme-muted"></span>
           </div>
           <h4 id="share-card-title" class="text-xs sm:text-sm font-black truncate"></h4>
           <p id="share-card-specs" class="text-[11px] theme-muted line-clamp-1"></p>
-          <div id="share-card-price" class="text-sm font-black text-amber-500"></div>
+          <div id="share-card-price" class="text-sm font-black text-blue-700 dark:text-cyan-400"></div>
         </div>
       </div>
 
-      <!-- Native System Share Button (Shares Actual Image File + Link on Mobile) -->
       <button id="share-native-btn" class="w-full gold-gradient hover:opacity-95 text-slate-950 font-black py-3 px-4 rounded-xl text-xs sm:text-sm flex items-center justify-center gap-2 transition">
         <span>📱</span>
         <span data-i18n="share_native_lbl">مشاركة عبر تطبيقات الجهاز (مع صورة المنتج)</span>
       </button>
 
-      <!-- Multi-Platform Direct Share Grid -->
       <div class="grid grid-cols-3 sm:grid-cols-5 gap-2 text-center text-[11px] font-bold">
         <a id="share-link-wa" target="_blank" class="theme-subtle-box hover:border-emerald-500 hover:text-emerald-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
           <span class="text-lg">💬</span>
@@ -646,7 +699,7 @@
           <span class="text-lg">📘</span>
           <span>Facebook</span>
         </a>
-        <a id="share-link-x" target="_blank" class="theme-subtle-box hover:border-slate-400 hover:text-amber-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
+        <a id="share-link-x" target="_blank" class="theme-subtle-box hover:border-slate-400 hover:text-cyan-500 p-2.5 rounded-xl flex flex-col items-center gap-1 transition cursor-pointer">
           <span class="text-lg">𝕏</span>
           <span>X / Twitter</span>
         </a>
@@ -656,10 +709,9 @@
         </a>
       </div>
 
-      <!-- Direct URL Copy Bar -->
       <div class="flex items-center gap-2 pt-1">
         <input type="text" id="share-url-input" readonly dir="ltr" class="flex-1 theme-input rounded-xl px-3 py-2 text-xs outline-none select-all" />
-        <button id="share-modal-copy-btn" class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition" data-i18n="copy_btn">
+        <button id="share-modal-copy-btn" class="gold-gradient text-slate-950 font-black px-3.5 py-2 rounded-xl text-xs whitespace-nowrap transition" data-i18n="copy_btn">
           نسخ
         </button>
       </div>
@@ -668,10 +720,10 @@
 
   <!-- Cart Drawer Modal -->
   <div id="cart-drawer" class="fixed inset-0 z-50 hidden bg-slate-950/75 flex justify-end">
-    <div class="w-full max-w-md card-bg h-full flex flex-col border-r border-amber-500/30">
-      <div class="p-4 border-b border-amber-500/20 flex items-center justify-between">
+    <div class="w-full max-w-md card-bg h-full flex flex-col border-r border-cyan-500/30">
+      <div class="p-4 border-b border-cyan-500/20 flex items-center justify-between">
         <h3 class="text-lg font-black" data-i18n="cart_title">🛒 سلة المشتريات وعرض السعر</h3>
-        <button onclick="toggleCart()" class="theme-muted hover:text-amber-500 text-xl font-bold px-2">✖</button>
+        <button onclick="toggleCart()" class="theme-muted hover:text-cyan-500 text-xl font-bold px-2">✖</button>
       </div>
 
       <div id="cart-items-container" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
@@ -690,14 +742,14 @@
           <input type="text" id="cust-city" placeholder="المدينة / ملاحظات" class="theme-input rounded-lg px-3 py-2 text-xs outline-none" />
         </div>
 
-        <div class="flex items-center justify-between text-xs theme-accent-text bg-amber-500/10 px-3 py-2 rounded-lg">
+        <div class="flex items-center justify-between text-xs theme-accent-text bg-cyan-500/10 px-3 py-2 rounded-lg">
           <span data-i18n="cart_ship_lbl">🚚 الشحن:</span>
           <span data-i18n="cart_ship_val">يُحدد حسب حجم الطلبية وتتم مراجعته</span>
         </div>
 
         <div class="flex items-center justify-between pt-1">
           <span class="text-sm font-bold theme-muted" data-i18n="cart_total_lbl">الإجمالي التقديري:</span>
-          <span id="cart-total" class="text-xl font-black text-amber-500">0 SAR</span>
+          <span id="cart-total" class="text-xl font-black text-blue-700 dark:text-cyan-400">0 SAR</span>
         </div>
 
         <div class="flex gap-2">
@@ -716,12 +768,98 @@
   <!-- Secret Admin PIN Modal -->
   <div id="pin-modal" class="fixed inset-0 z-50 hidden bg-slate-950/80 flex items-center justify-center p-4">
     <div class="card-bg rounded-2xl p-5 w-full max-w-xs space-y-4 text-center">
-      <h4 class="text-base font-black text-amber-500">🔐 دخول الإدارة السري</h4>
-      <p class="text-xs theme-muted">أدخل الرمز (2026) لتعديل الصور والأسعار ومزامنة Google Sheets</p>
+      <h4 class="text-base font-black text-cyan-600 dark:text-cyan-400">🔐 دخول الإدارة السري</h4>
+      <p class="text-xs theme-muted">أدخل الرمز (2026) لإدارة المنتجات والطلبات والمبيعات ومزامنة Google Sheets</p>
       <input type="password" id="admin-pin-input" placeholder="••••" class="w-full theme-input rounded-xl px-4 py-2.5 text-center font-bold tracking-widest outline-none" />
       <div class="flex gap-2">
         <button onclick="closePinModal()" class="flex-1 theme-subtle-box py-2 rounded-xl text-xs font-bold">إلغاء</button>
-        <button onclick="verifyAdminPin()" class="flex-1 gold-gradient text-slate-950 py-2 rounded-xl text-xs font-black">دخول</button>
+        <button onclick="verifyAdminPin()" class="flex-1 brand-pro-gradient text-white py-2 rounded-xl text-xs font-black">دخول</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add New Product Modal (Admin Only) -->
+  <div id="add-product-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 flex items-center justify-center p-4">
+    <div class="card-bg rounded-2xl w-full max-w-lg max-h-[92vh] overflow-y-auto p-5 space-y-3.5">
+      <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-cyan-600 dark:text-cyan-400">➕ إضافة منتج جديد للكتالوج</h3>
+        <button onclick="closeAddProductModal()" class="theme-muted hover:text-cyan-500 font-bold text-lg">✖</button>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-2.5">
+        <div>
+          <label class="block text-xs font-bold mb-1">كود المنتج (ID) *:</label>
+          <input type="text" id="new-prod-id" placeholder="مثال: IS-WF-P2.0-GOB" dir="ltr" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-bold outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">القسم:</label>
+          <select id="new-prod-cat" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-bold outline-none">
+            <option value="indoor">شاشات داخلية (Indoor)</option>
+            <option value="outdoor">شاشات خارجية (Outdoor)</option>
+            <option value="rental">شاشات تأجير 50×50</option>
+            <option value="flexible">مرنة وشفافة</option>
+            <option value="posters">بوسترات وتلفزيونات</option>
+            <option value="smartboard">سبورات تفاعلية</option>
+            <option value="modules">موديولات وملحقات</option>
+            <option value="controllers">معالجات وتحكم</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-2.5">
+        <div>
+          <label class="block text-xs font-bold mb-1">الاسم بالعربية *:</label>
+          <input type="text" id="new-prod-name" placeholder="اسم المنتج" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-bold outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">English Name:</label>
+          <input type="text" id="new-prod-name-en" placeholder="Product Name" dir="ltr" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-bold outline-none" />
+        </div>
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-2.5">
+        <div>
+          <label class="block text-xs font-bold mb-1">الوحدة بالعربية:</label>
+          <input type="text" id="new-prod-unit" value="قطعة" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-bold outline-none" />
+        </div>
+        <div class="flex items-end pb-1">
+          <label class="flex items-center gap-2 text-xs font-bold cursor-pointer">
+            <input type="checkbox" id="new-prod-sqm" class="accent-cyan-500 w-4 h-4" />
+            <span>يُحسب بالمتر المربع في الحاسبة</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2.5">
+        <div>
+          <label class="block text-xs font-bold text-amber-600 dark:text-amber-400 mb-1">سعر السوق للعميل (AED) *:</label>
+          <input type="number" id="new-prod-market" value="1000" min="0" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-black outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-1">سعر الموزع للمورد (AED) *:</label>
+          <input type="number" id="new-prod-reseller" value="850" min="0" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-black outline-none" />
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-xs font-bold mb-1">مسار أو رابط الصورة:</label>
+        <input type="text" id="new-prod-img" placeholder="images/MODEL-ID.webp" dir="ltr" class="w-full theme-input rounded-xl px-3 py-2 text-xs outline-none" />
+      </div>
+
+      <div class="grid sm:grid-cols-2 gap-2.5">
+        <div>
+          <label class="block text-xs font-bold mb-1">المواصفات بالعربية:</label>
+          <input type="text" id="new-prod-specs" placeholder="سطوع • تحديث • مواصفات" class="w-full theme-input rounded-xl px-3 py-2 text-xs outline-none" />
+        </div>
+        <div>
+          <label class="block text-xs font-bold mb-1">English Specs:</label>
+          <input type="text" id="new-prod-specs-en" placeholder="Brightness • Refresh • Specs" dir="ltr" class="w-full theme-input rounded-xl px-3 py-2 text-xs outline-none" />
+        </div>
+      </div>
+
+      <div class="flex gap-2 pt-2">
+        <button onclick="closeAddProductModal()" class="flex-1 theme-subtle-box py-2.5 rounded-xl text-xs font-bold">إلغاء</button>
+        <button onclick="createNewProduct()" class="flex-1 gold-gradient text-slate-950 py-2.5 rounded-xl text-xs sm:text-sm font-black">➕ حفظ وإضافة للكتالوج</button>
       </div>
     </div>
   </div>
@@ -729,9 +867,9 @@
   <!-- Full Product Editor Modal -->
   <div id="product-editor-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 flex items-center justify-center p-4">
     <div class="card-bg rounded-2xl w-full max-w-lg max-h-[92vh] overflow-y-auto p-5 space-y-4">
-      <div class="flex items-center justify-between border-b border-amber-500/20 pb-3">
-        <h3 class="text-base sm:text-lg font-black text-amber-500">✏️ تعديل المنتج (الوسائط / الاسم / السعر)</h3>
-        <button onclick="closeProductEditor()" class="theme-muted hover:text-amber-500 font-bold text-lg">✖</button>
+      <div class="flex items-center justify-between border-b border-cyan-500/20 pb-3">
+        <h3 class="text-base sm:text-lg font-black text-cyan-600 dark:text-cyan-400">✏️ تعديل المنتج (الوسائط / الاسم / السعر)</h3>
+        <button onclick="closeProductEditor()" class="theme-muted hover:text-cyan-500 font-bold text-lg">✖</button>
       </div>
 
       <input type="hidden" id="edit-prod-id" />
@@ -743,7 +881,7 @@
 
       <div class="theme-subtle-box rounded-xl p-3.5 space-y-3">
         <div class="flex items-center justify-between">
-          <span class="text-xs font-black text-amber-500">🎯 التحكم في تكبير وموضع الصورة:</span>
+          <span class="text-xs font-black text-cyan-600 dark:text-cyan-400">🎯 التحكم في تكبير وموضع الصورة:</span>
           <button type="button" onclick="resetMediaTransform()" class="text-[11px] card-bg px-2.5 py-1 rounded-lg font-bold">
             ↺ توسيط تلقائي
           </button>
@@ -752,31 +890,31 @@
         <div class="space-y-1">
           <div class="flex justify-between text-[11px] font-bold">
             <span>🔍 التكبير (Zoom):</span>
-            <span id="zoom-val-label" class="text-amber-500" dir="ltr">100%</span>
+            <span id="zoom-val-label" class="text-cyan-600 dark:text-cyan-400" dir="ltr">100%</span>
           </div>
-          <input type="range" id="edit-img-zoom" min="50" max="250" value="100" oninput="previewEditedImage()" class="w-full accent-amber-500 cursor-pointer" />
+          <input type="range" id="edit-img-zoom" min="50" max="250" value="100" oninput="previewEditedImage()" class="w-full accent-cyan-500 cursor-pointer" />
         </div>
 
         <div class="grid grid-cols-2 gap-3">
           <div class="space-y-1">
             <div class="flex justify-between text-[11px] font-bold">
               <span>↔️ يمين / يسار:</span>
-              <span id="posx-val-label" class="text-amber-500" dir="ltr">50%</span>
+              <span id="posx-val-label" class="text-cyan-600 dark:text-cyan-400" dir="ltr">50%</span>
             </div>
-            <input type="range" id="edit-img-x" min="0" max="100" value="50" oninput="previewEditedImage()" class="w-full accent-amber-500 cursor-pointer" />
+            <input type="range" id="edit-img-x" min="0" max="100" value="50" oninput="previewEditedImage()" class="w-full accent-cyan-500 cursor-pointer" />
           </div>
           <div class="space-y-1">
             <div class="flex justify-between text-[11px] font-bold">
               <span>↕️ أعلى / أسفل:</span>
-              <span id="posy-val-label" class="text-amber-500" dir="ltr">50%</span>
+              <span id="posy-val-label" class="text-cyan-600 dark:text-cyan-400" dir="ltr">50%</span>
             </div>
-            <input type="range" id="edit-img-y" min="0" max="100" value="50" oninput="previewEditedImage()" class="w-full accent-amber-500 cursor-pointer" />
+            <input type="range" id="edit-img-y" min="0" max="100" value="50" oninput="previewEditedImage()" class="w-full accent-cyan-500 cursor-pointer" />
           </div>
         </div>
       </div>
 
       <div class="space-y-2">
-        <label class="block text-xs font-bold text-amber-500">1. مسار الصورة في مجلد GitHub (WebP أو أي امتداد):</label>
+        <label class="block text-xs font-bold text-cyan-600 dark:text-cyan-400">1. مسار الصورة في مجلد GitHub (WebP أو أي امتداد):</label>
         <div class="flex gap-2">
           <input type="text" id="edit-prod-img" oninput="previewEditedImage()" placeholder="images/IS-WF-P2.5-MASK.webp"
             class="flex-1 theme-input rounded-xl px-3 py-2 text-xs outline-none" dir="ltr" />
@@ -785,18 +923,18 @@
           </button>
         </div>
 
-        <label class="block text-xs font-bold text-emerald-500 pt-1">أو اختر صورة من جهازك (تُضغط تلقائياً إلى WebP):</label>
+        <label class="block text-xs font-bold text-emerald-600 dark:text-emerald-400 pt-1">أو اختر صورة من جهازك (تُضغط تلقائياً إلى WebP):</label>
         <input type="file" id="edit-prod-file" accept="image/*,video/mp4,video/webm" onchange="handleLocalImageUpload(event)"
-          class="w-full text-xs theme-muted file:ml-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-amber-500 file:text-slate-950 cursor-pointer" />
+          class="w-full text-xs theme-muted file:ml-3 file:py-1.5 file:px-3 file:rounded-lg file:border-0 file:text-xs file:font-bold file:bg-cyan-500 file:text-slate-950 cursor-pointer" />
       </div>
 
       <div class="grid sm:grid-cols-2 gap-2.5">
         <div>
-          <label class="block text-xs font-bold text-amber-500 mb-1">2. الاسم بالعربية:</label>
+          <label class="block text-xs font-bold mb-1">2. الاسم بالعربية:</label>
           <input type="text" id="edit-prod-name" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-bold outline-none" />
         </div>
         <div>
-          <label class="block text-xs font-bold text-amber-500 mb-1">English Name:</label>
+          <label class="block text-xs font-bold mb-1">English Name:</label>
           <input type="text" id="edit-prod-name-en" dir="ltr" class="w-full theme-input rounded-xl px-3 py-2 text-xs font-bold outline-none" />
         </div>
       </div>
@@ -814,28 +952,29 @@
 
       <div class="grid grid-cols-2 gap-3">
         <div>
-          <label class="block text-xs font-bold text-amber-500 mb-1">سعر السوق للعميل (AED):</label>
+          <label class="block text-xs font-bold text-amber-600 dark:text-amber-400 mb-1">سعر السوق للعميل (AED):</label>
           <input type="number" id="edit-prod-market" step="1" class="w-full theme-input border-amber-500/50 rounded-xl px-3 py-2 text-sm font-black outline-none" />
         </div>
         <div>
-          <label class="block text-xs font-bold text-emerald-500 mb-1">سعر الموزع للمورد (AED):</label>
+          <label class="block text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-1">سعر الموزع للمورد (AED):</label>
           <input type="number" id="edit-prod-reseller" step="1" class="w-full theme-input border-emerald-500/50 rounded-xl px-3 py-2 text-sm font-black outline-none" />
         </div>
       </div>
 
-      <div class="flex gap-2 pt-2">
+      <div class="flex flex-wrap gap-2 pt-2">
+        <button onclick="deleteProductFromCatalog()" class="bg-red-600 hover:bg-red-500 text-white px-3 py-2.5 rounded-xl text-xs font-bold">🗑️ حذف</button>
         <button onclick="closeProductEditor()" class="flex-1 theme-subtle-box py-2.5 rounded-xl text-xs font-bold">إلغاء</button>
         <button onclick="saveProductEdits()" class="flex-1 gold-gradient text-slate-950 py-2.5 rounded-xl text-xs sm:text-sm font-black">💾 حفظ ومزامنة مع الشيت</button>
       </div>
     </div>
   </div>
 
-  <!-- Orders Spreadsheet Modal (Admin Only) -->
+  <!-- Orders & Sales Reports Modal (Admin Only) -->
   <div id="orders-modal" class="fixed inset-0 z-50 hidden bg-slate-950/85 flex items-center justify-center p-3 sm:p-6">
-    <div class="card-bg rounded-2xl w-full max-w-6xl max-h-[90vh] flex flex-col overflow-hidden">
-      <div class="p-4 border-b border-amber-500/20 flex flex-wrap items-center justify-between gap-2">
+    <div class="card-bg rounded-2xl w-full max-w-6xl max-h-[92vh] flex flex-col overflow-hidden">
+      <div class="p-4 border-b border-cyan-500/20 flex flex-wrap items-center justify-between gap-2">
         <div>
-          <h3 class="text-lg font-black text-amber-500">📊 جدول الطلبات (سعر السوق للعميل مقابل تكلفة الموزع للمورد)</h3>
+          <h3 class="text-lg font-black text-cyan-600 dark:text-cyan-400">📊 إدارة الطلبات وتقارير المبيعات</h3>
           <p class="text-xs theme-muted">تُسجل الطلبات تلقائياً في تبويب Orders بملف Google Sheets + رابط واتساب للمورد (+201011060894)</p>
         </div>
         <div class="flex items-center gap-2">
@@ -843,20 +982,25 @@
           <button onclick="closeOrdersModal()" class="theme-subtle-box px-3 py-1.5 rounded-lg text-xs font-bold">✖ إغلاق</button>
         </div>
       </div>
+
+      <!-- Sales Summary Cards -->
+      <div id="sales-summary-cards" class="grid grid-cols-2 sm:grid-cols-4 gap-3 px-4 pt-4"></div>
+
       <div class="flex-1 overflow-auto p-4">
         <table class="w-full text-right border-collapse text-xs">
           <thead>
-            <tr class="theme-subtle-box text-amber-500">
+            <tr class="theme-subtle-box text-cyan-700 dark:text-cyan-400">
               <th class="p-2.5">رقم الطلب</th>
               <th class="p-2.5">التاريخ</th>
               <th class="p-2.5">العميل والجوال</th>
               <th class="p-2.5">الأصناف المطلوبة</th>
+              <th class="p-2.5">حالة الطلب</th>
               <th class="p-2.5">سعر العميل (سوق)</th>
               <th class="p-2.5">تكلفة المورد (موزع AED)</th>
               <th class="p-2.5">إرسال للمورد (+201011060894)</th>
             </tr>
           </thead>
-          <tbody id="orders-table-body" class="divide-y divide-slate-700/40"></tbody>
+          <tbody id="orders-table-body" class="divide-y divide-slate-700/30"></tbody>
         </table>
       </div>
     </div>
@@ -877,10 +1021,140 @@
     let currentCategory = "all";
     let isEditMode = false;
     let currentLang = localStorage.getItem("wefone_lang") || "ar";
-    let currentTheme = localStorage.getItem("wefone_theme") || "dark";
+    let currentTheme = localStorage.getItem("wefone_theme") || "light";
     let currentPromoSlide = 0;
     let promoAutoTimer = null;
     let trainAutoTimer = null;
+    let deferredPwaPrompt = null;
+
+    // Generate New Pixel / LED Matrix Brand Logo SVG & Data URLs
+    function getBrandLogoSvg(size = 64) {
+      return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="${size}" height="${size}">
+        <defs>
+          <linearGradient id="wfGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0B1F4A"/>
+            <stop offset="55%" stop-color="#1D4ED8"/>
+            <stop offset="100%" stop-color="#06B6D4"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="2" width="60" height="60" rx="15" fill="url(#wfGrad)" stroke="#67E8F9" stroke-width="1.5"/>
+        <!-- LED Matrix Pixel Grid (4x3 cells + bright cyan & gold active pixels) -->
+        <rect x="11" y="12" width="7" height="7" rx="1.5" fill="#FFFFFF"/>
+        <rect x="20" y="12" width="7" height="7" rx="1.5" fill="#22D3EE"/>
+        <rect x="29" y="12" width="7" height="7" rx="1.5" fill="#FBBF24"/>
+        <rect x="38" y="12" width="7" height="7" rx="1.5" fill="#FFFFFF" fill-opacity="0.7"/>
+        <rect x="11" y="21" width="7" height="7" rx="1.5" fill="#22D3EE"/>
+        <rect x="20" y="21" width="7" height="7" rx="1.5" fill="#FFFFFF"/>
+        <rect x="29" y="21" width="7" height="7" rx="1.5" fill="#22D3EE"/>
+        <rect x="38" y="21" width="7" height="7" rx="1.5" fill="#FBBF24"/>
+        <!-- Crisp WF Monogram -->
+        <text x="32" y="48" text-anchor="middle" fill="#FFFFFF" font-family="Cairo, Arial, sans-serif" font-size="20" font-weight="900" letter-spacing="-0.5">WF</text>
+        <rect x="16" y="52" width="32" height="3" rx="1.5" fill="#22D3EE"/>
+      </svg>`;
+    }
+
+    function initBrandLogoAndPwa() {
+      const logoWrap = document.getElementById("brand-logo-svg-wrap");
+      if (logoWrap) logoWrap.innerHTML = getBrandLogoSvg(44);
+
+      const splashLogo = document.getElementById("pwa-splash-logo");
+      if (splashLogo) splashLogo.innerHTML = getBrandLogoSvg(80);
+
+      const svgStr = getBrandLogoSvg(192);
+      const iconDataUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgStr);
+
+      const appleIcon = document.getElementById("pwa-apple-icon");
+      if (appleIcon) appleIcon.href = iconDataUrl;
+
+      const manifestObj = {
+        name: "WeFone LED | متجر وحاسبة شاشات العرض",
+        short_name: "WeFone LED",
+        description: "توريد وتركيب شاشات LED العملاقة والسبورات الذكية ومعالجات NovaStar و Colorlight",
+        start_url: "./",
+        display: "standalone",
+        background_color: "#0B1F4A",
+        theme_color: "#0B1F4A",
+        dir: currentLang === "ar" ? "rtl" : "ltr",
+        lang: currentLang,
+        icons: [
+          { src: iconDataUrl, sizes: "192x192", type: "image/svg+xml", purpose: "any maskable" },
+          { src: iconDataUrl, sizes: "512x512", type: "image/svg+xml", purpose: "any" }
+        ]
+      };
+      const manifestBlob = new Blob([JSON.stringify(manifestObj)], { type: "application/manifest+json" });
+      const manifestLink = document.getElementById("pwa-manifest-link");
+      if (manifestLink) manifestLink.href = URL.createObjectURL(manifestBlob);
+
+      // Register inline Service Worker for PWA caching & offline resilience
+      if ("serviceWorker" in navigator && (location.protocol === "https:" || location.hostname === "localhost" || location.hostname === "127.0.0.1")) {
+        const swCode = `
+          const CACHE_NAME = 'wefone-led-pwa-v1';
+          self.addEventListener('install', (event) => {
+            event.waitUntil(
+              caches.open(CACHE_NAME).then((cache) => cache.addAll(['./', './index.html']).catch(() => {}))
+            );
+            self.skipWaiting();
+          });
+          self.addEventListener('activate', (event) => {
+            event.waitUntil(
+              caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k))))
+            );
+            self.clients.claim();
+          });
+          self.addEventListener('fetch', (event) => {
+            if (event.request.method !== 'GET') return;
+            if (event.request.url.includes('script.google.com/macros/s/')) return;
+            event.respondWith(
+              fetch(event.request)
+                .then((networkRes) => {
+                  const clone = networkRes.clone();
+                  caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone)).catch(() => {});
+                  return networkRes;
+                })
+                .catch(() => caches.match(event.request))
+            );
+          });
+        `;
+        const swBlob = new Blob([swCode], { type: "application/javascript" });
+        navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(() => {});
+      }
+
+      // Show brief splash screen when running in standalone PWA mode
+      const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+      if (isStandalone) {
+        const splash = document.getElementById("pwa-splash");
+        if (splash) {
+          splash.classList.remove("hidden");
+          setTimeout(() => {
+            splash.classList.add("opacity-0");
+            setTimeout(() => splash.classList.add("hidden"), 300);
+          }, 850);
+        }
+      }
+    }
+
+    window.addEventListener("beforeinstallprompt", (e) => {
+      e.preventDefault();
+      deferredPwaPrompt = e;
+      const btn = document.getElementById("pwa-install-btn");
+      if (btn) btn.classList.remove("hidden");
+    });
+
+    async function triggerPwaInstall() {
+      if (deferredPwaPrompt) {
+        deferredPwaPrompt.prompt();
+        const res = await deferredPwaPrompt.userChoice;
+        if (res && res.outcome === "accepted") {
+          showToast(currentLang === "ar" ? "✅ تم تثبيت تطبيق WeFone LED بنجاح" : "✅ WeFone LED app installed");
+        }
+        deferredPwaPrompt = null;
+        document.getElementById("pwa-install-btn").classList.add("hidden");
+      } else {
+        showToast(currentLang === "ar"
+          ? "📲 لتثبيت التطبيق: من قائمة المتصفح اختر «إضافة إلى الشاشة الرئيسية»"
+          : "📲 To install: tap browser menu and choose «Add to Home Screen»");
+      }
+    }
 
     const FEATURED_TRAIN_IDS = [
       "IS-WF-P1.5-GOB",
@@ -903,94 +1177,94 @@
 
     const PROMO_SLIDES = [
       {
-        badge_ar: "🔥 العرض 1 / 7 • الأكثر طلباً للمشاريع",
-        badge_en: "🔥 Offer 1 / 7 • Best Seller",
+        badge_ar: "✦ العرض 1 / 7 • الأكثر طلباً للمشاريع",
+        badge_en: "✦ Offer 1 / 7 • Best Seller",
         title_ar: "شاشات داخلية فائقة الدقة P1.53 & P1.86 GOB",
         title_en: "Ultra-HD Indoor LED Screens P1.53 & P1.86 GOB",
         desc_ar: "حماية GOB ضد الصدمات والرطوبة مع معدل تحديث 3840Hz وصيانة أمامية كاملة للقاعات والشركات.",
         desc_en: "Anti-collision GOB protection, 3840Hz refresh rate, and full front service for halls & showrooms.",
         cta_ar: "🧮 احسب مقاسك الآن",
         cta_en: "🧮 Calculate Size Now",
-        bg: "from-[#1E293B] via-[#0F172A] to-[#78350F]",
-        accent: "text-amber-400",
+        bg: "from-[#0B1F4A] via-[#1D4ED8] to-[#0E7490]",
+        accent: "text-cyan-300",
         action: () => goToCalculatorWithModel("IS-WF-P1.5-GOB")
       },
       {
-        badge_ar: "☀️ العرض 2 / 7 • واجهات المولات والأبراج",
-        badge_en: "☀️ Offer 2 / 7 • Mall & Tower Facades",
+        badge_ar: "✦ العرض 2 / 7 • واجهات المولات والأبراج",
+        badge_en: "✦ Offer 2 / 7 • Mall & Tower Facades",
         title_ar: "شاشات خارجية عملاقة P4 & P5 سطوع 7000 nits",
         title_en: "Giant Outdoor LED P4 & P5 • 7000 nits Brightness",
         desc_ar: "رؤية واضحة تحت أشعة الشمس المباشرة مع عزل كامل IP65 ومقاومة الحرارة والغبار.",
         desc_en: "Crystal-clear visibility under direct sunlight with IP65 weatherproof protection.",
         cta_ar: "☀️ تسعير الواجهات الخارجية",
         cta_en: "☀️ Price Outdoor Facade",
-        bg: "from-[#0F172A] via-[#1E1B4B] to-[#9A3412]",
-        accent: "text-orange-400",
+        bg: "from-[#071226] via-[#1E3A8A] to-[#0284C7]",
+        accent: "text-amber-300",
         action: () => goToCalculatorWithModel("OS-WF-P5")
       },
       {
-        badge_ar: "🎪 العرض 3 / 7 • باقة شركات التأجير والفعاليات",
-        badge_en: "🎪 Offer 3 / 7 • Rental & Events Bundle",
+        badge_ar: "✦ العرض 3 / 7 • باقة شركات التأجير والفعاليات",
+        badge_en: "✦ Offer 3 / 7 • Rental & Events Bundle",
         title_ar: "شاشات التأجير 50×50 سم P2.9 & P3.9 (7860Hz)",
         title_en: "Rental LED 50×50cm P2.9 & P3.9 (7860Hz Refresh)",
         desc_ar: "معدل تحديث 7860Hz خالٍ من الوميض في الكاميرات مع خيار إضافة صناديق Flight Case ومساطر التعليق.",
         desc_en: "Camera-ready 7860Hz refresh rate with automatic Flight Case & Hanging Bar calculation.",
         cta_ar: "🎪 احسب باقة التأجير",
         cta_en: "🎪 Configure Rental Rig",
-        bg: "from-[#0B132B] via-[#0C4A6E] to-[#1E293B]",
-        accent: "text-sky-400",
+        bg: "from-[#0B1F4A] via-[#0369A1] to-[#06B6D4]",
+        accent: "text-cyan-200",
         action: () => goToCalculatorWithModel("ORS-WF-P3.9-5050")
       },
       {
-        badge_ar: "📺 العرض 4 / 7 • جاهز للتشغيل الفوري",
-        badge_en: "📺 Offer 4 / 7 • Plug & Play Displays",
+        badge_ar: "✦ العرض 4 / 7 • جاهز للتشغيل الفوري",
+        badge_en: "✦ Offer 4 / 7 • Plug & Play Displays",
         title_ar: "تلفزيون LED عملاق 116 بوصة + بوسترات قابلة للطي",
         title_en: "Giant 116\" All-in-One LED TV & Foldable Posters",
         desc_ar: "شاشات متكاملة بستاند متحرك ومدخل HDMI وتحكم سحابي عبر الواي فاي للمعارض والفنادق.",
         desc_en: "All-in-one mobile displays with HDMI & cloud WiFi control for hotels & exhibitions.",
         cta_ar: "📺 تصفح البوسترات والتلفزيونات",
         cta_en: "📺 Browse Posters & 116\" TVs",
-        bg: "from-[#18181B] via-[#312E81] to-[#92400E]",
+        bg: "from-[#0F172A] via-[#1D4ED8] to-[#0891B2]",
         accent: "text-amber-300",
         action: () => { selectCategory("posters"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
       },
       {
-        badge_ar: "🎓 العرض 5 / 7 • المدارس وغرف الاجتماعات",
-        badge_en: "🎓 Offer 5 / 7 • Schools & Boardrooms",
+        badge_ar: "✦ العرض 5 / 7 • المدارس وغرف الاجتماعات",
+        badge_en: "✦ Offer 5 / 7 • Schools & Boardrooms",
         title_ar: "سبورات تفاعلية ذكية 4K (من 55 إلى 110 بوصة)",
         title_en: "4K Interactive Smart Boards (55\" up to 110\")",
         desc_ar: "نظام Android مدمج ولمس متعدد 20 نقطة مع إمكانية إضافة كمبيوتر OPS Windows 11 وكاميرا AI.",
         desc_en: "Built-in Android, 20-point touch, plus optional OPS Windows 11 PC & 48MP AI camera.",
         cta_ar: "🎓 استكشف السبورات الذكية",
         cta_en: "🎓 Explore Smart Boards",
-        bg: "from-[#064E3B] via-[#0F172A] to-[#1E293B]",
-        accent: "text-emerald-400",
+        bg: "from-[#0B1F4A] via-[#0F766E] to-[#0284C7]",
+        accent: "text-cyan-200",
         action: () => { selectCategory("smartboard"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
       },
       {
-        badge_ar: "✨ العرض 6 / 7 • تصاميم معمارية مبتكرة",
-        badge_en: "✨ Offer 6 / 7 • Creative Architecture",
+        badge_ar: "✦ العرض 6 / 7 • تصاميم معمارية مبتكرة",
+        badge_en: "✦ Offer 6 / 7 • Creative Architecture",
         title_ar: "شاشات مرنة للأعمدة وشاشات زجاجية شفافة (85%)",
         title_en: "Flexible Pillar LED & 85% Transparent Glass LED",
         desc_ar: "حوّل الواجهات الزجاجية والأعمدة الدائرية إلى لوحات إعلانية مبهرة دون حجب الإضاءة الطبيعية.",
         desc_en: "Turn glass storefronts and curved columns into vibrant displays without blocking daylight.",
         cta_ar: "✨ شاهد المرنة والشفافة",
         cta_en: "✨ View Flexible & Glass",
-        bg: "from-[#1E1B4B] via-[#4C1D95] to-[#0F172A]",
-        accent: "text-purple-300",
+        bg: "from-[#071226] via-[#2563EB] to-[#06B6D4]",
+        accent: "text-amber-300",
         action: () => { selectCategory("flexible"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
       },
       {
-        badge_ar: "🎛️ العرض 7 / 7 • أنظمة التحكم وقطع الغيار",
-        badge_en: "🎛️ Offer 7 / 7 • Control Systems & Spares",
+        badge_ar: "✦ العرض 7 / 7 • أنظمة التحكم وقطع الغيار",
+        badge_en: "✦ Offer 7 / 7 • Control Systems & Spares",
         title_ar: "معالجات NovaStar & Colorlight + موديولات وباور سبلاي",
         title_en: "NovaStar & Colorlight Controllers + Modules & PSU",
         desc_ar: "تشكيلة كاملة من معالجات TB40 / TB60 / VX1000 وكروت MRV412 ولوحات الكهرباء والحساسات.",
         desc_en: "Full stock of TB40 / TB60 / VX1000 processors, MRV412 cards, power boxes & sensors.",
         cta_ar: "🎛️ تصفح المعالجات والملحقات",
         cta_en: "🎛️ Browse Controllers",
-        bg: "from-[#0F172A] via-[#1E293B] to-[#B45309]",
-        accent: "text-amber-400",
+        bg: "from-[#0B1F4A] via-[#1E3A8A] to-[#0E7490]",
+        accent: "text-cyan-300",
         action: () => { selectCategory("controllers"); document.getElementById("store").scrollIntoView({ behavior: "smooth" }); }
       }
     ];
@@ -1000,17 +1274,19 @@
         top_banner: "توريد وشحن لجميع مناطق المملكة ودول الخليج | أسعار السوق الرسمية 2026",
         tagline: "نحن نعرض إبداعك",
         nav_store: "المتجر والأسعار (64)",
+        nav_compare: "مقارنة الشاشات",
         nav_calc: "حاسبة المشاريع",
         nav_ship: "الشحن والتركيب",
         nav_terms: "الشروط والضمان",
         cart_btn: "السلة",
+        pwa_install: "تثبيت التطبيق",
         theme_day: "نهاري",
         theme_night: "ليلي",
         train_badge: "⚡ عروض سريعة • اسحب لليمين واليسار",
         train_title: "قطار العروض والأكثر طلباً (طلب واتساب مباشر)",
         train_wa_btn: "💬 اطلب واتساب فوراً",
         hero_badge: "توريد وتركيب شاشات LED العملاقة في السعودية ودول الخليج",
-        hero_title: 'نحن نعرض إبداعك بأحدث تقنيات <span class="text-amber-500">شاشات الـ LED</span>',
+        hero_title: 'نحن نعرض إبداعك بأحدث تقنيات <span class="text-cyan-500">شاشات الـ LED</span>',
         hero_desc: "الكتالوج الكامل (64 منتجاً وملحقاً): الشاشات الداخلية والخارجية، شاشات التأجير (50×50 سم)، الشاشات المرنة والشفافة، البوسترات القابلة للطي، التلفزيونات العملاقة 116 بوصة، السبورات التفاعلية الذكية، ومعالجات NovaStar و Colorlight.",
         hero_cta_calc: "🧮 احسب تكلفة شاشتك الآن",
         hero_cta_store: "📦 تصفح المتجر الكامل (64)",
@@ -1023,6 +1299,12 @@
         store_title: "متجر منتجات WeFone LED",
         store_hint: "انقر على أي صورة لعرضها بالحجم الكبير أو مشاركتها مباشرة عبر واتساب ونسخ الرابط",
         search_ph: "🔍 ابحث عن موديل (مثل: P2.5, TB40, Colorlight)...",
+        cmp_badge: "أداة مقارنة فنية وتجارية",
+        cmp_title: "مقارنة الشاشات والموديلات",
+        cmp_desc: "قارن بين شاشتين أو أكثر من حيث السعر الرسمي، الوحدة، الدقة البكسلية، والخصائص",
+        cmp_slot1: "الشاشة / المنتج الأول:",
+        cmp_slot2: "الشاشة / المنتج الثاني:",
+        cmp_slot3: "الشاشة / المنتج الثالث (اختياري):",
         per_unit: "لكل",
         market_price: "سعر السوق:",
         btn_calc_size: "🧮 احسب مقاسك في الحاسبة",
@@ -1066,7 +1348,7 @@
         sum_excl: "غير شامل الضريبة والشحن",
         sum_add_btn: "🛒 أضف هذا المشروع بالكامل إلى السلة",
         ship_title: "خدمة الشحن والتوصيل",
-        ship_desc: 'نوفر شحناً آمناً ومؤمناً لجميع مدن المملكة العربية السعودية ودول الخليج. <strong class="text-amber-500">تُحدد تكلفة الشحن بدقة حسب حجم ووزن الطلبية وتتم مراجعتها وتأكيدها من فريق المبيعات</strong> فور استلام طلبك.',
+        ship_desc: 'نوفر شحناً آمناً ومؤمناً لجميع مدن المملكة العربية السعودية ودول الخليج. <strong class="text-amber-600 dark:text-amber-400">تُحدد تكلفة الشحن بدقة حسب حجم ووزن الطلبية وتتم مراجعتها وتأكيدها من فريق المبيعات</strong> فور استلام طلبك.',
         terms_title: "الضمان وشروط التوريد",
         terms_items: [
           "عمر تشغيلي يصل إلى 100,000 ساعة عمل.",
@@ -1097,17 +1379,19 @@
         top_banner: "Supply & Shipping Across Saudi Arabia & GCC | Official Market Prices 2026",
         tagline: "We Display Your Creativity",
         nav_store: "Store & Prices (64)",
+        nav_compare: "Compare Screens",
         nav_calc: "Project Calculator",
         nav_ship: "Shipping & Install",
         nav_terms: "Warranty & Terms",
         cart_btn: "Cart",
+        pwa_install: "Install App",
         theme_day: "Light",
         theme_night: "Dark",
         train_badge: "⚡ Fast Deals • Swipe Left & Right",
         train_title: "Hot Deals Carousel (1-Tap WhatsApp Order)",
         train_wa_btn: "💬 Order on WhatsApp",
         hero_badge: "Giant LED Display Supply & Installation in KSA & GCC",
-        hero_title: 'We Display Your Creativity with Next-Gen <span class="text-amber-500">LED Screens</span>',
+        hero_title: 'We Display Your Creativity with Next-Gen <span class="text-cyan-500">LED Screens</span>',
         hero_desc: "Complete 2026 Catalog (64 Items): Indoor & Outdoor LED Screens, 50×50cm Rental Displays, Flexible & Transparent LED, Foldable LED Posters, 116\" All-in-One LED TVs, 4K Interactive Smart Boards, and NovaStar / Colorlight Processors.",
         hero_cta_calc: "🧮 Calculate Your Screen Now",
         hero_cta_store: "📦 Browse Full Catalog (64)",
@@ -1120,6 +1404,12 @@
         store_title: "WeFone LED Product Store",
         store_hint: "Click any product image to zoom in or share directly via WhatsApp & copy product link",
         search_ph: "🔍 Search model (e.g., P2.5, TB40, Colorlight)...",
+        cmp_badge: "Technical & Commercial Comparison Tool",
+        cmp_title: "Compare LED Screens & Models",
+        cmp_desc: "Compare 2 or 3 models side-by-side by official market price, unit, pixel density & specs",
+        cmp_slot1: "First Screen / Product:",
+        cmp_slot2: "Second Screen / Product:",
+        cmp_slot3: "Third Screen / Product (Optional):",
         per_unit: "Per",
         market_price: "Market Price:",
         btn_calc_size: "🧮 Configure Size in Calculator",
@@ -1163,7 +1453,7 @@
         sum_excl: "Excludes VAT & Shipping",
         sum_add_btn: "🛒 Add Complete Project to Cart",
         ship_title: "Shipping & Delivery Service",
-        ship_desc: 'We provide safe, insured shipping to all cities in Saudi Arabia and the GCC. <strong class="text-amber-500">Shipping cost is calculated accurately based on order volume and weight and confirmed by our sales team</strong> upon receiving your order.',
+        ship_desc: 'We provide safe, insured shipping to all cities in Saudi Arabia and the GCC. <strong class="text-amber-600 dark:text-amber-400">Shipping cost is calculated accurately based on order volume and weight and confirmed by our sales team</strong> upon receiving your order.',
         terms_title: "Warranty & Supply Terms",
         terms_items: [
           "Operational lifespan up to 100,000 working hours.",
@@ -1272,9 +1562,8 @@
     ];
 
     let PRODUCTS = JSON.parse(localStorage.getItem("wefone_custom_products_v64_webp") || "null") || JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
-    if (!Array.isArray(PRODUCTS) || PRODUCTS.length < DEFAULT_PRODUCTS.length) {
-      const savedMap = new Map(Array.isArray(PRODUCTS) ? PRODUCTS.map(p => [p.id, p]) : []);
-      PRODUCTS = DEFAULT_PRODUCTS.map(def => Object.assign({}, def, savedMap.get(def.id) || {}));
+    if (!Array.isArray(PRODUCTS) || PRODUCTS.length === 0) {
+      PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
     }
     let cart = [];
     let savedOrders = JSON.parse(localStorage.getItem("wefone_orders_2026") || "[]");
@@ -1292,14 +1581,14 @@
     }
 
     function getFallbackSvgHtml(p) {
-      let color = "#F59E0B";
-      if (p.cat === "outdoor") color = "#EF4444";
-      if (p.cat === "rental") color = "#38BDF8";
-      if (p.cat === "smartboard") color = "#10B981";
-      if (p.cat === "controllers") color = "#A855F7";
+      let color = "#22D3EE";
+      if (p.cat === "outdoor") color = "#38BDF8";
+      if (p.cat === "rental") color = "#67E8F9";
+      if (p.cat === "smartboard") color = "#34D399";
+      if (p.cat === "controllers") color = "#A78BFA";
 
       return '<svg viewBox="0 0 300 250" class="w-full h-full">' +
-        '<rect x="14" y="14" width="272" height="222" rx="10" fill="#111C38" stroke="' + color + '" stroke-width="1.5"/>' +
+        '<rect x="14" y="14" width="272" height="222" rx="10" fill="#08152B" stroke="' + color + '" stroke-width="1.5"/>' +
         '<line x1="105" y1="14" x2="105" y2="236" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
         '<line x1="195" y1="14" x2="195" y2="236" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
         '<line x1="14" y1="125" x2="286" y2="125" stroke="#FFFFFF" stroke-opacity="0.08"/>' +
@@ -1318,7 +1607,7 @@
       const clickAttr = clickable ? ' onclick="openProductLightbox(\'' + p.id + '\')"' : '';
       const cursorCls = clickable ? ' cursor-pointer group' : '';
       const zoomBadge = clickable
-        ? '<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-2 left-2 bg-slate-950/75 text-amber-400 border border-amber-500/40 text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none">🔍</span>'
+        ? '<span class="opacity-0 group-hover:opacity-100 transition-opacity absolute bottom-2 left-2 bg-slate-950/75 text-cyan-300 border border-cyan-400/40 text-[10px] font-bold px-2 py-0.5 rounded-md pointer-events-none">🔍</span>'
         : '';
 
       if (rawUrl !== "") {
@@ -1327,7 +1616,7 @@
         const isVideo = /\.(mp4|webm|ogg)(\?.*)?$/i.test(rawUrl) || rawUrl.startsWith("data:video/");
 
         if (isVideo) {
-          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
+          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#08152B] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
             '<video src="' + rawUrl + '" autoplay loop muted playsinline style="' + inlineStyle + '" class="w-full h-full object-cover" onerror="this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';"></video>' +
             '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
             zoomBadge +
@@ -1335,7 +1624,7 @@
         }
 
         if (rawUrl.startsWith("data:") || /^https?:\/\//i.test(rawUrl)) {
-          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
+          return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#08152B] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
             '<img src="' + rawUrl + '" loading="lazy" decoding="async" alt="' + p.id + '" style="' + inlineStyle + '" class="w-full h-full object-cover" ' +
             'onerror="this.onerror=null; this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\';" />' +
             '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
@@ -1347,7 +1636,7 @@
         const list = Array.from(new Set([baseNoExt + ".webp", baseNoExt + ".jpg", baseNoExt + ".png"]));
         const listAttr = encodeURIComponent(JSON.stringify(list));
 
-        return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
+        return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#08152B] border border-slate-800 overflow-hidden flex items-center justify-center' + cursorCls + '">' +
           '<img src="' + list[0] + '" data-list="' + listAttr + '" data-i="0" loading="lazy" decoding="async" alt="' + p.id + '" style="' + inlineStyle + '" class="w-full h-full object-cover" ' +
           'onerror="const arr=JSON.parse(decodeURIComponent(this.dataset.list)); const n=Number(this.dataset.i)+1; if(n<arr.length){ this.dataset.i=n; this.src=arr[n]; } else { this.onerror=null; this.style.display=\'none\'; this.nextElementSibling.style.display=\'block\'; }" />' +
           '<div style="display:none;" class="w-full h-full">' + fallbackSvg + '</div>' +
@@ -1355,7 +1644,7 @@
         '</div>';
       }
 
-      return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#090F20] border border-slate-800 overflow-hidden' + cursorCls + '">' + fallbackSvg + zoomBadge + '</div>';
+      return '<div' + clickAttr + ' class="relative w-full aspect-[6/5] rounded-xl bg-[#08152B] border border-slate-800 overflow-hidden' + cursorCls + '">' + fallbackSvg + zoomBadge + '</div>';
     }
 
     function getProdTitle(p) {
@@ -1387,7 +1676,7 @@
           '<div class="space-y-2 text-center md:text-start max-w-2xl">' +
             '<span class="inline-block bg-slate-950/50 border border-white/15 ' + s.accent + ' text-[11px] sm:text-xs font-black px-3 py-1 rounded-full">' + badge + '</span>' +
             '<h2 class="text-lg sm:text-2xl lg:text-3xl font-black leading-snug">' + title + '</h2>' +
-            '<p class="text-xs sm:text-sm text-slate-200 leading-relaxed">' + desc + '</p>' +
+            '<p class="text-xs sm:text-sm text-slate-100 leading-relaxed">' + desc + '</p>' +
           '</div>' +
           '<div class="shrink-0">' +
             '<button onclick="triggerPromoAction(' + idx + ')" class="gold-gradient hover:opacity-95 text-slate-950 font-black px-5 py-3 rounded-xl text-xs sm:text-sm shadow-lg transition whitespace-nowrap">' + cta + '</button>' +
@@ -1397,7 +1686,7 @@
 
       dots.innerHTML = PROMO_SLIDES.map((_, idx) =>
         '<button onclick="goToPromoSlide(' + idx + ')" aria-label="Slide ' + (idx + 1) + '" class="h-2 rounded-full transition-all ' +
-        (idx === currentPromoSlide ? 'w-6 bg-amber-400' : 'w-2 bg-white/40 hover:bg-white/70') + '"></button>'
+        (idx === currentPromoSlide ? 'w-6 bg-cyan-300' : 'w-2 bg-white/40 hover:bg-white/70') + '"></button>'
       ).join("");
 
       updatePromoPosition();
@@ -1410,7 +1699,7 @@
       track.style.transform = "translateX(-" + (currentPromoSlide * 100) + "%)";
       if (dots) {
         Array.from(dots.children).forEach((dot, idx) => {
-          dot.className = "h-2 rounded-full transition-all " + (idx === currentPromoSlide ? "w-6 bg-amber-400" : "w-2 bg-white/40 hover:bg-white/70");
+          dot.className = "h-2 rounded-full transition-all " + (idx === currentPromoSlide ? "w-6 bg-cyan-300" : "w-2 bg-white/40 hover:bg-white/70");
         });
       }
     }
@@ -1465,7 +1754,6 @@
       }, { passive: true });
     })();
 
-    // Horizontal Product Train Carousel (Noon / Alibaba Style)
     function orderSingleProductWhatsApp(prodId) {
       const p = PRODUCTS.find(x => x.id === prodId);
       if (!p) return;
@@ -1508,23 +1796,23 @@
 
       track.innerHTML = items.map(p => {
         const secondaryBtn = p.soldBySqm
-          ? '<button onclick="goToCalculatorWithModel(\'' + p.id + '\')" class="w-full theme-subtle-box hover:border-amber-500 text-[11px] font-bold py-1.5 px-2 rounded-lg transition">' + t.btn_calc_size + '</button>'
-          : '<button onclick="addToCart(\'' + p.id + '\')" class="w-full theme-subtle-box hover:border-amber-500 text-[11px] font-bold py-1.5 px-2 rounded-lg transition">' + t.btn_add_cart + '</button>';
+          ? '<button onclick="goToCalculatorWithModel(\'' + p.id + '\')" class="w-full theme-subtle-box hover:border-cyan-500 text-[11px] font-bold py-1.5 px-2 rounded-lg transition">' + t.btn_calc_size + '</button>'
+          : '<button onclick="addToCart(\'' + p.id + '\')" class="w-full theme-subtle-box hover:border-cyan-500 text-[11px] font-bold py-1.5 px-2 rounded-lg transition">' + t.btn_add_cart + '</button>';
 
         return '<div class="snap-start shrink-0 w-56 sm:w-64 card-bg rounded-2xl p-3 flex flex-col justify-between transition">' +
           '<div>' +
             getProductVisual(p, null, true) +
             '<div class="mt-2 flex items-center justify-between gap-1">' +
-              '<span class="text-[10px] font-bold px-2 py-0.5 rounded theme-subtle-box text-amber-500">' + p.id + '</span>' +
+              '<span class="text-[10px] font-bold px-2 py-0.5 rounded theme-subtle-box text-cyan-700 dark:text-cyan-400">' + p.id + '</span>' +
               '<span class="text-[10px] theme-muted">' + t.per_unit + ' ' + getProdUnit(p) + '</span>' +
             '</div>' +
             '<h3 class="text-xs sm:text-sm font-black mt-1.5 line-clamp-1">' + getProdTitle(p) + '</h3>' +
             '<p class="text-[11px] theme-muted mt-0.5 line-clamp-1">' + getProdSpecs(p) + '</p>' +
           '</div>' +
-          '<div class="mt-2.5 pt-2 border-t border-amber-500/15 space-y-1.5">' +
+          '<div class="mt-2.5 pt-2 border-t border-cyan-500/15 space-y-1.5">' +
             '<div class="flex items-baseline justify-between">' +
               '<span class="text-[10px] theme-muted">' + t.market_price + '</span>' +
-              '<span class="text-sm sm:text-base font-black text-amber-500">' + formatPrice(p.marketAED) + '</span>' +
+              '<span class="text-sm sm:text-base font-black text-blue-700 dark:text-cyan-400">' + formatPrice(p.marketAED) + '</span>' +
             '</div>' +
             '<button onclick="orderSingleProductWhatsApp(\'' + p.id + '\')" class="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-black py-2 px-2.5 rounded-xl text-xs flex items-center justify-center gap-1 transition">' +
               '<span>' + t.train_wa_btn + '</span>' +
@@ -1576,7 +1864,114 @@
       startTrainAuto();
     }
 
-    // Theme (Day / Night) Management
+    // Screen Comparison Tool
+    function getPitchFromId(id) {
+      if (id.includes("1.25")) return 1.25;
+      if (id.includes("1.5")) return 1.53;
+      if (id.includes("1.8")) return 1.86;
+      if (id.includes("2.6")) return 2.6;
+      if (id.includes("2.9")) return 2.97;
+      if (id.includes("3.9")) return 3.91;
+      if (id.includes("P3")) return 3.0;
+      if (id.includes("P4")) return 4.0;
+      if (id.includes("P5")) return 5.0;
+      if (id.includes("6.67")) return 6.67;
+      if (id.includes("P8")) return 8.0;
+      if (id.includes("10.4")) return 10.4;
+      if (id.includes("2.5")) return 2.5;
+      return null;
+    }
+
+    function populateComparisonSelects() {
+      const s1 = document.getElementById("cmp-prod-1");
+      const s2 = document.getElementById("cmp-prod-2");
+      const s3 = document.getElementById("cmp-prod-3");
+      if (!s1 || !s2 || !s3) return;
+
+      const v1 = s1.value || "IS-WF-P1.5-GOB";
+      const v2 = s2.value || "IS-WF-P2.5-MASK";
+      const v3 = s3.value || "OS-WF-P5";
+
+      const opts = PRODUCTS.map(p => '<option value="' + p.id + '">' + p.id + ' — ' + getProdTitle(p) + '</option>').join("");
+      s1.innerHTML = opts;
+      s2.innerHTML = opts;
+      s3.innerHTML = '<option value="">' + (currentLang === "ar" ? "— بدون مقارنة ثالثة —" : "— None —") + '</option>' + opts;
+
+      s1.value = PRODUCTS.some(p => p.id === v1) ? v1 : (PRODUCTS[0] ? PRODUCTS[0].id : "");
+      s2.value = PRODUCTS.some(p => p.id === v2) ? v2 : (PRODUCTS[1] ? PRODUCTS[1].id : "");
+      s3.value = PRODUCTS.some(p => p.id === v3) ? v3 : "";
+
+      renderComparisonTable();
+    }
+
+    function renderComparisonTable() {
+      const wrap = document.getElementById("comparison-table-wrap");
+      if (!wrap) return;
+      const ids = [
+        document.getElementById("cmp-prod-1").value,
+        document.getElementById("cmp-prod-2").value,
+        document.getElementById("cmp-prod-3").value
+      ].filter(Boolean);
+
+      const selected = ids.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+      if (selected.length < 2) {
+        wrap.innerHTML = '<div class="text-center theme-muted text-xs py-4">' + (currentLang === "ar" ? "اختر منتجين على الأقل للمقارنة" : "Select at least 2 products to compare") + '</div>';
+        return;
+      }
+
+      const isAr = currentLang === "ar";
+      const lblCode = isAr ? "كود الموديل" : "Model Code";
+      const lblPrice = isAr ? "سعر السوق الرسمي" : "Official Market Price";
+      const lblUnit = isAr ? "وحدة القياس" : "Billing Unit";
+      const lblPitch = isAr ? "المسافة بين البكسلات" : "Pixel Pitch";
+      const lblDensity = isAr ? "كثافة البكسل التقريبية / م²" : "Approx. Pixels / sqm";
+      const lblSpecs = isAr ? "المواصفات الفنية" : "Technical Specs";
+      const lblAction = isAr ? "إجراء سريع" : "Quick Action";
+
+      const headers = selected.map(p =>
+        '<th class="p-3 text-center min-w-[190px] border-b border-cyan-500/20">' +
+          '<div class="w-28 mx-auto mb-2">' + getProductVisual(p, null, true) + '</div>' +
+          '<div class="text-xs sm:text-sm font-black">' + getProdTitle(p) + '</div>' +
+        '</th>'
+      ).join("");
+
+      const rowCode = selected.map(p => '<td class="p-3 text-center font-bold text-cyan-700 dark:text-cyan-400">' + p.id + '</td>').join("");
+      const rowPrice = selected.map(p => '<td class="p-3 text-center font-black text-base text-blue-700 dark:text-cyan-300">' + formatPrice(p.marketAED) + '</td>').join("");
+      const rowUnit = selected.map(p => '<td class="p-3 text-center theme-muted">' + getProdUnit(p) + '</td>').join("");
+      const rowPitch = selected.map(p => {
+        const pitch = getPitchFromId(p.id);
+        return '<td class="p-3 text-center font-bold">' + (pitch ? ("P" + pitch + " mm") : (isAr ? "متكامل / ملحق" : "Integrated / Acc.")) + '</td>';
+      }).join("");
+      const rowDensity = selected.map(p => {
+        const pitch = getPitchFromId(p.id);
+        if (!pitch) return '<td class="p-3 text-center theme-muted">—</td>';
+        const pxPerSqm = Math.round(1000000 / (pitch * pitch));
+        return '<td class="p-3 text-center font-bold text-emerald-600 dark:text-emerald-400">' + pxPerSqm.toLocaleString("en-US") + ' px</td>';
+      }).join("");
+      const rowSpecs = selected.map(p => '<td class="p-3 text-xs theme-muted leading-relaxed">' + getProdSpecs(p) + '</td>').join("");
+      const rowAction = selected.map(p => {
+        const btn = p.soldBySqm
+          ? '<button onclick="goToCalculatorWithModel(\'' + p.id + '\')" class="w-full brand-pro-gradient text-white font-black py-2 px-3 rounded-xl text-xs transition">' + (isAr ? "🧮 احسب مقاسه" : "🧮 Calculate") + '</button>'
+          : '<button onclick="addToCart(\'' + p.id + '\')" class="w-full gold-gradient text-slate-950 font-black py-2 px-3 rounded-xl text-xs transition">' + (isAr ? "🛒 أضف للسلة" : "🛒 Add to Cart") + '</button>';
+        return '<td class="p-3 text-center">' + btn + '</td>';
+      }).join("");
+
+      wrap.innerHTML =
+        '<table class="w-full border-collapse text-xs sm:text-sm">' +
+          '<thead><tr class="theme-subtle-box"><th class="p-3 text-start min-w-[150px] border-b border-cyan-500/20">' + (isAr ? "البند" : "Criteria") + '</th>' + headers + '</tr></thead>' +
+          '<tbody class="divide-y divide-slate-700/20">' +
+            '<tr><td class="p-3 font-bold">' + lblCode + '</td>' + rowCode + '</tr>' +
+            '<tr><td class="p-3 font-bold">' + lblPrice + '</td>' + rowPrice + '</tr>' +
+            '<tr><td class="p-3 font-bold">' + lblUnit + '</td>' + rowUnit + '</tr>' +
+            '<tr><td class="p-3 font-bold">' + lblPitch + '</td>' + rowPitch + '</tr>' +
+            '<tr><td class="p-3 font-bold">' + lblDensity + '</td>' + rowDensity + '</tr>' +
+            '<tr><td class="p-3 font-bold">' + lblSpecs + '</td>' + rowSpecs + '</tr>' +
+            '<tr><td class="p-3 font-bold">' + lblAction + '</td>' + rowAction + '</tr>' +
+          '</tbody>' +
+        '</table>';
+    }
+
+    // Theme (Light / Dark) Management
     function applyTheme(theme) {
       currentTheme = theme;
       localStorage.setItem("wefone_theme", theme);
@@ -1585,16 +1980,16 @@
       const labelEl = document.getElementById("theme-label");
       const t = I18N[currentLang];
 
-      if (theme === "light") {
+      if (theme === "dark") {
+        htmlEl.classList.add("dark");
+        htmlEl.classList.remove("light");
+        iconEl.textContent = "☀️";
+        labelEl.textContent = t.theme_day;
+      } else {
         htmlEl.classList.remove("dark");
         htmlEl.classList.add("light");
         iconEl.textContent = "🌙";
         labelEl.textContent = t.theme_night;
-      } else {
-        htmlEl.classList.remove("light");
-        htmlEl.classList.add("dark");
-        iconEl.textContent = "☀️";
-        labelEl.textContent = t.theme_day;
       }
     }
 
@@ -1637,6 +2032,7 @@
       renderProductTrain();
       renderCategories();
       renderProducts();
+      populateComparisonSelects();
       populateCalculatorSelect();
       onCalcScreenChange();
       renderCart();
@@ -1646,7 +2042,7 @@
       applyLanguage(currentLang === "ar" ? "en" : "ar");
     }
 
-    // Background Google Sheets Sync
+    // Background Google Sheets Sync (Preserving existing GSHEETS_API_URL & payload contract)
     async function syncProductsFromGoogleSheets() {
       if (!GSHEETS_API_URL) return;
       try {
@@ -1654,7 +2050,8 @@
         const data = await res.json();
         if (data && data.status === "ok" && Array.isArray(data.products) && data.products.length > 0) {
           const cloudMap = new Map(data.products.map(item => [item.id, item]));
-          PRODUCTS = PRODUCTS.map(localItem => {
+          const baseList = PRODUCTS.length >= DEFAULT_PRODUCTS.length ? PRODUCTS : DEFAULT_PRODUCTS;
+          PRODUCTS = baseList.map(localItem => {
             const cloudItem = cloudMap.get(localItem.id);
             if (!cloudItem) return localItem;
             return Object.assign({}, localItem, cloudItem, {
@@ -1667,6 +2064,7 @@
           document.getElementById("cloud-sync-badge").classList.remove("hidden");
           renderProductTrain();
           renderProducts();
+          populateComparisonSelects();
           populateCalculatorSelect();
           updateCalculator();
           if (data.products.length < DEFAULT_PRODUCTS.length) {
@@ -1682,7 +2080,7 @@
 
     async function pushAllProductsToCloud(silent) {
       if (!GSHEETS_API_URL) return;
-      if (!silent) showToast("⏳ جاري مزامنة الـ 64 منتجاً مع Google Sheets...");
+      if (!silent) showToast("⏳ جاري مزامنة المنتجات مع Google Sheets...");
       try {
         await fetch(GSHEETS_API_URL, {
           method: "POST",
@@ -1713,19 +2111,20 @@
       ["SAR", "AED", "USD"].forEach(c => {
         const btn = document.getElementById("curr-" + c);
         if (c === curr) {
-          btn.className = "px-2 py-1 rounded-lg bg-amber-500 text-slate-950 transition";
+          btn.className = "px-2 py-1 rounded-lg brand-pro-gradient text-white transition";
         } else {
-          btn.className = "px-2 py-1 rounded-lg theme-muted hover:text-amber-500 transition";
+          btn.className = "px-2 py-1 rounded-lg theme-muted hover:text-cyan-500 transition";
         }
       });
       renderProductTrain();
       renderProducts();
+      renderComparisonTable();
       populateCalculatorSelect();
       updateCalculator();
       renderCart();
     }
 
-    // Product Direct Share (Universal Multi-Platform + Rich Thumbnail Card + Image File Share)
+    // Product Direct Share
     function getProductShareUrl(prodId) {
       const url = new URL(window.location.href);
       url.searchParams.set("product", prodId);
@@ -1802,9 +2201,7 @@
                   shareData.files = [file];
                 }
               }
-            } catch (imgErr) {
-              // Fallback to sharing title + text + URL
-            }
+            } catch (imgErr) {}
           }
           await navigator.share(shareData);
           return;
@@ -1878,8 +2275,8 @@
 
       const primaryBox = document.getElementById("lb-primary-action");
       primaryBox.innerHTML = p.soldBySqm
-        ? '<button onclick="closeProductLightbox(); goToCalculatorWithModel(\'' + p.id + '\')" class="w-full gold-gradient text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs transition">' + t.btn_calc_size + '</button>'
-        : '<button onclick="addToCart(\'' + p.id + '\'); closeProductLightbox();" class="w-full gold-gradient text-slate-950 font-black py-2.5 px-4 rounded-xl text-xs transition">' + t.btn_add_cart + '</button>';
+        ? '<button onclick="closeProductLightbox(); goToCalculatorWithModel(\'' + p.id + '\')" class="w-full brand-pro-gradient text-white font-black py-2.5 px-4 rounded-xl text-xs transition">' + t.btn_calc_size + '</button>'
+        : '<button onclick="addToCart(\'' + p.id + '\'); closeProductLightbox();" class="w-full brand-pro-gradient text-white font-black py-2.5 px-4 rounded-xl text-xs transition">' + t.btn_add_cart + '</button>';
 
       document.getElementById("lb-share-all").onclick = () => openShareModal(p.id);
       document.getElementById("lb-copy-link").onclick = () => copyProductLink(p.id);
@@ -1897,8 +2294,8 @@
         const active = c.id === currentCategory;
         const label = currentLang === "en" ? c.name_en : c.name_ar;
         const cls = active
-          ? "gold-gradient text-slate-950 font-black"
-          : "card-bg theme-muted hover:text-amber-500 font-bold";
+          ? "brand-pro-gradient text-white font-black"
+          : "card-bg theme-muted hover:text-cyan-600 font-bold";
         return '<button onclick="selectCategory(\'' + c.id + '\')" class="whitespace-nowrap px-4 py-2 rounded-xl text-xs transition ' + cls + '">' + label + '</button>';
       }).join("");
     }
@@ -1927,22 +2324,22 @@
 
       grid.innerHTML = filtered.map(p => {
         const actionBtn = p.soldBySqm
-          ? '<button onclick="goToCalculatorWithModel(\'' + p.id + '\')" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-black py-2.5 rounded-xl text-xs transition">' + t.btn_calc_size + '</button>'
-          : '<button onclick="addToCart(\'' + p.id + '\')" class="w-full theme-subtle-box hover:bg-amber-500 hover:text-slate-950 font-bold py-2.5 rounded-xl text-xs transition">' + t.btn_add_cart + '</button>';
+          ? '<button onclick="goToCalculatorWithModel(\'' + p.id + '\')" class="w-full brand-pro-gradient hover:opacity-95 text-white font-black py-2.5 rounded-xl text-xs transition">' + t.btn_calc_size + '</button>'
+          : '<button onclick="addToCart(\'' + p.id + '\')" class="w-full theme-subtle-box hover:bg-blue-700 hover:text-white font-bold py-2.5 rounded-xl text-xs transition">' + t.btn_add_cart + '</button>';
 
         const shareBarHtml =
           '<div class="grid grid-cols-2 gap-1.5 mt-2">' +
-            '<button onclick="openShareModal(\'' + p.id + '\')" class="bg-amber-500/15 hover:bg-amber-500 text-amber-500 hover:text-slate-950 border border-amber-500/30 py-1.5 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition">' +
+            '<button onclick="openShareModal(\'' + p.id + '\')" class="bg-cyan-500/15 hover:bg-cyan-500 text-cyan-700 dark:text-cyan-300 hover:text-slate-950 border border-cyan-500/30 py-1.5 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition">' +
               '<span>📤</span><span>' + t.share_btn + '</span>' +
             '</button>' +
-            '<button onclick="copyProductLink(\'' + p.id + '\')" class="theme-subtle-box hover:border-amber-500 py-1.5 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition">' +
+            '<button onclick="copyProductLink(\'' + p.id + '\')" class="theme-subtle-box hover:border-cyan-500 py-1.5 px-2 rounded-lg text-[11px] font-bold flex items-center justify-center gap-1 transition">' +
               '<span>🔗</span><span>' + t.copy_link + '</span>' +
             '</button>' +
           '</div>';
 
         const adminEditHtml = isEditMode
-          ? '<div class="mt-2.5 pt-2.5 border-t border-emerald-500/40 space-y-1.5">' +
-              '<div class="flex justify-between text-[11px] text-emerald-500 font-bold">' +
+          ? '<div class="mt-2.5 pt-2.5 border-t border-cyan-500/40 space-y-1.5">' +
+              '<div class="flex justify-between text-[11px] text-emerald-600 dark:text-emerald-400 font-bold">' +
                 '<span>موزع: ' + p.resellerAED + ' AED</span>' +
                 '<span>سوق: ' + p.marketAED + ' AED</span>' +
               '</div>' +
@@ -1954,16 +2351,16 @@
           '<div>' +
             getProductVisual(p, null, true) +
             '<div class="mt-3 flex items-center justify-between gap-2">' +
-              '<span class="text-[10px] font-bold px-2 py-0.5 rounded theme-subtle-box text-amber-500">' + p.id + '</span>' +
+              '<span class="text-[10px] font-bold px-2 py-0.5 rounded theme-subtle-box text-cyan-700 dark:text-cyan-400">' + p.id + '</span>' +
               '<span class="text-[10px] theme-muted">' + t.per_unit + ' ' + getProdUnit(p) + '</span>' +
             '</div>' +
             '<h3 class="text-sm sm:text-base font-black mt-1.5">' + getProdTitle(p) + '</h3>' +
             '<p class="text-xs theme-muted mt-1 leading-relaxed">' + getProdSpecs(p) + '</p>' +
           '</div>' +
-          '<div class="mt-4 pt-3 border-t border-amber-500/15">' +
+          '<div class="mt-4 pt-3 border-t border-cyan-500/15">' +
             '<div class="flex items-baseline justify-between mb-3">' +
               '<span class="text-[11px] theme-muted">' + t.market_price + '</span>' +
-              '<span class="text-base sm:text-lg font-black text-amber-500">' + formatPrice(p.marketAED) + '</span>' +
+              '<span class="text-base sm:text-lg font-black text-blue-700 dark:text-cyan-400">' + formatPrice(p.marketAED) + '</span>' +
             '</div>' +
             actionBtn +
             shareBarHtml +
@@ -2027,10 +2424,10 @@
     }
 
     function getRecommendedProcessor(totalPixels) {
-      if (totalPixels <= 1300000) return PRODUCTS.find(p => p.id === "NOVA-TB40");
-      if (totalPixels <= 2300000) return PRODUCTS.find(p => p.id === "NOVA-TB60");
-      if (totalPixels <= 3900000) return PRODUCTS.find(p => p.id === "NOVA-VX600");
-      return PRODUCTS.find(p => p.id === "NOVA-VX1000");
+      if (totalPixels <= 1300000) return PRODUCTS.find(p => p.id === "NOVA-TB40") || PRODUCTS[0];
+      if (totalPixels <= 2300000) return PRODUCTS.find(p => p.id === "NOVA-TB60") || PRODUCTS[0];
+      if (totalPixels <= 3900000) return PRODUCTS.find(p => p.id === "NOVA-VX600") || PRODUCTS[0];
+      return PRODUCTS.find(p => p.id === "NOVA-VX1000") || PRODUCTS[0];
     }
 
     function updateCalculator() {
@@ -2055,20 +2452,7 @@
 
       const area = +(w * h).toFixed(2);
       const modulesCount = Math.ceil(area / (0.32 * 0.16));
-
-      let pitch = 2.5;
-      if (id.includes("1.25")) pitch = 1.25;
-      else if (id.includes("1.5")) pitch = 1.53;
-      else if (id.includes("1.8")) pitch = 1.86;
-      else if (id.includes("2.6")) pitch = 2.6;
-      else if (id.includes("2.9")) pitch = 2.97;
-      else if (id.includes("3.9")) pitch = 3.91;
-      else if (id.includes("P3")) pitch = 3.0;
-      else if (id.includes("P4")) pitch = 4.0;
-      else if (id.includes("P5")) pitch = 5.0;
-      else if (id.includes("6.67")) pitch = 6.67;
-      else if (id.includes("P8")) pitch = 8.0;
-      else if (id.includes("10.4")) pitch = 10.4;
+      const pitch = getPitchFromId(id) || 2.5;
 
       const pixW = Math.round((w * 1000) / pitch);
       const pixH = Math.round((h * 1000) / pitch);
@@ -2089,7 +2473,7 @@
 
       if (isRental && document.getElementById("calc-flight-case").checked) {
         const casesCount = Math.ceil(rentalPieces / 6);
-        const fcProd = PRODUCTS.find(p => p.id === "FLIGHT-CASE-8");
+        const fcProd = PRODUCTS.find(p => p.id === "FLIGHT-CASE-8") || { marketAED: 550, resellerAED: 500 };
         lines.push({
           label: (currentLang === "ar" ? "صناديق تخزين Flight Case (" : "Flight Cases (") + casesCount + ")",
           marketAED: casesCount * fcProd.marketAED,
@@ -2099,7 +2483,7 @@
 
       if (isRental && document.getElementById("calc-hanging-bars").checked) {
         const barsCount = Math.max(1, Math.round(w / 0.5));
-        const barProd = PRODUCTS.find(p => p.id === "HANGING-BAR-05");
+        const barProd = PRODUCTS.find(p => p.id === "HANGING-BAR-05") || { marketAED: 116, resellerAED: 106 };
         lines.push({
           label: (currentLang === "ar" ? "مساطر تعليق 0.5م (" : "Hanging Bars 0.5m (") + barsCount + ") + 20m Cable",
           marketAED: (barsCount * barProd.marketAED) + 30,
@@ -2138,9 +2522,9 @@
         });
       }
 
-      let recPowerBox = PRODUCTS.find(p => p.id === "PA-PLC-20KW");
-      if (maxKw > 25) recPowerBox = PRODUCTS.find(p => p.id === "PA-PLC-40KW");
-      else if (maxKw > 15) recPowerBox = PRODUCTS.find(p => p.id === "PA-PLC-30KW");
+      let recPowerBox = PRODUCTS.find(p => p.id === "PA-PLC-20KW") || { marketAED: 1100, resellerAED: 1000, id: "PA-PLC-20KW", name: "PA-PLC 20KW" };
+      if (maxKw > 25) recPowerBox = PRODUCTS.find(p => p.id === "PA-PLC-40KW") || recPowerBox;
+      else if (maxKw > 15) recPowerBox = PRODUCTS.find(p => p.id === "PA-PLC-30KW") || recPowerBox;
 
       document.getElementById("calc-power-box-label").textContent = recPowerBox.id;
       if (document.getElementById("calc-power-box").checked) {
@@ -2152,7 +2536,7 @@
       }
 
       if (isOutdoor && document.getElementById("calc-brightness-sensor").checked) {
-        const sensorProd = PRODUCTS.find(p => p.id === "SSR-L16");
+        const sensorProd = PRODUCTS.find(p => p.id === "SSR-L16") || { marketAED: 265, resellerAED: 221, name: "SSR-L16" };
         lines.push({
           label: getProdTitle(sensorProd),
           marketAED: sensorProd.marketAED,
@@ -2274,11 +2658,11 @@
           '<div class="text-[11px] theme-muted line-clamp-2">' + item.details + '</div>' +
           '<div class="flex items-center justify-between pt-1">' +
             '<div class="flex items-center gap-2 card-bg rounded-lg px-2 py-1">' +
-              '<button onclick="updateCartQty(' + idx + ', -1)" class="text-amber-500 font-black px-1.5">-</button>' +
+              '<button onclick="updateCartQty(' + idx + ', -1)" class="text-cyan-600 font-black px-1.5">-</button>' +
               '<span class="text-xs font-bold">' + item.qty + '</span>' +
-              '<button onclick="updateCartQty(' + idx + ', 1)" class="text-amber-500 font-black px-1.5">+</button>' +
+              '<button onclick="updateCartQty(' + idx + ', 1)" class="text-cyan-600 font-black px-1.5">+</button>' +
             '</div>' +
-            '<span class="text-sm font-black text-amber-500">' + formatPrice(sub) + '</span>' +
+            '<span class="text-sm font-black text-blue-700 dark:text-cyan-400">' + formatPrice(sub) + '</span>' +
           '</div>' +
         '</div>';
       }).join("");
@@ -2326,8 +2710,11 @@
         customer: custName + " (" + custPhone + ")",
         shipping: shipDest + (custCity ? " - " + custCity : ""),
         itemsSummary: cart.map(i => i.name + " ×" + i.qty).join(" | "),
+        status: "جديد",
         customerTotalFormatted: formatPrice(totalMarketAED),
+        marketAEDValue: Math.round(totalMarketAED),
         supplierTotalAED: Math.round(totalResellerAED) + " AED",
+        resellerAEDValue: Math.round(totalResellerAED),
         supplierWaUrl: supplierWaUrl
       };
 
@@ -2366,7 +2753,7 @@
       window.open(waLink, "_blank");
     }
 
-    // Secret Admin Access & Product Editor
+    // Secret Admin Access & Product / Order / Sales Management
     let logoTapCount = 0;
     let logoTapTimer = null;
 
@@ -2405,7 +2792,89 @@
       document.getElementById("edit-mode-banner").classList.toggle("hidden", !isEditMode);
       updateOrdersBadge();
       renderProducts();
-      showToast(isEditMode ? "🔐 تم تفعيل وضع الإدارة" : "تم إغلاق وضع الإدارة");
+      showToast(isEditMode ? "🔐 تم تفعيل لوحة الإدارة المتكاملة" : "تم إغلاق لوحة الإدارة");
+    }
+
+    function openAddProductModal() {
+      document.getElementById("new-prod-id").value = "";
+      document.getElementById("new-prod-name").value = "";
+      document.getElementById("new-prod-name-en").value = "";
+      document.getElementById("new-prod-unit").value = "قطعة";
+      document.getElementById("new-prod-sqm").checked = false;
+      document.getElementById("new-prod-market").value = "1000";
+      document.getElementById("new-prod-reseller").value = "850";
+      document.getElementById("new-prod-img").value = "";
+      document.getElementById("new-prod-specs").value = "";
+      document.getElementById("new-prod-specs-en").value = "";
+      document.getElementById("add-product-modal").classList.remove("hidden");
+    }
+
+    function closeAddProductModal() {
+      document.getElementById("add-product-modal").classList.add("hidden");
+    }
+
+    function createNewProduct() {
+      const id = (document.getElementById("new-prod-id").value || "").trim().toUpperCase();
+      const name = (document.getElementById("new-prod-name").value || "").trim();
+      if (!id || !name) {
+        showToast("⚠️ يرجى إدخال كود المنتج والاسم بالعربية");
+        return;
+      }
+      if (PRODUCTS.some(p => p.id === id)) {
+        showToast("⚠️ كود المنتج موجود مسبقاً");
+        return;
+      }
+
+      const soldBySqm = document.getElementById("new-prod-sqm").checked;
+      const unitAr = (document.getElementById("new-prod-unit").value || (soldBySqm ? "متر مربع" : "قطعة")).trim();
+      const marketAED = parseFloat(document.getElementById("new-prod-market").value) || 0;
+      const resellerAED = parseFloat(document.getElementById("new-prod-reseller").value) || 0;
+      const img = (document.getElementById("new-prod-img").value || ("images/" + id + ".webp")).trim();
+
+      const newItem = {
+        id: id,
+        cat: document.getElementById("new-prod-cat").value,
+        img: img,
+        zoom: 100,
+        posX: 50,
+        posY: 50,
+        name: name,
+        name_en: (document.getElementById("new-prod-name-en").value || name).trim(),
+        unit: unitAr,
+        unit_en: soldBySqm ? "sqm" : "pcs",
+        soldBySqm: soldBySqm,
+        marketAED: marketAED,
+        resellerAED: resellerAED,
+        specs: (document.getElementById("new-prod-specs").value || "مواصفات WeFone LED الرسمية").trim(),
+        specs_en: (document.getElementById("new-prod-specs-en").value || "Official WeFone LED Spec").trim()
+      };
+
+      PRODUCTS.unshift(newItem);
+      localStorage.setItem("wefone_custom_products_v64_webp", JSON.stringify(PRODUCTS));
+      closeAddProductModal();
+      renderProductTrain();
+      renderProducts();
+      populateComparisonSelects();
+      populateCalculatorSelect();
+      updateCalculator();
+      pushAllProductsToCloud(true);
+      showToast("✅ تمت إضافة المنتج " + id + " بنجاح");
+    }
+
+    function deleteProductFromCatalog() {
+      const id = document.getElementById("edit-prod-id").value;
+      if (!id) return;
+      if (!confirm("هل أنت متأكد من حذف المنتج " + id + " من الكتالوج؟")) return;
+      PRODUCTS = PRODUCTS.filter(p => p.id !== id);
+      localStorage.setItem("wefone_custom_products_v64_webp", JSON.stringify(PRODUCTS));
+      closeProductEditor();
+      renderProductTrain();
+      renderProducts();
+      populateComparisonSelects();
+      populateCalculatorSelect();
+      updateCalculator();
+      pushAllProductsToCloud(true);
+      showToast("🗑️ تم حذف المنتج " + id);
     }
 
     function openProductEditor(prodId) {
@@ -2526,6 +2995,7 @@
 
       renderProductTrain();
       renderProducts();
+      populateComparisonSelects();
       populateCalculatorSelect();
       updateCalculator();
       closeProductEditor();
@@ -2539,6 +3009,7 @@
       PRODUCTS = JSON.parse(JSON.stringify(DEFAULT_PRODUCTS));
       renderProductTrain();
       renderProducts();
+      populateComparisonSelects();
       populateCalculatorSelect();
       updateCalculator();
       pushAllProductsToCloud(true);
@@ -2546,13 +3017,38 @@
     }
 
     function exportProductsBackup() {
-      const jsonStr = JSON.stringify(PRODUCTS, null, 2);
+      const jsonStr = JSON.stringify({ version: "2026", products: PRODUCTS, orders: savedOrders }, null, 2);
       if (navigator.clipboard && navigator.clipboard.writeText) {
         navigator.clipboard.writeText(jsonStr).then(() => {
-          showToast("📋 تم نسخ بيانات المنتجات (64) للحافظة");
+          showToast("📋 تم نسخ النسخة الاحتياطية الكاملة للحافظة");
         });
       } else {
-        prompt("انسخ الكود التالي:", jsonStr);
+        prompt("انسخ النسخة الاحتياطية:", jsonStr);
+      }
+    }
+
+    function importProductsBackupPrompt() {
+      const raw = prompt("الصق كود النسخة الاحتياطية (JSON) هنا:");
+      if (!raw) return;
+      try {
+        const parsed = JSON.parse(raw);
+        const list = Array.isArray(parsed) ? parsed : (Array.isArray(parsed.products) ? parsed.products : null);
+        if (!list || list.length === 0) throw new Error("Invalid format");
+        PRODUCTS = list;
+        localStorage.setItem("wefone_custom_products_v64_webp", JSON.stringify(PRODUCTS));
+        if (Array.isArray(parsed.orders)) {
+          savedOrders = parsed.orders;
+          localStorage.setItem("wefone_orders_2026", JSON.stringify(savedOrders));
+          updateOrdersBadge();
+        }
+        renderProductTrain();
+        renderProducts();
+        populateComparisonSelects();
+        populateCalculatorSelect();
+        updateCalculator();
+        showToast("✅ تم استعادة النسخة الاحتياطية بنجاح");
+      } catch (e) {
+        showToast("❌ صيغة النسخة الاحتياطية غير صالحة");
       }
     }
 
@@ -2561,24 +3057,53 @@
       if (el) el.textContent = savedOrders.length;
     }
 
+    function updateOrderStatus(idx, newStatus) {
+      if (!savedOrders[idx]) return;
+      savedOrders[idx].status = newStatus;
+      localStorage.setItem("wefone_orders_2026", JSON.stringify(savedOrders));
+      renderSalesSummary();
+      showToast("📌 تم تحديث حالة الطلب إلى: " + newStatus);
+    }
+
+    function renderSalesSummary() {
+      const box = document.getElementById("sales-summary-cards");
+      if (!box) return;
+      const totalOrders = savedOrders.length;
+      const totalMarket = savedOrders.reduce((s, o) => s + (Number(o.marketAEDValue) || 0), 0);
+      const totalReseller = savedOrders.reduce((s, o) => s + (Number(o.resellerAEDValue) || 0), 0);
+      const estMargin = Math.max(0, totalMarket - totalReseller);
+
+      box.innerHTML =
+        '<div class="theme-subtle-box rounded-xl p-3"><div class="text-[11px] theme-muted">إجمالي الطلبات</div><div class="text-lg font-black text-cyan-600 dark:text-cyan-400">' + totalOrders + '</div></div>' +
+        '<div class="theme-subtle-box rounded-xl p-3"><div class="text-[11px] theme-muted">إجمالي مبيعات السوق (AED)</div><div class="text-lg font-black text-blue-700 dark:text-blue-300">' + totalMarket.toLocaleString("en-US") + ' AED</div></div>' +
+        '<div class="theme-subtle-box rounded-xl p-3"><div class="text-[11px] theme-muted">إجمالي تكلفة المورد (AED)</div><div class="text-lg font-black text-emerald-600 dark:text-emerald-400">' + totalReseller.toLocaleString("en-US") + ' AED</div></div>' +
+        '<div class="theme-subtle-box rounded-xl p-3"><div class="text-[11px] theme-muted">فارق السعر التقديري (AED)</div><div class="text-lg font-black text-amber-600 dark:text-amber-400">' + estMargin.toLocaleString("en-US") + ' AED</div></div>';
+    }
+
     function openOrdersModal() {
+      renderSalesSummary();
       const tbody = document.getElementById("orders-table-body");
+      const statuses = ["جديد", "قيد المراجعة", "تم التوريد", "مكتمل"];
+
       if (savedOrders.length === 0) {
-        tbody.innerHTML = '<tr><td colspan="7" class="p-6 text-center theme-muted">لا توجد طلبات مسجلة محلياً بعد (راجع تبويب Orders في Google Sheets)</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="8" class="p-6 text-center theme-muted">لا توجد طلبات مسجلة محلياً بعد (راجع تبويب Orders في Google Sheets)</td></tr>';
       } else {
-        tbody.innerHTML = savedOrders.map(o =>
-          '<tr class="hover:bg-amber-500/5">' +
-            '<td class="p-2.5 font-bold text-amber-500">' + o.orderId + '</td>' +
+        tbody.innerHTML = savedOrders.map((o, idx) => {
+          const curSt = o.status || "جديد";
+          const optsHtml = statuses.map(st => '<option value="' + st + '"' + (st === curSt ? ' selected' : '') + '>' + st + '</option>').join("");
+          return '<tr class="hover:bg-cyan-500/5">' +
+            '<td class="p-2.5 font-bold text-cyan-700 dark:text-cyan-400">' + o.orderId + '</td>' +
             '<td class="p-2.5 theme-muted">' + o.date + '</td>' +
             '<td class="p-2.5">' + o.customer + '<br><span class="text-[10px] theme-muted">' + o.shipping + '</span></td>' +
             '<td class="p-2.5 max-w-xs">' + o.itemsSummary + '</td>' +
+            '<td class="p-2.5"><select onchange="updateOrderStatus(' + idx + ', this.value)" class="theme-input rounded-lg px-2 py-1 text-xs font-bold outline-none">' + optsHtml + '</select></td>' +
             '<td class="p-2.5 font-bold">' + o.customerTotalFormatted + '</td>' +
-            '<td class="p-2.5 font-bold text-emerald-500">' + o.supplierTotalAED + '</td>' +
+            '<td class="p-2.5 font-bold text-emerald-600 dark:text-emerald-400">' + o.supplierTotalAED + '</td>' +
             '<td class="p-2.5">' +
               '<a href="' + o.supplierWaUrl + '" target="_blank" class="inline-flex items-center gap-1 bg-emerald-600 hover:bg-emerald-500 text-white px-3 py-1.5 rounded-lg font-bold transition">📲 إرسال للمورد</a>' +
             '</td>' +
-          '</tr>'
-        ).join("");
+          '</tr>';
+        }).join("");
       }
       document.getElementById("orders-modal").classList.remove("hidden");
     }
@@ -2592,9 +3117,9 @@
         showToast("⚠️ لا توجد طلبات للتصدير");
         return;
       }
-      let csv = "\uFEFFرقم الطلب,التاريخ,العميل,الشحن,الأصناف,سعر العميل (سوق),تكلفة المورد (موزع AED),رابط واتساب المورد\n";
+      let csv = "\uFEFFرقم الطلب,التاريخ,العميل,الشحن,الأصناف,الحالة,سعر العميل (سوق),تكلفة المورد (موزع AED),رابط واتساب المورد\n";
       savedOrders.forEach(o => {
-        csv += '"' + o.orderId + '","' + o.date + '","' + o.customer + '","' + o.shipping + '","' + o.itemsSummary + '","' + o.customerTotalFormatted + '","' + o.supplierTotalAED + '","' + o.supplierWaUrl + '"\n';
+        csv += '"' + o.orderId + '","' + o.date + '","' + o.customer + '","' + o.shipping + '","' + o.itemsSummary + '","' + (o.status || "جديد") + '","' + o.customerTotalFormatted + '","' + o.supplierTotalAED + '","' + o.supplierWaUrl + '"\n';
       });
       const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
       const url = URL.createObjectURL(blob);
@@ -2608,6 +3133,7 @@
       if (e.key === "Escape") {
         closeProductLightbox();
         closeShareModal();
+        closeAddProductModal();
       }
       if (e.ctrlKey && e.shiftKey && (e.key === "A" || e.key === "a")) {
         e.preventDefault();
@@ -2621,7 +3147,8 @@
       document.getElementById("pin-modal").classList.remove("hidden");
     }
 
-    // Fast Initial Render (Theme + Language + Store + Calculator)
+    // Fast Initial Render (Logo + PWA + Language + Theme + Store + Comparison + Calculator)
+    initBrandLogoAndPwa();
     applyLanguage(currentLang);
     startPromoAuto();
     startTrainAuto();
